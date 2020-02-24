@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation=" http://www.springframework.org/schema/beans
+                            http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                            http://www.springframework.org/schema/context
+                            https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="su.myspringwebapps"/>
+
+    <!-- Арбитр представлений -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- Калькулятор общей стоимости дверных блоков по текущей позиции коммерческого предложения -->
+    <bean id="calculatordoorprice"
+          class="su.myspringwebapps.calculators.DoorPriceCalculator">
+    </bean>
+
+    <!-- Калькулятор общей стоимости дверных блоков в предложении -->
+    <bean id="calculatorgeneraldoorprice"
+          class="su.myspringwebapps.calculators.GeneralDoorPriceCalculator">
+    </bean>
+
+    <!-- Калькулятор общего количества дверных блоков в предложении -->
+    <bean id="calculatortotaldoornumber"
+          class="su.myspringwebapps.calculators.TotalNumberOfDoorsCalculator">
+    </bean>
+
+    <!-- Настройки (цена и надбавка за количество), в будущем поместить в MySQL -->
+    <bean id="pricesrepository"
+          class="su.myspringwebapps.repositories.DoorPricesInteractionWithDatabase">
+    </bean>
+
+    <!-- Текущее коммерческое предложение, в будущем также поместить в MySQL -->
+    <bean id="curcommproprepository"
+          class="su.myspringwebapps.repositories.CurrentCommercialProposalInteractionWithDatabase">
+    </bean>
+
+    <!-- Главный сервис программы -->
+    <bean id="mainservice"
+          class="su.myspringwebapps.sevices.MainService">
+        <constructor-arg ref="calculatordoorprice"/>
+        <constructor-arg ref="calculatorgeneraldoorprice"/>
+        <constructor-arg ref="calculatortotaldoornumber"/>
+        <constructor-arg ref="pricesrepository"/>
+        <constructor-arg ref="curcommproprepository"/>
+    </bean>
+
+    <!-- Связь с базой данных -->
+    <bean   id="dataSource"
+            class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName"
+                  value="com.mysql.jdbc.Driver"/>
+        <property name="url"
+                  value="jdbc:mysql://localhost:3306/db_doors?serverTimezone=Europe/Moscow"/>
+        <property name="username"
+                  value="root"/>
+        <property name="password"
+                  value="root"/>
+    </bean>
+    <bean   id="jdbcTemplate"
+            class="org.springframework.jdbc.core.simple.SimpleJdbcTemplate">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+</beans>

@@ -17,17 +17,17 @@
 
     <!-- Калькулятор общей стоимости дверных блоков по текущей позиции коммерческого предложения -->
     <bean id="calculatordoorprice"
-          class="su.myspringwebapps.calculators.DoorPriceCalculator">
+          class="su.myspringwebapps.calculators.DoorPriceCalculatorImplementation">
     </bean>
 
     <!-- Калькулятор общей стоимости дверных блоков в предложении -->
     <bean id="calculatorgeneraldoorprice"
-          class="su.myspringwebapps.calculators.GeneralDoorPriceCalculator">
+          class="su.myspringwebapps.calculators.GeneralDoorPriceCalculatorImplementation">
     </bean>
 
     <!-- Калькулятор общего количества дверных блоков в предложении -->
     <bean id="calculatortotaldoornumber"
-          class="su.myspringwebapps.calculators.TotalNumberOfDoorsCalculator">
+          class="su.myspringwebapps.calculators.TotalNumberOfDoorsCalculatorImplementation">
     </bean>
 
     <!-- Настройки (цена и надбавка за количество), в будущем поместить в MySQL -->

@@ -100,37 +100,37 @@
                 <td>
                     <fieldset align="center">
                         <legend>Тип</legend>
-                        ДГ <input type="radio" name="type" value="1" checked>
-                        ДН <input type="radio" name="type" value="2">
-                        ДО <input type="radio" name="type" value="3">
+                        ДГ <input type="radio" name="type" value="opt1" checked>
+                        ДН <input type="radio" name="type" value="opt2">
+                        ДО <input type="radio" name="type" value="opt3">
                     </fieldset>
                 </td>
                 <td>
                     <fieldset align="center">
                         <legend>Открывание</legend>
-                        Правое <input type="radio" name="open" value="1" checked>
-                        Левое <input type="radio" name="open" value="2">
+                        Правое <input type="radio" name="open" value="opt1" checked>
+                        Левое <input type="radio" name="open" value="opt2">
                     </fieldset>
                 </td>
                 <td>
                     <fieldset align="center">
                         <legend>Порог</legend>
-                        Есть <input type="radio" name="doorstep" value="1" checked>
-                        Нет <input type="radio" name="doorstep" value="2">
+                        Есть <input type="radio" name="doorstep" value="opt1" checked>
+                        Нет <input type="radio" name="doorstep" value="opt2">
                     </fieldset>
                 </td>
                 <td>
                     <fieldset align="center">
                         <legend>Сборка</legend>
-                        Есть <input type="radio" name="assembl" value="1" checked>
-                        Нет <input type="radio" name="assembl" value="2">
+                        Есть <input type="radio" name="assembl" value="opt1" checked>
+                        Нет <input type="radio" name="assembl" value="opt2">
                     </fieldset>
                 </td>
                 <td>
                     <fieldset align="center">
                         <legend>Заполнение</legend>
-                        Сотовое <input type="radio" name="fill" value="1" checked>
-                        Реечное <input type="radio" name="fill" value="2">
+                        Сотовое <input type="radio" name="fill" value="opt1" checked>
+                        Реечное <input type="radio" name="fill" value="opt2">
                     </fieldset>
                 </td>
             </tr>
@@ -138,40 +138,40 @@
                 <td>
                     <fieldset align="center">
                         <legend>Отверстие п/с</legend>
-                        Нет <input type="radio" name="hole" value="1" checked>
-                        Есть <input type="radio" name="hole" value="2">
+                        Нет <input type="radio" name="hole" value="opt1" checked>
+                        Есть <input type="radio" name="hole" value="opt2">
                     </fieldset>
                 </td>
                 <td>
                     <fieldset align="center">
                         <legend>Фурнитура</legend>
-                        Нет <input type="radio" name="fitt" value="1" checked>
-                        ЗЩ 2-01 <input type="radio" name="fitt" value="2">
-                        ЗВ 4-0-03 <input type="radio" name="fitt" value="3">
+                        Нет <input type="radio" name="fitt" value="opt1" checked>
+                        ЗЩ 2-01 <input type="radio" name="fitt" value="opt2">
+                        ЗВ 4-0-03 <input type="radio" name="fitt" value="opt3">
                     </fieldset>
                 </td>
                 <td>
                     <fieldset align="center">
                         <legend>Окраска</legend>
-                        Нет <input type="radio" name="paint" value="1" checked>
-                        Грунтовка <input type="radio" name="paint" value="2">
-                        НЭ цвет RAL <input type="radio" name="paint" value="3">
+                        Нет <input type="radio" name="paint" value="opt1" checked>
+                        Грунтовка <input type="radio" name="paint" value="opt2">
+                        НЭ цвет RAL <input type="radio" name="paint" value="opt3">
                     </fieldset>
                 </td>
                 <td>
                     <fieldset align="center">
                         <legend>Наличник</legend>
-                        Нет <input type="radio" name="doortrim" value="1" checked>
-                        60мм <input type="radio" name="doortrim" value="2">
-                        90мм <input type="radio" name="doortrim" value="3">
+                        Нет <input type="radio" name="doortrim" value="opt1" checked>
+                        60мм <input type="radio" name="doortrim" value="opt2">
+                        90мм <input type="radio" name="doortrim" value="opt3">
                     </fieldset>
                 </td>
                 <td>
                     <fieldset align="center">
                         <legend>Двупольный</legend>
-                        Нет <input type="radio" name="twodoorleafs" value="1" checked>
-                        Полуторный <input type="radio" name="twodoorleafs" value="2">
-                        Равнопольный <input type="radio" name="twodoorleafs" value="3">
+                        Нет <input type="radio" name="twodoorleafs" value="opt1" checked>
+                        Полуторный <input type="radio" name="twodoorleafs" value="opt2">
+                        Равнопольный <input type="radio" name="twodoorleafs" value="opt3">
                     </fieldset>
                 </td>
                 <td>

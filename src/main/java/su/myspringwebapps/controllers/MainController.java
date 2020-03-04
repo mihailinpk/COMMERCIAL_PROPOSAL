@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import su.myspringwebapps.controllers.enums.*;
 import su.myspringwebapps.sevices.MainService;
 import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
@@ -53,139 +54,31 @@ public class MainController {
             @RequestParam(value = "sumpos") String strSumPosition
     )   {
 
-        /*  Размеры     */
         Short sizeWidth = Short.parseShort(strWidth);
         Short sizeHeigth = Short.parseShort(strHeight);
 
-        /*  Тип     */
-        String type = null;
-        switch (strType)    {
-            case "1":
-                type = "ДГ";
-                break;
-            case "2":
-                type = "ДН";
-                break;
-            case "3":
-                type = "ДО";
-                break;
-        }
+        String type = Type.valueOf(strType).getType();
 
-        /*  Открывание  */
-        String open = null;
-        switch (strOpen)    {
-            case "1":
-                open = "правое";
-                break;
-            case "2":
-                open = "левое";
-                break;
-        }
+        String open = ((strOpen.equals("opt1")) ? "правое" : "левое");
 
-        /*  Порог   */
-        String doorStep = null;
-        switch (strDoorstep)    {
-            case "1":
-                doorStep = "есть";
-                break;
-            case "2":
-                doorStep = "нет";
-                break;
-        }
+        String doorStep = ((strDoorstep.equals("opt1")) ? "есть" : "нет");
 
-        /*  Сборка  */
-        String assmbl = null;
-        switch (strAssembl) {
-            case "1":
-                assmbl = "есть";
-                break;
-            case "2":
-                assmbl = "нет";
-                break;
-        }
+        String assmbl = ((strAssembl.equals("opt1")) ? "есть" : "нет");
 
-        /*  Заполнение  */
-        String fill = null;
-        switch (strFill)    {
-            case "1":
-                fill = "сотовое";
-                break;
-            case "2":
-                fill = "реечное";
-                break;
-        }
+        String fill = ((strFill.equals("opt1")) ? "сотовое" : "реечное");
 
-        /*  Отверстие   */
-        String hole = null;
-        switch (strHole)    {
-            case "1":
-                hole = "нет";
-                break;
-            case "2":
-                hole = "есть";
-                break;
-        }
+        String hole = ((strHole.equals("opt1")) ? "нет" : "есть");
 
-        /*  Фурнитура   */
-        String fitt = null;
-        switch (strFitt)    {
-            case "1":
-                fitt = "нет";
-                break;
-            case "2":
-                fitt = "ЗЩ 2-01";
-                break;
-            case "3":
-                fitt = "ЗВ 4";
-                break;
-        }
+        String fitt = Mortise.valueOf(strFitt).getMortise();
 
-        /*  Окраска     */
-        String paint = null;
-        switch (strPaint)   {
-            case "1":
-                paint = "нет";
-                break;
-            case "2":
-                paint = "грунтовка";
-                break;
-            case "3":
-                paint = "НЭ цвет RAL";
-                break;
-        }
+        String paint = Paint.valueOf(strPaint).getPaint();
 
-        /*  Наличник    */
-        String doorTrim = null;
-        switch (strDoorTrim)     {
-            case "1":
-                doorTrim = "нет";
-                break;
-            case "2":
-                doorTrim = "60мм";
-                break;
-            case "3":
-                doorTrim = "90мм";
-                break;
-        }
+        String doorTrim = DoorTrim.valueOf(strDoorTrim).getDoorTrim();
 
-        /*  Двупольный  */
-        String twoDoorLeafs = null;
-        switch (strTwoDoorLeafs)    {
-            case "1":
-                twoDoorLeafs = "нет";
-                break;
-            case "2":
-                twoDoorLeafs = "полуторный";
-                break;
-            case "3":
-                twoDoorLeafs = "равнопольный";
-                break;
-        }
+        String twoDoorLeafs = TwoDoorLeafs.valueOf(strTwoDoorLeafs).getTwoDoorLeafs();
 
-        /*  Количество ДБ в позиции предложения     */
         Integer sum = Integer.parseInt(strSumPosition);
 
-        /*  Добавляем новую позицию в КП*/
         mainService.saveNewDoorPosition(
             sizeWidth, sizeHeigth, type, open, doorStep,
                 assmbl, fill, hole, fitt, paint, doorTrim, twoDoorLeafs, sum

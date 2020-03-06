@@ -5,32 +5,83 @@ import su.myspringwebapps.points.DoorPrice;
 
 public class DoorPriceCalculatorImplementation implements DoorPriceCalculator {
 
-    private long calculateBySizeLeaf(Short sizeWidth, Short sizeHeigth, Integer priceLeaf, Integer priceLeafNstHeigth,
-        Integer priceLeafNstWidth, Integer priceLeafNstHghtWdth)  {
+    private DoorPosition currentDoorPosition;
+    private DoorPrice currentDoorPrice;
+    private long totalNumberOfDoors;
 
-        long returnedPrice = 0;
+    private long calculateBySizeLeaf(Short sizeWidth, Short sizeHeigth, Integer priceLeaf, Integer priceLeafNonstandartHeigth,
+        Integer priceLeafNonstandartWidth, Integer priceLeafNonstandartHeightWidth)  {
+
+        long intermediatePrice = 0;
 
         if ((sizeWidth <= 1000) && (sizeHeigth <= 2000))
-            returnedPrice += priceLeaf;
+            intermediatePrice += priceLeaf;
         if ((sizeWidth <= 1000) && (sizeHeigth > 2000))
-            returnedPrice +=  priceLeafNstHeigth;
+            intermediatePrice +=  priceLeafNonstandartHeigth;
         if ((sizeWidth > 1000) && (sizeHeigth <= 2000))
-            returnedPrice += priceLeafNstWidth;
+            intermediatePrice += priceLeafNonstandartWidth;
         if ((sizeWidth > 1000) && (sizeHeigth > 2000))
-            returnedPrice += priceLeafNstHghtWdth;
+            intermediatePrice += priceLeafNonstandartHeightWidth;
 
-        return returnedPrice;
+        return intermediatePrice;
 
     }
 
-    private long calculateByDoorTrim(String strDoorTrim, Integer priceDoorTrim60mm, Integer priceDoorTrim90mm,
-        float sumStickDoorTrim, long currentPrice) {
+    private long calculateBySumStickBox()   {
 
-        long returnedPrice = currentPrice;
+        float sumStickBox = 0;
+
+        sumStickBox += (currentDoorPosition.getTwoDoorLeafs().equals("нет")
+                        ? 2.5 + (currentDoorPosition.getDoorStep().equals("есть") ? 0.5: 0)
+                        : 3 + (currentDoorPosition.getDoorStep().equals("есть") ? 1: 0));
+
+        return ((currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorFrameNst() :
+                currentDoorPrice.getPriceDoorFrame()) * (int)sumStickBox;
+
+    }
+
+    private long calculateByFitt()  {
+
+        long intermediatePrice = 0;
+
+        switch (currentDoorPosition.getFitt())   {
+            case "ЗВ 4":
+                intermediatePrice = (currentDoorPrice.getPriceInsert() + currentDoorPrice.getPriceZV4());
+                break;
+            case "ЗЩ 2-01":
+                intermediatePrice = (currentDoorPrice.getPriceInsert() + currentDoorPrice.getPriceZch201());
+                break;
+        }
+
+        return intermediatePrice;
+
+    }
+
+    private long calculateByPaint() {
+
+        long intermediatePrice = 0;
+
+        switch (currentDoorPosition.getPaint())   {
+            case "грунтовка":
+                intermediatePrice = currentDoorPrice.getPricePaintGrunt();
+                break;
+            case "НЭ цвет RAL":
+                intermediatePrice = currentDoorPrice.getPricePaintRAl();
+                break;
+        }
+
+        return intermediatePrice;
+
+    }
+
+    private long calculateByDoorTrim(String sizeDoorTrim, Integer priceDoorTrim60mm, Integer priceDoorTrim90mm,
+        float sumStickDoorTrim) {
+
+        long intermediatePrice = 0;
 
         int priceDoorTrim = 0;
 
-        switch (strDoorTrim) {
+        switch (sizeDoorTrim) {
             case "60мм":
                 priceDoorTrim = priceDoorTrim60mm;
                 break;
@@ -39,95 +90,62 @@ public class DoorPriceCalculatorImplementation implements DoorPriceCalculator {
                 break;
         }
 
-        return returnedPrice += priceDoorTrim * (int)sumStickDoorTrim;
+        intermediatePrice += priceDoorTrim * (int)sumStickDoorTrim;
+
+        return intermediatePrice;
+
+    }
+
+    private long calculateTotalNumberOfDoors()  {
+
+        long intermediatePrice = 0;
+
+        if (totalNumberOfDoors <= 10)
+            intermediatePrice = currentDoorPrice.getSurchGenNum10();
+        if ((totalNumberOfDoors > 10)&&(totalNumberOfDoors <= 20))
+            intermediatePrice = currentDoorPrice.getSurchGenNumFr11to20();
+        if ((totalNumberOfDoors > 20)&&(totalNumberOfDoors <= 50))
+            intermediatePrice = currentDoorPrice.getSurchGenNumFr21to50();
+        if ((totalNumberOfDoors > 50)&&(totalNumberOfDoors <= 100))
+            intermediatePrice = currentDoorPrice.getSurchGenNumFr51to100();
+        if ((totalNumberOfDoors > 100)&&(totalNumberOfDoors <= 1000))
+            intermediatePrice = currentDoorPrice.getSurchGenNumFr101to1000();
+        if (totalNumberOfDoors > 1000)
+            intermediatePrice = currentDoorPrice.getSurchGenNum1000();
+
+        return intermediatePrice;
 
     }
 
     public long calculatePrice(DoorPosition currentDoorPosition, DoorPrice currentDoorPrice, Long totalNumberOfDoors) {
 
-        long finalPrice = 0;
+        this.currentDoorPosition = currentDoorPosition;
+        this.currentDoorPrice = currentDoorPrice;
+        this.totalNumberOfDoors = totalNumberOfDoors;
 
-        if (currentDoorPosition.getFill().equals("реечное"))
-            finalPrice = calculateBySizeLeaf(currentDoorPosition.getSizeWidth(), currentDoorPosition.getSizeHeigth(),
-                    currentDoorPrice.getPriceLeafReech(), currentDoorPrice.getPriceLeafReechNstHeigth(),
-                        currentDoorPrice.getPriceLeafReechNstWidth(), currentDoorPrice.getPriceLeafReechNstHghtWdth());
+        long finalPrice = calculateBySizeLeaf(currentDoorPosition.getSizeWidth(), currentDoorPosition.getSizeHeigth(),
+            currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReech() : currentDoorPrice.getPriceLeafSot(),
+                currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNstHeigth() : currentDoorPrice.getPriceLeafSotNstHeigth(),
+                    currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNstWidth() : currentDoorPrice.getPriceLeafSotNstWidth(),
+                        currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNstHghtWdth() : currentDoorPrice.getPriceLeafSotNstHghtWdth());
 
-        if (currentDoorPosition.getFill().equals("сотовое"))
-            finalPrice = calculateBySizeLeaf(currentDoorPosition.getSizeWidth(), currentDoorPosition.getSizeHeigth(),
-                    currentDoorPrice.getPriceLeafSot(), currentDoorPrice.getPriceLeafSotNstHeigth(),
-                        currentDoorPrice.getPriceLeafSotNstWidth(), currentDoorPrice.getPriceLeafSotNstHghtWdth());
+        finalPrice += calculateBySumStickBox();
 
+        finalPrice += (currentDoorPosition.getAssmbl().equals("есть") ? currentDoorPrice.getPriceAssmbl() : 0);
 
-        float sumStickBox = 0;
-        if (currentDoorPosition.getTwoDoorLeafs().equals("нет"))	{
-            sumStickBox += 2.5;
-            if (currentDoorPosition.getDoorStep().equals("есть"))
-                sumStickBox += 0.5;
-        }
-        else {
-            sumStickBox += 3;
-            if (currentDoorPosition.getDoorStep().equals("есть"))
-                sumStickBox += 1;
-        }
+        finalPrice += (currentDoorPosition.getHole().equals("есть") ? currentDoorPrice.getPriceHole() : 0);
 
-        if (currentDoorPosition.getSizeHeigth() > 2000)
-            finalPrice += (currentDoorPrice.getPriceDoorFrameNst() * (int)sumStickBox);
-        else
-            finalPrice += (currentDoorPrice.getPriceDoorFrame() * (int)sumStickBox);
+        finalPrice += calculateByFitt();
 
-        if (currentDoorPosition.getAssmbl().equals("есть"))
-            finalPrice += currentDoorPrice.getPriceAssmbl();
+        finalPrice += calculateByPaint();
 
-        if (currentDoorPosition.getHole().equals("есть"))
-            finalPrice += currentDoorPrice.getPriceHole();
+        finalPrice += calculateByDoorTrim(
+                        currentDoorPosition.getDoorTrim(),
+                        (currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorTrim60mmNst() : currentDoorPrice.getPriceDoorTrim60mm(),
+                        (currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorTrim90mmNst() : currentDoorPrice.getPriceDoorTrim90mm(),
+                        (float)(currentDoorPosition.getTwoDoorLeafs().equals("нет") ? 2.5 : 3));
 
-        String strFitt = currentDoorPosition.getFitt();
-        switch (strFitt)   {
-            case "ЗВ 4":
-                finalPrice += (currentDoorPrice.getPriceInsert() + currentDoorPrice.getPriceZV4());
-                break;
-            case "ЗЩ 2-01":
-                finalPrice += (currentDoorPrice.getPriceInsert() + currentDoorPrice.getPriceZch201());
-                break;
-        }
-
-        String strPaint = currentDoorPosition.getPaint();
-        switch (strPaint)   {
-            case "грунтовка":
-                finalPrice += currentDoorPrice.getPricePaintGrunt();
-                break;
-            case "НЭ цвет RAL":
-                finalPrice += currentDoorPrice.getPricePaintRAl();
-                break;
-        }
-
-        float sumStickDoorTrim = 0;
-        if (currentDoorPosition.getTwoDoorLeafs().equals("нет"))
-            sumStickDoorTrim += 2.5;
-        else
-            sumStickDoorTrim += 3;
-        String strDoorTrim = currentDoorPosition.getDoorTrim();
-        if (currentDoorPosition.getSizeHeigth() > 2000)	{
-            finalPrice = calculateByDoorTrim(strDoorTrim, currentDoorPrice.getPriceDoorTrim60mmNst(), currentDoorPrice.getPriceDoorTrim90mmNst(),
-                sumStickDoorTrim, finalPrice);
-        }
-        else	{
-            finalPrice = calculateByDoorTrim(strDoorTrim, currentDoorPrice.getPriceDoorTrim60mm(), currentDoorPrice.getPriceDoorTrim90mm(),
-                sumStickDoorTrim, finalPrice);
-        }
-
-        if (totalNumberOfDoors <= 10)
-            finalPrice += currentDoorPrice.getSurchGenNum10();
-        if ((totalNumberOfDoors > 10)&&(totalNumberOfDoors <= 20))
-            finalPrice += currentDoorPrice.getSurchGenNumFr11to20();
-        if ((totalNumberOfDoors > 20)&&(totalNumberOfDoors <= 50))
-            finalPrice += currentDoorPrice.getSurchGenNumFr21to50();
-        if ((totalNumberOfDoors > 50)&&(totalNumberOfDoors <= 100))
-            finalPrice += currentDoorPrice.getSurchGenNumFr51to100();
-        if ((totalNumberOfDoors > 100)&&(totalNumberOfDoors <= 1000))
-            finalPrice += currentDoorPrice.getSurchGenNumFr101to1000();
-        if (totalNumberOfDoors > 1000)
-            finalPrice += currentDoorPrice.getSurchGenNum1000();
+        finalPrice += calculateTotalNumberOfDoors();
 
         finalPrice *= currentDoorPosition.getSum();
 

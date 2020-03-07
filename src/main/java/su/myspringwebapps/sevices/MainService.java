@@ -98,11 +98,11 @@ public class MainService implements MainServiceInterface {
         Integer priceLeafReech,
         Integer priceLeafReechNonStandartHeigth,
         Integer priceLeafReechNonStandartWidth,
-        Integer priceLeafReechNonStandartHghtWdth,
+        Integer priceLeafReechNonStandartHeigthWidth,
         Integer priceLeafSot,
         Integer priceLeafSotNonStandartHeigth,
         Integer priceLeafSotNonStandartWidth,
-        Integer priceLeafSotNonStandartHghtWdth,
+        Integer priceLeafSotNonStandartHeigthWidth,
         Integer priceDoorFrame,
         Integer priceDoorFrameNonStandart,
         Integer priceAssmbl,
@@ -128,11 +128,11 @@ public class MainService implements MainServiceInterface {
         doorPrice.setPriceLeafReech(priceLeafReech);
         doorPrice.setPriceLeafReechNonStandartHeigth(priceLeafReechNonStandartHeigth);
         doorPrice.setPriceLeafReechNonStandartWidth(priceLeafReechNonStandartWidth);
-        doorPrice.setPriceLeafReechNonStandartHghtWdth(priceLeafReechNonStandartHghtWdth);
+        doorPrice.setPriceLeafReechNonStandartHeigthWidth(priceLeafReechNonStandartHeigthWidth);
         doorPrice.setPriceLeafSot(priceLeafSot);
         doorPrice.setPriceLeafSotNonStandartHeigth(priceLeafSotNonStandartHeigth);
         doorPrice.setPriceLeafSotNonStandartWidth(priceLeafSotNonStandartWidth);
-        doorPrice.setPriceLeafSotNonStandartHghtWdth(priceLeafSotNonStandartHghtWdth);
+        doorPrice.setPriceLeafSotNonStandartHeigthWidth(priceLeafSotNonStandartHeigthWidth);
         doorPrice.setPriceDoorFrame(priceDoorFrame);
         doorPrice.setPriceDoorFrameNonStandart(priceDoorFrameNonStandart);
         doorPrice.setPriceAssmbl(priceAssmbl);

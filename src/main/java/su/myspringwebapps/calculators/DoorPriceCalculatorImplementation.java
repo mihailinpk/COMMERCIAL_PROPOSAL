@@ -127,7 +127,7 @@ public class DoorPriceCalculatorImplementation implements DoorPriceCalculator {
             currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReech() : currentDoorPrice.getPriceLeafSot(),
                 currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNonStandartHeigth() : currentDoorPrice.getPriceLeafSotNonStandartHeigth(),
                     currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNonStandartWidth() : currentDoorPrice.getPriceLeafSotNonStandartWidth(),
-                        currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNonStandartHghtWdth() : currentDoorPrice.getPriceLeafSotNonStandartHghtWdth());
+                        currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNonStandartHeigthWidth() : currentDoorPrice.getPriceLeafSotNonStandartHeigthWidth());
 
         finalPrice += calculateBySumStickBox();
 

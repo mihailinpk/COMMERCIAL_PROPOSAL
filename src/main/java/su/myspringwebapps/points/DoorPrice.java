@@ -6,11 +6,11 @@ public class DoorPrice {
     private Integer priceLeafReech;				        //	цена за полотно реечного заполнения стандарт
     private Integer priceLeafReechNonStandartHeigth;	//	цена за полотно реечного заполнения н/стандарт по высоте
     private Integer priceLeafReechNonStandartWidth;		//	цена за полотно реечного заполнения н/стандарт по ширине
-    private Integer priceLeafReechNonStandartHghtWdth;	//	цена за полотно реечного заполнения н/стандарт по ширине и высоте
+    private Integer priceLeafReechNonStandartHeigthWidth;	//	цена за полотно реечного заполнения н/стандарт по ширине и высоте
     private Integer priceLeafSot;				        //	цена за полотно сотового заполнения стандарт
     private Integer priceLeafSotNonStandartHeigth;	    //	цена за полотно сотового заполнения н/стандарт по высоте
     private Integer priceLeafSotNonStandartWidth;	    //	цена за полотно сотового заполнения н/стандарт по ширине
-    private Integer priceLeafSotNonStandartHghtWdth;    //	цена за полотно сотового заполнения н/стандарт по ширине и высоте
+    private Integer priceLeafSotNonStandartHeigthWidth;    //	цена за полотно сотового заполнения н/стандарт по ширине и высоте
     private Integer priceDoorFrame;				        //	цена за палку коробки стандарт
     private Integer priceDoorFrameNonStandart;		    //	цена за палку коробки н/стандарт
     private Integer priceAssmbl;				        //	цена за сборку
@@ -63,12 +63,12 @@ public class DoorPrice {
         this.priceLeafReechNonStandartWidth = priceLeafReechNonStandartWidth;
     }
 
-    public Integer getPriceLeafReechNonStandartHghtWdth() {
-        return priceLeafReechNonStandartHghtWdth;
+    public Integer getPriceLeafReechNonStandartHeigthWidth() {
+        return priceLeafReechNonStandartHeigthWidth;
     }
 
-    public void setPriceLeafReechNonStandartHghtWdth(Integer priceLeafReechNonStandartHghtWdth) {
-        this.priceLeafReechNonStandartHghtWdth = priceLeafReechNonStandartHghtWdth;
+    public void setPriceLeafReechNonStandartHeigthWidth(Integer priceLeafReechNonStandartHeigthWidth) {
+        this.priceLeafReechNonStandartHeigthWidth = priceLeafReechNonStandartHeigthWidth;
     }
 
     public Integer getPriceLeafSot() {
@@ -95,12 +95,12 @@ public class DoorPrice {
         this.priceLeafSotNonStandartWidth = priceLeafSotNonStandartWidth;
     }
 
-    public Integer getPriceLeafSotNonStandartHghtWdth() {
-        return priceLeafSotNonStandartHghtWdth;
+    public Integer getPriceLeafSotNonStandartHeigthWidth() {
+        return priceLeafSotNonStandartHeigthWidth;
     }
 
-    public void setPriceLeafSotNonStandartHghtWdth(Integer priceLeafSotNonStandartHghtWdth) {
-        this.priceLeafSotNonStandartHghtWdth = priceLeafSotNonStandartHghtWdth;
+    public void setPriceLeafSotNonStandartHeigthWidth(Integer priceLeafSotNonStandartHeigthWidth) {
+        this.priceLeafSotNonStandartHeigthWidth = priceLeafSotNonStandartHeigthWidth;
     }
 
     public Integer getPriceDoorFrame() {
@@ -263,11 +263,11 @@ public class DoorPrice {
         result = prime * result + ((priceLeafReech == null) ? 0 : priceLeafReech.hashCode());
         result = prime * result + ((priceLeafReechNonStandartHeigth == null) ? 0 : priceLeafReechNonStandartHeigth.hashCode());
         result = prime * result + ((priceLeafReechNonStandartWidth == null) ? 0 : priceLeafReechNonStandartWidth.hashCode());
-        result = prime * result + ((priceLeafReechNonStandartHghtWdth == null) ? 0 : priceLeafReechNonStandartHghtWdth.hashCode());
+        result = prime * result + ((priceLeafReechNonStandartHeigthWidth == null) ? 0 : priceLeafReechNonStandartHeigthWidth.hashCode());
         result = prime * result + ((priceLeafSot == null) ? 0 : priceLeafSot.hashCode());
         result = prime * result + ((priceLeafSotNonStandartHeigth == null) ? 0 : priceLeafSotNonStandartHeigth.hashCode());
         result = prime * result + ((priceLeafSotNonStandartWidth == null) ? 0 : priceLeafSotNonStandartWidth.hashCode());
-        result = prime * result + ((priceLeafSotNonStandartHghtWdth == null) ? 0 : priceLeafSotNonStandartHghtWdth.hashCode());
+        result = prime * result + ((priceLeafSotNonStandartHeigthWidth == null) ? 0 : priceLeafSotNonStandartHeigthWidth.hashCode());
         result = prime * result + ((priceDoorFrame == null) ? 0 : priceDoorFrame.hashCode());
         result = prime * result + ((priceDoorFrameNonStandart == null) ? 0 : priceDoorFrameNonStandart.hashCode());
         result = prime * result + ((priceAssmbl == null) ? 0 : priceAssmbl.hashCode());
@@ -323,11 +323,11 @@ public class DoorPrice {
         else if (!priceLeafReechNonStandartWidth.equals(other.priceLeafReechNonStandartWidth))
             return false;
 
-        if (priceLeafReechNonStandartHghtWdth == null) {
-            if (other.priceLeafReechNonStandartHghtWdth != null)
+        if (priceLeafReechNonStandartHeigthWidth == null) {
+            if (other.priceLeafReechNonStandartHeigthWidth != null)
                 return false;
         }
-        else if (!priceLeafReechNonStandartHghtWdth.equals(other.priceLeafReechNonStandartHghtWdth))
+        else if (!priceLeafReechNonStandartHeigthWidth.equals(other.priceLeafReechNonStandartHeigthWidth))
             return false;
 
         if (priceLeafSot == null) {
@@ -351,11 +351,11 @@ public class DoorPrice {
         else if (!priceLeafSotNonStandartWidth.equals(other.priceLeafSotNonStandartWidth))
             return false;
 
-        if (priceLeafSotNonStandartHghtWdth == null) {
-            if (other.priceLeafSotNonStandartHghtWdth != null)
+        if (priceLeafSotNonStandartHeigthWidth == null) {
+            if (other.priceLeafSotNonStandartHeigthWidth != null)
                 return false;
         }
-        else if (!priceLeafSotNonStandartHghtWdth.equals(other.priceLeafSotNonStandartHghtWdth))
+        else if (!priceLeafSotNonStandartHeigthWidth.equals(other.priceLeafSotNonStandartHeigthWidth))
             return false;
 
         if (priceDoorFrame == null) {
@@ -501,11 +501,11 @@ public class DoorPrice {
                 "priceLeafReech=" + priceLeafReech +
                 ", priceLeafReechNonStandartHeigth=" + priceLeafReechNonStandartHeigth +
                 ", priceLeafReechNonStandartWidth=" + priceLeafReechNonStandartWidth +
-                ", priceLeafReechNonStandartHghtWdth=" + priceLeafReechNonStandartHghtWdth +
+                ", priceLeafReechNonStandartHeigthWidth=" + priceLeafReechNonStandartHeigthWidth +
                 ", priceLeafSot=" + priceLeafSot +
                 ", priceLeafSotNonStandartHeigth=" + priceLeafSotNonStandartHeigth +
                 ", priceLeafSotNonStandartWidth=" + priceLeafSotNonStandartWidth +
-                ", priceLeafSotNonStandartHghtWdth=" + priceLeafSotNonStandartHghtWdth +
+                ", priceLeafSotNonStandartHeigthWidth=" + priceLeafSotNonStandartHeigthWidth +
                 ", priceKor=" + priceDoorFrame +
                 ", priceKorNonStandart=" + priceDoorFrameNonStandart +
                 ", priceAssmbl=" + priceAssmbl +

@@ -101,11 +101,11 @@ public class MainController {
         model.addAttribute("priceLeafReech", doorPrice.getPriceLeafReech());
         model.addAttribute("priceLeafReechNonStandartHeigth", doorPrice.getPriceLeafReechNonStandartHeigth());
         model.addAttribute("priceLeafReechNonStandartWidth", doorPrice.getPriceLeafReechNonStandartWidth());
-        model.addAttribute("priceLeafReechNonStandartHghtWdth", doorPrice.getPriceLeafReechNonStandartHghtWdth());
+        model.addAttribute("priceLeafReechNonStandartHeigthWidth", doorPrice.getPriceLeafReechNonStandartHeigthWidth());
         model.addAttribute("priceLeafSot", doorPrice.getPriceLeafSot());
         model.addAttribute("priceLeafSotNonStandartHeigth", doorPrice.getPriceLeafSotNonStandartHeigth());
         model.addAttribute("priceLeafSotNonStandartWidth", doorPrice.getPriceLeafSotNonStandartWidth());
-        model.addAttribute("priceLeafSotNonStandartHghtWdth", doorPrice.getPriceLeafSotNonStandartHghtWdth());
+        model.addAttribute("priceLeafSotNonStandartHeigthWidth", doorPrice.getPriceLeafSotNonStandartHeigthWidth());
         model.addAttribute("priceDoorFrame", doorPrice.getPriceDoorFrame());
         model.addAttribute("priceDoorFrameNonStandart", doorPrice.getPriceDoorFrameNonStandart());
         model.addAttribute("priceAssmbl", doorPrice.getPriceAssmbl());
@@ -133,11 +133,11 @@ public class MainController {
             @RequestParam(value = "priceleafreech") String valuePriceLeafReechFromView,
             @RequestParam(value = "priceleafreechNonStandartheigth") String valuePriceLeafReechNonStandartHeigthFromView,
             @RequestParam(value = "priceleafreechNonStandartwidth") String valuePriceLeafReechNonStandartWidthFromView,
-            @RequestParam(value = "priceleafreechNonStandarthghtwdth") String valuePriceLeafReechNonStandartHghtWdthFromView,
+            @RequestParam(value = "priceleafreechNonStandartHeigthWidth") String valuePriceLeafReechNonStandartHeigthWidthFromView,
             @RequestParam(value = "priceleafsot") String valuePriceLeafSotFromView,
             @RequestParam(value = "priceleafsotNonStandartheigth") String valuePriceLeafSotNonStandartHeigthFromView,
             @RequestParam(value = "priceleafsotNonStandartwidth") String valuePriceLeafSotNonStandartWidthFromView,
-            @RequestParam(value = "priceleafsotNonStandarthghtwdth") String valuePriceLeafSotNonStandartHghtWdthFromView,
+            @RequestParam(value = "priceleafsotNonStandartHeigthWidth") String valuePriceLeafSotNonStandartHeigthWidthFromView,
             @RequestParam(value = "pricedoorframe") String valuePriceDoorFrameFromView,
             @RequestParam(value = "pricedoorframeNonStandart") String valuePriceDoorFrameNonStandartFromView,
             @RequestParam(value = "priceassmbl") String valuePriceAssmblFromView,
@@ -163,11 +163,11 @@ public class MainController {
                 Integer.parseInt(valuePriceLeafReechFromView),
                 Integer.parseInt(valuePriceLeafReechNonStandartHeigthFromView),
                 Integer.parseInt(valuePriceLeafReechNonStandartWidthFromView),
-                Integer.parseInt(valuePriceLeafReechNonStandartHghtWdthFromView),
+                Integer.parseInt(valuePriceLeafReechNonStandartHeigthWidthFromView),
                 Integer.parseInt(valuePriceLeafSotFromView),
                 Integer.parseInt(valuePriceLeafSotNonStandartHeigthFromView),
                 Integer.parseInt(valuePriceLeafSotNonStandartWidthFromView),
-                Integer.parseInt(valuePriceLeafSotNonStandartHghtWdthFromView),
+                Integer.parseInt(valuePriceLeafSotNonStandartHeigthWidthFromView),
                 Integer.parseInt(valuePriceDoorFrameFromView),
                 Integer.parseInt(valuePriceDoorFrameNonStandartFromView),
                 Integer.parseInt(valuePriceAssmblFromView),

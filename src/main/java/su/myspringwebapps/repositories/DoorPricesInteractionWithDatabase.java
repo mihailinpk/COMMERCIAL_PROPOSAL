@@ -56,11 +56,11 @@ public class DoorPricesInteractionWithDatabase implements DoorPricesInteractionW
             nextPrice.setPriceLeafReech(Integer.parseInt(params[1]));
             nextPrice.setPriceLeafReechNonStandartHeigth(Integer.parseInt(params[2]));
             nextPrice.setPriceLeafReechNonStandartWidth(Integer.parseInt(params[3]));
-            nextPrice.setPriceLeafReechNonStandartHghtWdth(Integer.parseInt(params[4]));
+            nextPrice.setPriceLeafReechNonStandartHeigthWidth(Integer.parseInt(params[4]));
             nextPrice.setPriceLeafSot(Integer.parseInt(params[5]));
             nextPrice.setPriceLeafSotNonStandartHeigth(Integer.parseInt(params[6]));
             nextPrice.setPriceLeafSotNonStandartWidth(Integer.parseInt(params[7]));
-            nextPrice.setPriceLeafSotNonStandartHghtWdth(Integer.parseInt(params[8]));
+            nextPrice.setPriceLeafSotNonStandartHeigthWidth(Integer.parseInt(params[8]));
             nextPrice.setPriceDoorFrame(Integer.parseInt(params[9]));
             nextPrice.setPriceDoorFrameNonStandart(Integer.parseInt(params[10]));
             nextPrice.setPriceAssmbl(Integer.parseInt(params[11]));
@@ -91,11 +91,11 @@ public class DoorPricesInteractionWithDatabase implements DoorPricesInteractionW
                 doorPrice.getPriceLeafReech(),
                 doorPrice.getPriceLeafReechNonStandartHeigth(),
                 doorPrice.getPriceLeafReechNonStandartWidth(),
-                doorPrice.getPriceLeafReechNonStandartHghtWdth(),
+                doorPrice.getPriceLeafReechNonStandartHeigthWidth(),
                 doorPrice.getPriceLeafSot(),
                 doorPrice.getPriceLeafSotNonStandartHeigth(),
                 doorPrice.getPriceLeafSotNonStandartWidth(),
-                doorPrice.getPriceLeafSotNonStandartHghtWdth(),
+                doorPrice.getPriceLeafSotNonStandartHeigthWidth(),
                 doorPrice.getPriceDoorFrame(),
                 doorPrice.getPriceDoorFrameNonStandart(),
                 doorPrice.getPriceAssmbl(),

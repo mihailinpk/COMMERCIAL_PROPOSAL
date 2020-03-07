@@ -96,15 +96,15 @@ public class MainService implements MainServiceInterface {
     public void setDoorPrice(
         Integer id,
         Integer priceLeafReech,
-        Integer priceLeafReechNstHeigth,
-        Integer priceLeafReechNstWidth,
-        Integer priceLeafReechNstHghtWdth,
+        Integer priceLeafReechNonStandartHeigth,
+        Integer priceLeafReechNonStandartWidth,
+        Integer priceLeafReechNonStandartHghtWdth,
         Integer priceLeafSot,
-        Integer priceLeafSotNstHeigth,
-        Integer priceLeafSotNstWidth,
-        Integer priceLeafSotNstHghtWdth,
+        Integer priceLeafSotNonStandartHeigth,
+        Integer priceLeafSotNonStandartWidth,
+        Integer priceLeafSotNonStandartHghtWdth,
         Integer priceDoorFrame,
-        Integer priceDoorFrameNst,
+        Integer priceDoorFrameNonStandart,
         Integer priceAssmbl,
         Integer priceHole,
         Integer priceInsert,
@@ -113,9 +113,9 @@ public class MainService implements MainServiceInterface {
         Integer pricePaintGrunt,
         Integer pricePaintRAl,
         Integer priceDoorTrim60mm,
-        Integer priceDoorTrim60mmNst,
+        Integer priceDoorTrim60mmNonStandart,
         Integer priceDoorTrim90mm,
-        Integer priceDoorTrim90mmNst,
+        Integer priceDoorTrim90mmNonStandart,
         Integer surchGenNum10,
         Integer surchGenNumFr11to20,
         Integer surchGenNumFr21to50,
@@ -126,15 +126,15 @@ public class MainService implements MainServiceInterface {
         DoorPrice doorPrice = new DoorPrice();
         doorPrice.setId(id);
         doorPrice.setPriceLeafReech(priceLeafReech);
-        doorPrice.setPriceLeafReechNstHeigth(priceLeafReechNstHeigth);
-        doorPrice.setPriceLeafReechNstWidth(priceLeafReechNstWidth);
-        doorPrice.setPriceLeafReechNstHghtWdth(priceLeafReechNstHghtWdth);
+        doorPrice.setPriceLeafReechNonStandartHeigth(priceLeafReechNonStandartHeigth);
+        doorPrice.setPriceLeafReechNonStandartWidth(priceLeafReechNonStandartWidth);
+        doorPrice.setPriceLeafReechNonStandartHghtWdth(priceLeafReechNonStandartHghtWdth);
         doorPrice.setPriceLeafSot(priceLeafSot);
-        doorPrice.setPriceLeafSotNstHeigth(priceLeafSotNstHeigth);
-        doorPrice.setPriceLeafSotNstWidth(priceLeafSotNstWidth);
-        doorPrice.setPriceLeafSotNstHghtWdth(priceLeafSotNstHghtWdth);
+        doorPrice.setPriceLeafSotNonStandartHeigth(priceLeafSotNonStandartHeigth);
+        doorPrice.setPriceLeafSotNonStandartWidth(priceLeafSotNonStandartWidth);
+        doorPrice.setPriceLeafSotNonStandartHghtWdth(priceLeafSotNonStandartHghtWdth);
         doorPrice.setPriceDoorFrame(priceDoorFrame);
-        doorPrice.setPriceDoorFrameNst(priceDoorFrameNst);
+        doorPrice.setPriceDoorFrameNonStandart(priceDoorFrameNonStandart);
         doorPrice.setPriceAssmbl(priceAssmbl);
         doorPrice.setPriceHole(priceHole);
         doorPrice.setPriceInsert(priceInsert);
@@ -143,9 +143,9 @@ public class MainService implements MainServiceInterface {
         doorPrice.setPricePaintGrunt(pricePaintGrunt);
         doorPrice.setPricePaintRAl(pricePaintRAl);
         doorPrice.setPriceDoorTrim60mm(priceDoorTrim60mm);
-        doorPrice.setPriceDoorTrim60mmNst(priceDoorTrim60mmNst);
+        doorPrice.setPriceDoorTrim60mmNonStandart(priceDoorTrim60mmNonStandart);
         doorPrice.setPriceDoorTrim90mm(priceDoorTrim90mm);
-        doorPrice.setPriceDoorTrim90mmNst(priceDoorTrim90mmNst);
+        doorPrice.setPriceDoorTrim90mmNonStandart(priceDoorTrim90mmNonStandart);
         doorPrice.setSurchGenNum10(surchGenNum10);
         doorPrice.setSurchGenNumFr11to20(surchGenNumFr11to20);
         doorPrice.setSurchGenNumFr21to50(surchGenNumFr21to50);

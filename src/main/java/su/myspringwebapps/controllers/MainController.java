@@ -39,45 +39,45 @@ public class MainController {
 
     @RequestMapping(value = "/adding", method = RequestMethod.GET)
     public String addingPosition(
-            @RequestParam(value = "width") String strWidth,
-            @RequestParam(value = "height") String strHeight,
-            @RequestParam(value = "type") String strType,
-            @RequestParam(value = "open") String strOpen,
-            @RequestParam(value = "doorstep") String strDoorstep,
-            @RequestParam(value = "assembl") String strAssembl,
-            @RequestParam(value = "fill") String strFill,
-            @RequestParam(value = "hole") String strHole,
-            @RequestParam(value = "fitt") String strFitt,
-            @RequestParam(value = "paint") String strPaint,
-            @RequestParam(value = "doortrim") String strDoorTrim,
-            @RequestParam(value = "twodoorleafs") String strTwoDoorLeafs,
-            @RequestParam(value = "sumpos") String strSumPosition
+            @RequestParam(value = "width") String valueWidthFromView,
+            @RequestParam(value = "height") String valueHeightFromView,
+            @RequestParam(value = "type") String valueTypeFromView,
+            @RequestParam(value = "open") String valueOpenFromView,
+            @RequestParam(value = "doorstep") String valueDoorstepFromView,
+            @RequestParam(value = "assembl") String valueAssemblFromView,
+            @RequestParam(value = "fill") String valueFillFromView,
+            @RequestParam(value = "hole") String valueHoleFromView,
+            @RequestParam(value = "fitt") String valueFittFromView,
+            @RequestParam(value = "paint") String valuePaintFromView,
+            @RequestParam(value = "doortrim") String valueDoorTrimFromView,
+            @RequestParam(value = "twodoorleafs") String valueTwoDoorLeafsFromView,
+            @RequestParam(value = "sumpos") String valueSumPositionFromView
     )   {
 
-        Short sizeWidth = Short.parseShort(strWidth);
-        Short sizeHeigth = Short.parseShort(strHeight);
+        Short sizeWidth = Short.parseShort(valueWidthFromView);
+        Short sizeHeigth = Short.parseShort(valueHeightFromView);
 
-        String type = Type.valueOf(strType).getType();
+        String type = Type.valueOf(valueTypeFromView).getType();
 
-        String open = ((strOpen.equals("opt1")) ? "правое" : "левое");
+        String open = ((valueOpenFromView.equals("opt1")) ? "правое" : "левое");
 
-        String doorStep = ((strDoorstep.equals("opt1")) ? "есть" : "нет");
+        String doorStep = ((valueDoorstepFromView.equals("opt1")) ? "есть" : "нет");
 
-        String assmbl = ((strAssembl.equals("opt1")) ? "есть" : "нет");
+        String assmbl = ((valueAssemblFromView.equals("opt1")) ? "есть" : "нет");
 
-        String fill = ((strFill.equals("opt1")) ? "сотовое" : "реечное");
+        String fill = ((valueFillFromView.equals("opt1")) ? "сотовое" : "реечное");
 
-        String hole = ((strHole.equals("opt1")) ? "нет" : "есть");
+        String hole = ((valueHoleFromView.equals("opt1")) ? "нет" : "есть");
 
-        String fitt = Mortise.valueOf(strFitt).getMortise();
+        String fitt = Mortise.valueOf(valueFittFromView).getMortise();
 
-        String paint = Paint.valueOf(strPaint).getPaint();
+        String paint = Paint.valueOf(valuePaintFromView).getPaint();
 
-        String doorTrim = DoorTrim.valueOf(strDoorTrim).getDoorTrim();
+        String doorTrim = DoorTrim.valueOf(valueDoorTrimFromView).getDoorTrim();
 
-        String twoDoorLeafs = TwoDoorLeafs.valueOf(strTwoDoorLeafs).getTwoDoorLeafs();
+        String twoDoorLeafs = TwoDoorLeafs.valueOf(valueTwoDoorLeafsFromView).getTwoDoorLeafs();
 
-        Integer sum = Integer.parseInt(strSumPosition);
+        Integer sum = Integer.parseInt(valueSumPositionFromView);
 
         mainService.saveNewDoorPosition(
             sizeWidth, sizeHeigth, type, open, doorStep,
@@ -99,15 +99,15 @@ public class MainController {
     public String getSettings(Model model) {
         DoorPrice doorPrice = mainService.getDoorPriceById(0);
         model.addAttribute("priceLeafReech", doorPrice.getPriceLeafReech());
-        model.addAttribute("priceLeafReechNstHeigth", doorPrice.getPriceLeafReechNstHeigth());
-        model.addAttribute("priceLeafReechNstWidth", doorPrice.getPriceLeafReechNstWidth());
-        model.addAttribute("priceLeafReechNstHghtWdth", doorPrice.getPriceLeafReechNstHghtWdth());
+        model.addAttribute("priceLeafReechNonStandartHeigth", doorPrice.getPriceLeafReechNonStandartHeigth());
+        model.addAttribute("priceLeafReechNonStandartWidth", doorPrice.getPriceLeafReechNonStandartWidth());
+        model.addAttribute("priceLeafReechNonStandartHghtWdth", doorPrice.getPriceLeafReechNonStandartHghtWdth());
         model.addAttribute("priceLeafSot", doorPrice.getPriceLeafSot());
-        model.addAttribute("priceLeafSotNstHeigth", doorPrice.getPriceLeafSotNstHeigth());
-        model.addAttribute("priceLeafSotNstWidth", doorPrice.getPriceLeafSotNstWidth());
-        model.addAttribute("priceLeafSotNstHghtWdth", doorPrice.getPriceLeafSotNstHghtWdth());
+        model.addAttribute("priceLeafSotNonStandartHeigth", doorPrice.getPriceLeafSotNonStandartHeigth());
+        model.addAttribute("priceLeafSotNonStandartWidth", doorPrice.getPriceLeafSotNonStandartWidth());
+        model.addAttribute("priceLeafSotNonStandartHghtWdth", doorPrice.getPriceLeafSotNonStandartHghtWdth());
         model.addAttribute("priceDoorFrame", doorPrice.getPriceDoorFrame());
-        model.addAttribute("priceDoorFrameNst", doorPrice.getPriceDoorFrameNst());
+        model.addAttribute("priceDoorFrameNonStandart", doorPrice.getPriceDoorFrameNonStandart());
         model.addAttribute("priceAssmbl", doorPrice.getPriceAssmbl());
         model.addAttribute("priceHole", doorPrice.getPriceHole());
         model.addAttribute("priceInsert", doorPrice.getPriceInsert());
@@ -116,9 +116,9 @@ public class MainController {
         model.addAttribute("pricePaintGrunt", doorPrice.getPricePaintGrunt());
         model.addAttribute("pricePaintRAl", doorPrice.getPricePaintRAl());
         model.addAttribute("priceDoorTrim60mm", doorPrice.getPriceDoorTrim60mm());
-        model.addAttribute("priceDoorTrim60mmNst", doorPrice.getPriceDoorTrim60mmNst());
+        model.addAttribute("priceDoorTrim60mmNonStandart", doorPrice.getPriceDoorTrim60mmNonStandart());
         model.addAttribute("priceDoorTrim90mm", doorPrice.getPriceDoorTrim90mm());
-        model.addAttribute("priceDoorTrim90mmNst", doorPrice.getPriceDoorTrim90mmNst());
+        model.addAttribute("priceDoorTrim90mmNonStandart", doorPrice.getPriceDoorTrim90mmNonStandart());
         model.addAttribute("surchGenNum10", doorPrice.getSurchGenNum10());
         model.addAttribute("surchGenNumFr11to20", doorPrice.getSurchGenNumFr11to20());
         model.addAttribute("surchGenNumFr21to50", doorPrice.getSurchGenNumFr21to50());
@@ -130,63 +130,63 @@ public class MainController {
 
     @RequestMapping(value = "setsettings", method = RequestMethod.GET)
     public String setSettings(
-            @RequestParam(value = "priceleafreech") String strPriceLeafReech,
-            @RequestParam(value = "priceleafreechnstheigth") String strPriceLeafReechNstHeigth,
-            @RequestParam(value = "priceleafreechnstwidth") String strPriceLeafReechNstWidth,
-            @RequestParam(value = "priceleafreechnsthghtwdth") String strPriceLeafReechNstHghtWdth,
-            @RequestParam(value = "priceleafsot") String strPriceLeafSot,
-            @RequestParam(value = "priceleafsotnstheigth") String strPriceLeafSotNstHeigth,
-            @RequestParam(value = "priceleafsotnstwidth") String strPriceLeafSotNstWidth,
-            @RequestParam(value = "priceleafsotnsthghtwdth") String strPriceLeafSotNstHghtWdth,
-            @RequestParam(value = "pricedoorframe") String strPriceDoorFrame,
-            @RequestParam(value = "pricedoorframenst") String strPriceDoorFrameNst,
-            @RequestParam(value = "priceassmbl") String strPriceAssmbl,
-            @RequestParam(value = "pricehole") String strPriceHole,
-            @RequestParam(value = "priceinsert") String strPriceInsert,
-            @RequestParam(value = "pricezch201") String strPriceZch201,
-            @RequestParam(value = "pricezv4") String strPriceZV4,
-            @RequestParam(value = "pricepaintgrunt") String strPricePaintGrunt,
-            @RequestParam(value = "pricepaintral") String strPricePaintRAl,
-            @RequestParam(value = "pricedoortrim60mm") String strPriceDoorTrim60mm,
-            @RequestParam(value = "pricedoortrim60mmnst") String strPriceDoorTrim60mmNst,
-            @RequestParam(value = "pricedoortrim90mm") String strPriceDoorTrim90mm,
-            @RequestParam(value = "pricedoortrim90mmnst") String strPriceDoorTrim90mmNst,
-            @RequestParam(value = "surchgennum10") String strSurchGenNum10,
-            @RequestParam(value = "surchgennumfr11to20") String strSurchGenNumFr11to20,
-            @RequestParam(value = "surchgennumfr21to50") String strSurchGenNumFr21to50,
-            @RequestParam(value = "surchgennumfr51to100") String strSurchGenNumFr51to100,
-            @RequestParam(value = "surchgennumgr101to1000") String strSurchGenNumFr101to1000,
-            @RequestParam(value = "surchgennum1000") String strSurchGenNum1000
+            @RequestParam(value = "priceleafreech") String valuePriceLeafReechFromView,
+            @RequestParam(value = "priceleafreechNonStandartheigth") String valuePriceLeafReechNonStandartHeigthFromView,
+            @RequestParam(value = "priceleafreechNonStandartwidth") String valuePriceLeafReechNonStandartWidthFromView,
+            @RequestParam(value = "priceleafreechNonStandarthghtwdth") String valuePriceLeafReechNonStandartHghtWdthFromView,
+            @RequestParam(value = "priceleafsot") String valuePriceLeafSotFromView,
+            @RequestParam(value = "priceleafsotNonStandartheigth") String valuePriceLeafSotNonStandartHeigthFromView,
+            @RequestParam(value = "priceleafsotNonStandartwidth") String valuePriceLeafSotNonStandartWidthFromView,
+            @RequestParam(value = "priceleafsotNonStandarthghtwdth") String valuePriceLeafSotNonStandartHghtWdthFromView,
+            @RequestParam(value = "pricedoorframe") String valuePriceDoorFrameFromView,
+            @RequestParam(value = "pricedoorframeNonStandart") String valuePriceDoorFrameNonStandartFromView,
+            @RequestParam(value = "priceassmbl") String valuePriceAssmblFromView,
+            @RequestParam(value = "pricehole") String valuePriceHoleFromView,
+            @RequestParam(value = "priceinsert") String valuePriceInsertFromView,
+            @RequestParam(value = "pricezch201") String valuePriceZch201FromView,
+            @RequestParam(value = "pricezv4") String valuePriceZV4FromView,
+            @RequestParam(value = "pricepaintgrunt") String valuePricePaintGruntFromView,
+            @RequestParam(value = "pricepaintral") String valuePricePaintRAlfromView,
+            @RequestParam(value = "pricedoortrim60mm") String valuePriceDoorTrim60mmFromView,
+            @RequestParam(value = "pricedoortrim60mmNonStandart") String valuePriceDoorTrim60mmNonStandartFromView,
+            @RequestParam(value = "pricedoortrim90mm") String valuePriceDoorTrim90mmFromView,
+            @RequestParam(value = "pricedoortrim90mmNonStandart") String valuePriceDoorTrim90mmNonStandartFromView,
+            @RequestParam(value = "surchgennum10") String valueSurchGenNum10fromView,
+            @RequestParam(value = "surchgennumfr11to20") String valueSurchGenNumFr11to20fromView,
+            @RequestParam(value = "surchgennumfr21to50") String valueSurchGenNumFr21to50fromView,
+            @RequestParam(value = "surchgennumfr51to100") String valueSurchGenNumFr51to100fromView,
+            @RequestParam(value = "surchgennumgr101to1000") String valueSurchGenNumFr101to1000fromView,
+            @RequestParam(value = "surchgennum1000") String valueSurchGenNum1000fromView
     ) {
         mainService.setDoorPrice(
                 0,
-                Integer.parseInt(strPriceLeafReech),
-                Integer.parseInt(strPriceLeafReechNstHeigth),
-                Integer.parseInt(strPriceLeafReechNstWidth),
-                Integer.parseInt(strPriceLeafReechNstHghtWdth),
-                Integer.parseInt(strPriceLeafSot),
-                Integer.parseInt(strPriceLeafSotNstHeigth),
-                Integer.parseInt(strPriceLeafSotNstWidth),
-                Integer.parseInt(strPriceLeafSotNstHghtWdth),
-                Integer.parseInt(strPriceDoorFrame),
-                Integer.parseInt(strPriceDoorFrameNst),
-                Integer.parseInt(strPriceAssmbl),
-                Integer.parseInt(strPriceHole),
-                Integer.parseInt(strPriceInsert),
-                Integer.parseInt(strPriceZch201),
-                Integer.parseInt(strPriceZV4),
-                Integer.parseInt(strPricePaintGrunt),
-                Integer.parseInt(strPricePaintRAl),
-                Integer.parseInt(strPriceDoorTrim60mm),
-                Integer.parseInt(strPriceDoorTrim60mmNst),
-                Integer.parseInt(strPriceDoorTrim90mm),
-                Integer.parseInt(strPriceDoorTrim90mmNst),
-                Integer.parseInt(strSurchGenNum10),
-                Integer.parseInt(strSurchGenNumFr11to20),
-                Integer.parseInt(strSurchGenNumFr21to50),
-                Integer.parseInt(strSurchGenNumFr51to100),
-                Integer.parseInt(strSurchGenNumFr101to1000),
-                Integer.parseInt(strSurchGenNum1000)
+                Integer.parseInt(valuePriceLeafReechFromView),
+                Integer.parseInt(valuePriceLeafReechNonStandartHeigthFromView),
+                Integer.parseInt(valuePriceLeafReechNonStandartWidthFromView),
+                Integer.parseInt(valuePriceLeafReechNonStandartHghtWdthFromView),
+                Integer.parseInt(valuePriceLeafSotFromView),
+                Integer.parseInt(valuePriceLeafSotNonStandartHeigthFromView),
+                Integer.parseInt(valuePriceLeafSotNonStandartWidthFromView),
+                Integer.parseInt(valuePriceLeafSotNonStandartHghtWdthFromView),
+                Integer.parseInt(valuePriceDoorFrameFromView),
+                Integer.parseInt(valuePriceDoorFrameNonStandartFromView),
+                Integer.parseInt(valuePriceAssmblFromView),
+                Integer.parseInt(valuePriceHoleFromView),
+                Integer.parseInt(valuePriceInsertFromView),
+                Integer.parseInt(valuePriceZch201FromView),
+                Integer.parseInt(valuePriceZV4FromView),
+                Integer.parseInt(valuePricePaintGruntFromView),
+                Integer.parseInt(valuePricePaintRAlfromView),
+                Integer.parseInt(valuePriceDoorTrim60mmFromView),
+                Integer.parseInt(valuePriceDoorTrim60mmNonStandartFromView),
+                Integer.parseInt(valuePriceDoorTrim90mmFromView),
+                Integer.parseInt(valuePriceDoorTrim90mmNonStandartFromView),
+                Integer.parseInt(valueSurchGenNum10fromView),
+                Integer.parseInt(valueSurchGenNumFr11to20fromView),
+                Integer.parseInt(valueSurchGenNumFr21to50fromView),
+                Integer.parseInt(valueSurchGenNumFr51to100fromView),
+                Integer.parseInt(valueSurchGenNumFr101to1000fromView),
+                Integer.parseInt(valueSurchGenNum1000fromView)
         );
         return "redirect:/settings";
     }

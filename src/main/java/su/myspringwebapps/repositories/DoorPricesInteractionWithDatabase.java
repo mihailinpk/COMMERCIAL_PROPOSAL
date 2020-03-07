@@ -54,15 +54,15 @@ public class DoorPricesInteractionWithDatabase implements DoorPricesInteractionW
             DoorPrice nextPrice = new DoorPrice();
             nextPrice.setId(Integer.parseInt(params[0]));
             nextPrice.setPriceLeafReech(Integer.parseInt(params[1]));
-            nextPrice.setPriceLeafReechNstHeigth(Integer.parseInt(params[2]));
-            nextPrice.setPriceLeafReechNstWidth(Integer.parseInt(params[3]));
-            nextPrice.setPriceLeafReechNstHghtWdth(Integer.parseInt(params[4]));
+            nextPrice.setPriceLeafReechNonStandartHeigth(Integer.parseInt(params[2]));
+            nextPrice.setPriceLeafReechNonStandartWidth(Integer.parseInt(params[3]));
+            nextPrice.setPriceLeafReechNonStandartHghtWdth(Integer.parseInt(params[4]));
             nextPrice.setPriceLeafSot(Integer.parseInt(params[5]));
-            nextPrice.setPriceLeafSotNstHeigth(Integer.parseInt(params[6]));
-            nextPrice.setPriceLeafSotNstWidth(Integer.parseInt(params[7]));
-            nextPrice.setPriceLeafSotNstHghtWdth(Integer.parseInt(params[8]));
+            nextPrice.setPriceLeafSotNonStandartHeigth(Integer.parseInt(params[6]));
+            nextPrice.setPriceLeafSotNonStandartWidth(Integer.parseInt(params[7]));
+            nextPrice.setPriceLeafSotNonStandartHghtWdth(Integer.parseInt(params[8]));
             nextPrice.setPriceDoorFrame(Integer.parseInt(params[9]));
-            nextPrice.setPriceDoorFrameNst(Integer.parseInt(params[10]));
+            nextPrice.setPriceDoorFrameNonStandart(Integer.parseInt(params[10]));
             nextPrice.setPriceAssmbl(Integer.parseInt(params[11]));
             nextPrice.setPriceHole(Integer.parseInt(params[12]));
             nextPrice.setPriceInsert(Integer.parseInt(params[13]));
@@ -71,9 +71,9 @@ public class DoorPricesInteractionWithDatabase implements DoorPricesInteractionW
             nextPrice.setPricePaintGrunt(Integer.parseInt(params[16]));
             nextPrice.setPricePaintRAl(Integer.parseInt(params[17]));
             nextPrice.setPriceDoorTrim60mm(Integer.parseInt(params[18]));
-            nextPrice.setPriceDoorTrim60mmNst(Integer.parseInt(params[19]));
+            nextPrice.setPriceDoorTrim60mmNonStandart(Integer.parseInt(params[19]));
             nextPrice.setPriceDoorTrim90mm(Integer.parseInt(params[20]));
-            nextPrice.setPriceDoorTrim90mmNst(Integer.parseInt(params[21]));
+            nextPrice.setPriceDoorTrim90mmNonStandart(Integer.parseInt(params[21]));
             nextPrice.setSurchGenNum10(Integer.parseInt(params[22]));
             nextPrice.setSurchGenNumFr11to20(Integer.parseInt(params[23]));
             nextPrice.setSurchGenNumFr21to50(Integer.parseInt(params[24]));
@@ -89,15 +89,15 @@ public class DoorPricesInteractionWithDatabase implements DoorPricesInteractionW
             "INSERT INTO door_prices VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
                 doorPrice.getId(),
                 doorPrice.getPriceLeafReech(),
-                doorPrice.getPriceLeafReechNstHeigth(),
-                doorPrice.getPriceLeafReechNstWidth(),
-                doorPrice.getPriceLeafReechNstHghtWdth(),
+                doorPrice.getPriceLeafReechNonStandartHeigth(),
+                doorPrice.getPriceLeafReechNonStandartWidth(),
+                doorPrice.getPriceLeafReechNonStandartHghtWdth(),
                 doorPrice.getPriceLeafSot(),
-                doorPrice.getPriceLeafSotNstHeigth(),
-                doorPrice.getPriceLeafSotNstWidth(),
-                doorPrice.getPriceLeafSotNstHghtWdth(),
+                doorPrice.getPriceLeafSotNonStandartHeigth(),
+                doorPrice.getPriceLeafSotNonStandartWidth(),
+                doorPrice.getPriceLeafSotNonStandartHghtWdth(),
                 doorPrice.getPriceDoorFrame(),
-                doorPrice.getPriceDoorFrameNst(),
+                doorPrice.getPriceDoorFrameNonStandart(),
                 doorPrice.getPriceAssmbl(),
                 doorPrice.getPriceHole(),
                 doorPrice.getPriceInsert(),
@@ -106,9 +106,9 @@ public class DoorPricesInteractionWithDatabase implements DoorPricesInteractionW
                 doorPrice.getPricePaintGrunt(),
                 doorPrice.getPricePaintRAl(),
                 doorPrice.getPriceDoorTrim60mm(),
-                doorPrice.getPriceDoorTrim60mmNst(),
+                doorPrice.getPriceDoorTrim60mmNonStandart(),
                 doorPrice.getPriceDoorTrim90mm(),
-                doorPrice.getPriceDoorTrim90mmNst(),
+                doorPrice.getPriceDoorTrim90mmNonStandart(),
                 doorPrice.getSurchGenNum10(),
                 doorPrice.getSurchGenNumFr11to20(),
                 doorPrice.getSurchGenNumFr21to50(),

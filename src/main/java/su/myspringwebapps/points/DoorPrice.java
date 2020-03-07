@@ -2,34 +2,34 @@ package su.myspringwebapps.points;
 
 public class DoorPrice {
 
-    private Integer id;                         //  id списка цен
-    private Integer priceLeafReech;				//	цена за полотно реечного заполнения стандарт
-    private Integer priceLeafReechNstHeigth;	//	цена за полотно реечного заполнения н/стандарт по высоте
-    private Integer priceLeafReechNstWidth;		//	цена за полотно реечного заполнения н/стандарт по ширине
-    private Integer priceLeafReechNstHghtWdth;	//	цена за полотно реечного заполнения н/стандарт по ширине и высоте
-    private Integer priceLeafSot;				//	цена за полотно сотового заполнения стандарт
-    private Integer priceLeafSotNstHeigth;		//	цена за полотно сотового заполнения н/стандарт по высоте
-    private Integer priceLeafSotNstWidth;		//	цена за полотно сотового заполнения н/стандарт по ширине
-    private Integer priceLeafSotNstHghtWdth;	//	цена за полотно сотового заполнения н/стандарт по ширине и высоте
-    private Integer priceDoorFrame;				//	цена за палку коробки стандарт
-    private Integer priceDoorFrameNst;			//	цена за палку коробки н/стандарт
-    private Integer priceAssmbl;				//	цена за сборку
-    private Integer priceHole;					//	цена за отверстие
-    private Integer priceInsert;				//	цена за врезку фурнитуры
-    private Integer priceZch201;				//	цена за ЗЩ 2-01
-    private Integer priceZV4;					//	цена за ЗВ 4
-    private Integer pricePaintGrunt;		    //	цена за окраску грунтовкой
-    private Integer pricePaintRAl;			    //	цена за окраску цветом RAL
-    private Integer priceDoorTrim60mm;			//	цена за стандартную палку наличника 60мм
-    private Integer priceDoorTrim60mmNst;		//	цена за н/стандартную палку наличника 60мм
-    private Integer priceDoorTrim90mm;			//	цена за стандартную палку наличника 90мм
-    private Integer priceDoorTrim90mmNst;		//	цена за н/стандартную палку наличника 90мм
-    private Integer surchGenNum10;				//	надбавка за общее количество до 10 шт.
-    private Integer surchGenNumFr11to20;		//	надбавка за общее количетсов от 11 до 20 шт.
-    private Integer surchGenNumFr21to50;		//	надбавка за общее количетсов от 21 до 50 шт.
-    private Integer surchGenNumFr51to100;		//	надбавка за общее количетсов от 51 до 100 шт.
-    private Integer surchGenNumFr101to1000;		//	надбавка за общее количетсов от 101 до 1000 шт.
-    private Integer surchGenNum1000;			//	надбавка за общее количетсов от 1000 шт.
+    private Integer id;                                 //  id списка цен
+    private Integer priceLeafReech;				        //	цена за полотно реечного заполнения стандарт
+    private Integer priceLeafReechNonStandartHeigth;	//	цена за полотно реечного заполнения н/стандарт по высоте
+    private Integer priceLeafReechNonStandartWidth;		//	цена за полотно реечного заполнения н/стандарт по ширине
+    private Integer priceLeafReechNonStandartHghtWdth;	//	цена за полотно реечного заполнения н/стандарт по ширине и высоте
+    private Integer priceLeafSot;				        //	цена за полотно сотового заполнения стандарт
+    private Integer priceLeafSotNonStandartHeigth;	    //	цена за полотно сотового заполнения н/стандарт по высоте
+    private Integer priceLeafSotNonStandartWidth;	    //	цена за полотно сотового заполнения н/стандарт по ширине
+    private Integer priceLeafSotNonStandartHghtWdth;    //	цена за полотно сотового заполнения н/стандарт по ширине и высоте
+    private Integer priceDoorFrame;				        //	цена за палку коробки стандарт
+    private Integer priceDoorFrameNonStandart;		    //	цена за палку коробки н/стандарт
+    private Integer priceAssmbl;				        //	цена за сборку
+    private Integer priceHole;					        //	цена за отверстие
+    private Integer priceInsert;				        //	цена за врезку фурнитуры
+    private Integer priceZch201;				        //	цена за ЗЩ 2-01
+    private Integer priceZV4;					        //	цена за ЗВ 4
+    private Integer pricePaintGrunt;		            //	цена за окраску грунтовкой
+    private Integer pricePaintRAl;			            //	цена за окраску цветом RAL
+    private Integer priceDoorTrim60mm;			        //	цена за стандартную палку наличника 60мм
+    private Integer priceDoorTrim60mmNonStandart;	    //	цена за н/стандартную палку наличника 60мм
+    private Integer priceDoorTrim90mm;			        //	цена за стандартную палку наличника 90мм
+    private Integer priceDoorTrim90mmNonStandart;	    //	цена за н/стандартную палку наличника 90мм
+    private Integer surchGenNum10;				        //	надбавка за общее количество до 10 шт.
+    private Integer surchGenNumFr11to20;		        //	надбавка за общее количетсов от 11 до 20 шт.
+    private Integer surchGenNumFr21to50;		        //	надбавка за общее количетсов от 21 до 50 шт.
+    private Integer surchGenNumFr51to100;		        //	надбавка за общее количетсов от 51 до 100 шт.
+    private Integer surchGenNumFr101to1000;		        //	надбавка за общее количетсов от 101 до 1000 шт.
+    private Integer surchGenNum1000;			    //	надбавка за общее количетсов от 1000 шт.
 
     public Integer getId() {
         return id;
@@ -47,28 +47,28 @@ public class DoorPrice {
         this.priceLeafReech = priceLeafReech;
     }
 
-    public Integer getPriceLeafReechNstHeigth() {
-        return priceLeafReechNstHeigth;
+    public Integer getPriceLeafReechNonStandartHeigth() {
+        return priceLeafReechNonStandartHeigth;
     }
 
-    public void setPriceLeafReechNstHeigth(Integer priceLeafReechNstHeigth) {
-        this.priceLeafReechNstHeigth = priceLeafReechNstHeigth;
+    public void setPriceLeafReechNonStandartHeigth(Integer priceLeafReechNonStandartHeigth) {
+        this.priceLeafReechNonStandartHeigth = priceLeafReechNonStandartHeigth;
     }
 
-    public Integer getPriceLeafReechNstWidth() {
-        return priceLeafReechNstWidth;
+    public Integer getPriceLeafReechNonStandartWidth() {
+        return priceLeafReechNonStandartWidth;
     }
 
-    public void setPriceLeafReechNstWidth(Integer priceLeafReechNstWidth) {
-        this.priceLeafReechNstWidth = priceLeafReechNstWidth;
+    public void setPriceLeafReechNonStandartWidth(Integer priceLeafReechNonStandartWidth) {
+        this.priceLeafReechNonStandartWidth = priceLeafReechNonStandartWidth;
     }
 
-    public Integer getPriceLeafReechNstHghtWdth() {
-        return priceLeafReechNstHghtWdth;
+    public Integer getPriceLeafReechNonStandartHghtWdth() {
+        return priceLeafReechNonStandartHghtWdth;
     }
 
-    public void setPriceLeafReechNstHghtWdth(Integer priceLeafReechNstHghtWdth) {
-        this.priceLeafReechNstHghtWdth = priceLeafReechNstHghtWdth;
+    public void setPriceLeafReechNonStandartHghtWdth(Integer priceLeafReechNonStandartHghtWdth) {
+        this.priceLeafReechNonStandartHghtWdth = priceLeafReechNonStandartHghtWdth;
     }
 
     public Integer getPriceLeafSot() {
@@ -79,28 +79,28 @@ public class DoorPrice {
         this.priceLeafSot = priceLeafSot;
     }
 
-    public Integer getPriceLeafSotNstHeigth() {
-        return priceLeafSotNstHeigth;
+    public Integer getPriceLeafSotNonStandartHeigth() {
+        return priceLeafSotNonStandartHeigth;
     }
 
-    public void setPriceLeafSotNstHeigth(Integer priceLeafSotNstHeigth) {
-        this.priceLeafSotNstHeigth = priceLeafSotNstHeigth;
+    public void setPriceLeafSotNonStandartHeigth(Integer priceLeafSotNonStandartHeigth) {
+        this.priceLeafSotNonStandartHeigth = priceLeafSotNonStandartHeigth;
     }
 
-    public Integer getPriceLeafSotNstWidth() {
-        return priceLeafSotNstWidth;
+    public Integer getPriceLeafSotNonStandartWidth() {
+        return priceLeafSotNonStandartWidth;
     }
 
-    public void setPriceLeafSotNstWidth(Integer priceLeafSotNstWidth) {
-        this.priceLeafSotNstWidth = priceLeafSotNstWidth;
+    public void setPriceLeafSotNonStandartWidth(Integer priceLeafSotNonStandartWidth) {
+        this.priceLeafSotNonStandartWidth = priceLeafSotNonStandartWidth;
     }
 
-    public Integer getPriceLeafSotNstHghtWdth() {
-        return priceLeafSotNstHghtWdth;
+    public Integer getPriceLeafSotNonStandartHghtWdth() {
+        return priceLeafSotNonStandartHghtWdth;
     }
 
-    public void setPriceLeafSotNstHghtWdth(Integer priceLeafSotNstHghtWdth) {
-        this.priceLeafSotNstHghtWdth = priceLeafSotNstHghtWdth;
+    public void setPriceLeafSotNonStandartHghtWdth(Integer priceLeafSotNonStandartHghtWdth) {
+        this.priceLeafSotNonStandartHghtWdth = priceLeafSotNonStandartHghtWdth;
     }
 
     public Integer getPriceDoorFrame() {
@@ -111,12 +111,12 @@ public class DoorPrice {
         this.priceDoorFrame = priceKor;
     }
 
-    public Integer getPriceDoorFrameNst() {
-        return priceDoorFrameNst;
+    public Integer getPriceDoorFrameNonStandart() {
+        return priceDoorFrameNonStandart;
     }
 
-    public void setPriceDoorFrameNst(Integer priceKorNst) {
-        this.priceDoorFrameNst = priceKorNst;
+    public void setPriceDoorFrameNonStandart(Integer priceKorNonStandart) {
+        this.priceDoorFrameNonStandart = priceKorNonStandart;
     }
 
     public Integer getPriceAssmbl() {
@@ -183,12 +183,12 @@ public class DoorPrice {
         this.priceDoorTrim60mm = priceDoorTrim60mm;
     }
 
-    public Integer getPriceDoorTrim60mmNst() {
-        return priceDoorTrim60mmNst;
+    public Integer getPriceDoorTrim60mmNonStandart() {
+        return priceDoorTrim60mmNonStandart;
     }
 
-    public void setPriceDoorTrim60mmNst(Integer priceDoorTrim60mmNst) {
-        this.priceDoorTrim60mmNst = priceDoorTrim60mmNst;
+    public void setPriceDoorTrim60mmNonStandart(Integer priceDoorTrim60mmNonStandart) {
+        this.priceDoorTrim60mmNonStandart = priceDoorTrim60mmNonStandart;
     }
 
     public Integer getPriceDoorTrim90mm() {
@@ -199,12 +199,12 @@ public class DoorPrice {
         this.priceDoorTrim90mm = priceDoorTrim90mm;
     }
 
-    public Integer getPriceDoorTrim90mmNst() {
-        return priceDoorTrim90mmNst;
+    public Integer getPriceDoorTrim90mmNonStandart() {
+        return priceDoorTrim90mmNonStandart;
     }
 
-    public void setPriceDoorTrim90mmNst(Integer priceDoorTrim90mmNst) {
-        this.priceDoorTrim90mmNst = priceDoorTrim90mmNst;
+    public void setPriceDoorTrim90mmNonStandart(Integer priceDoorTrim90mmNonStandart) {
+        this.priceDoorTrim90mmNonStandart = priceDoorTrim90mmNonStandart;
     }
 
     public Integer getSurchGenNum10() {
@@ -261,15 +261,15 @@ public class DoorPrice {
         final int prime = 31;
         int result = 1;
         result = prime * result + ((priceLeafReech == null) ? 0 : priceLeafReech.hashCode());
-        result = prime * result + ((priceLeafReechNstHeigth == null) ? 0 : priceLeafReechNstHeigth.hashCode());
-        result = prime * result + ((priceLeafReechNstWidth == null) ? 0 : priceLeafReechNstWidth.hashCode());
-        result = prime * result + ((priceLeafReechNstHghtWdth == null) ? 0 : priceLeafReechNstHghtWdth.hashCode());
+        result = prime * result + ((priceLeafReechNonStandartHeigth == null) ? 0 : priceLeafReechNonStandartHeigth.hashCode());
+        result = prime * result + ((priceLeafReechNonStandartWidth == null) ? 0 : priceLeafReechNonStandartWidth.hashCode());
+        result = prime * result + ((priceLeafReechNonStandartHghtWdth == null) ? 0 : priceLeafReechNonStandartHghtWdth.hashCode());
         result = prime * result + ((priceLeafSot == null) ? 0 : priceLeafSot.hashCode());
-        result = prime * result + ((priceLeafSotNstHeigth == null) ? 0 : priceLeafSotNstHeigth.hashCode());
-        result = prime * result + ((priceLeafSotNstWidth == null) ? 0 : priceLeafSotNstWidth.hashCode());
-        result = prime * result + ((priceLeafSotNstHghtWdth == null) ? 0 : priceLeafSotNstHghtWdth.hashCode());
+        result = prime * result + ((priceLeafSotNonStandartHeigth == null) ? 0 : priceLeafSotNonStandartHeigth.hashCode());
+        result = prime * result + ((priceLeafSotNonStandartWidth == null) ? 0 : priceLeafSotNonStandartWidth.hashCode());
+        result = prime * result + ((priceLeafSotNonStandartHghtWdth == null) ? 0 : priceLeafSotNonStandartHghtWdth.hashCode());
         result = prime * result + ((priceDoorFrame == null) ? 0 : priceDoorFrame.hashCode());
-        result = prime * result + ((priceDoorFrameNst == null) ? 0 : priceDoorFrameNst.hashCode());
+        result = prime * result + ((priceDoorFrameNonStandart == null) ? 0 : priceDoorFrameNonStandart.hashCode());
         result = prime * result + ((priceAssmbl == null) ? 0 : priceAssmbl.hashCode());
         result = prime * result + ((priceHole == null) ? 0 : priceHole.hashCode());
         result = prime * result + ((priceInsert == null) ? 0 : priceInsert.hashCode());
@@ -278,9 +278,9 @@ public class DoorPrice {
         result = prime * result + ((pricePaintGrunt == null) ? 0 : pricePaintGrunt.hashCode());
         result = prime * result + ((pricePaintRAl == null) ? 0 : pricePaintRAl.hashCode());
         result = prime * result + ((priceDoorTrim60mm == null) ? 0 : priceDoorTrim60mm.hashCode());
-        result = prime * result + ((priceDoorTrim60mmNst == null) ? 0 : priceDoorTrim60mmNst.hashCode());
+        result = prime * result + ((priceDoorTrim60mmNonStandart == null) ? 0 : priceDoorTrim60mmNonStandart.hashCode());
         result = prime * result + ((priceDoorTrim90mm == null) ? 0 : priceDoorTrim90mm.hashCode());
-        result = prime * result + ((priceDoorTrim90mmNst == null) ? 0 : priceDoorTrim90mmNst.hashCode());
+        result = prime * result + ((priceDoorTrim90mmNonStandart == null) ? 0 : priceDoorTrim90mmNonStandart.hashCode());
         result = prime * result + ((surchGenNum10 == null) ? 0 : surchGenNum10.hashCode());
         result = prime * result + ((surchGenNumFr11to20 == null) ? 0 : surchGenNumFr11to20.hashCode());
         result = prime * result + ((surchGenNumFr21to50 == null) ? 0 : surchGenNumFr21to50.hashCode());
@@ -309,25 +309,25 @@ public class DoorPrice {
         else if (!priceLeafReech.equals(other.priceLeafReech))
             return false;
 
-        if (priceLeafReechNstHeigth == null) {
-            if (other.priceLeafReechNstHeigth != null)
+        if (priceLeafReechNonStandartHeigth == null) {
+            if (other.priceLeafReechNonStandartHeigth != null)
                 return false;
         }
-        else if (!priceLeafReechNstHeigth.equals(other.priceLeafReechNstHeigth))
+        else if (!priceLeafReechNonStandartHeigth.equals(other.priceLeafReechNonStandartHeigth))
             return false;
 
-        if (priceLeafReechNstWidth == null) {
-            if (other.priceLeafReechNstWidth != null)
+        if (priceLeafReechNonStandartWidth == null) {
+            if (other.priceLeafReechNonStandartWidth != null)
                 return false;
         }
-        else if (!priceLeafReechNstWidth.equals(other.priceLeafReechNstWidth))
+        else if (!priceLeafReechNonStandartWidth.equals(other.priceLeafReechNonStandartWidth))
             return false;
 
-        if (priceLeafReechNstHghtWdth == null) {
-            if (other.priceLeafReechNstHghtWdth != null)
+        if (priceLeafReechNonStandartHghtWdth == null) {
+            if (other.priceLeafReechNonStandartHghtWdth != null)
                 return false;
         }
-        else if (!priceLeafReechNstHghtWdth.equals(other.priceLeafReechNstHghtWdth))
+        else if (!priceLeafReechNonStandartHghtWdth.equals(other.priceLeafReechNonStandartHghtWdth))
             return false;
 
         if (priceLeafSot == null) {
@@ -337,25 +337,25 @@ public class DoorPrice {
         else if (!priceLeafSot.equals(other.priceLeafSot))
             return false;
 
-        if (priceLeafSotNstHeigth == null) {
-            if (other.priceLeafSotNstHeigth != null)
+        if (priceLeafSotNonStandartHeigth == null) {
+            if (other.priceLeafSotNonStandartHeigth != null)
                 return false;
         }
-        else if (!priceLeafSotNstHeigth.equals(other.priceLeafSotNstHeigth))
+        else if (!priceLeafSotNonStandartHeigth.equals(other.priceLeafSotNonStandartHeigth))
             return false;
 
-        if (priceLeafSotNstWidth == null) {
-            if (other.priceLeafSotNstWidth != null)
+        if (priceLeafSotNonStandartWidth == null) {
+            if (other.priceLeafSotNonStandartWidth != null)
                 return false;
         }
-        else if (!priceLeafSotNstWidth.equals(other.priceLeafSotNstWidth))
+        else if (!priceLeafSotNonStandartWidth.equals(other.priceLeafSotNonStandartWidth))
             return false;
 
-        if (priceLeafSotNstHghtWdth == null) {
-            if (other.priceLeafSotNstHghtWdth != null)
+        if (priceLeafSotNonStandartHghtWdth == null) {
+            if (other.priceLeafSotNonStandartHghtWdth != null)
                 return false;
         }
-        else if (!priceLeafSotNstHghtWdth.equals(other.priceLeafSotNstHghtWdth))
+        else if (!priceLeafSotNonStandartHghtWdth.equals(other.priceLeafSotNonStandartHghtWdth))
             return false;
 
         if (priceDoorFrame == null) {
@@ -365,11 +365,11 @@ public class DoorPrice {
         else if (!priceDoorFrame.equals(other.priceDoorFrame))
             return false;
 
-        if (priceDoorFrameNst == null) {
-            if (other.priceDoorFrameNst != null)
+        if (priceDoorFrameNonStandart == null) {
+            if (other.priceDoorFrameNonStandart != null)
                 return false;
         }
-        else if (!priceDoorFrameNst.equals(other.priceDoorFrameNst))
+        else if (!priceDoorFrameNonStandart.equals(other.priceDoorFrameNonStandart))
             return false;
 
         if (priceAssmbl == null) {
@@ -428,11 +428,11 @@ public class DoorPrice {
         else if (!priceDoorTrim60mm.equals(other.priceDoorTrim60mm))
             return false;
 
-        if (priceDoorTrim60mmNst == null) {
-            if (other.priceDoorTrim60mmNst != null)
+        if (priceDoorTrim60mmNonStandart == null) {
+            if (other.priceDoorTrim60mmNonStandart != null)
                 return false;
         }
-        else if (!priceDoorTrim60mmNst.equals(other.priceDoorTrim60mmNst))
+        else if (!priceDoorTrim60mmNonStandart.equals(other.priceDoorTrim60mmNonStandart))
             return false;
 
         if (priceDoorTrim90mm == null) {
@@ -442,11 +442,11 @@ public class DoorPrice {
         else if (!priceDoorTrim90mm.equals(other.priceDoorTrim90mm))
             return false;
 
-        if (priceDoorTrim90mmNst == null) {
-            if (other.priceDoorTrim90mmNst != null)
+        if (priceDoorTrim90mmNonStandart == null) {
+            if (other.priceDoorTrim90mmNonStandart != null)
                 return false;
         }
-        else if (!priceDoorTrim90mmNst.equals(other.priceDoorTrim90mmNst))
+        else if (!priceDoorTrim90mmNonStandart.equals(other.priceDoorTrim90mmNonStandart))
             return false;
 
         if (surchGenNum10 == null) {
@@ -499,15 +499,15 @@ public class DoorPrice {
     public String toString() {
         return  "DoorPrice{" +
                 "priceLeafReech=" + priceLeafReech +
-                ", priceLeafReechNstHeigth=" + priceLeafReechNstHeigth +
-                ", priceLeafReechNstWidth=" + priceLeafReechNstWidth +
-                ", priceLeafReechNstHghtWdth=" + priceLeafReechNstHghtWdth +
+                ", priceLeafReechNonStandartHeigth=" + priceLeafReechNonStandartHeigth +
+                ", priceLeafReechNonStandartWidth=" + priceLeafReechNonStandartWidth +
+                ", priceLeafReechNonStandartHghtWdth=" + priceLeafReechNonStandartHghtWdth +
                 ", priceLeafSot=" + priceLeafSot +
-                ", priceLeafSotNstHeigth=" + priceLeafSotNstHeigth +
-                ", priceLeafSotNstWidth=" + priceLeafSotNstWidth +
-                ", priceLeafSotNstHghtWdth=" + priceLeafSotNstHghtWdth +
+                ", priceLeafSotNonStandartHeigth=" + priceLeafSotNonStandartHeigth +
+                ", priceLeafSotNonStandartWidth=" + priceLeafSotNonStandartWidth +
+                ", priceLeafSotNonStandartHghtWdth=" + priceLeafSotNonStandartHghtWdth +
                 ", priceKor=" + priceDoorFrame +
-                ", priceKorNst=" + priceDoorFrameNst +
+                ", priceKorNonStandart=" + priceDoorFrameNonStandart +
                 ", priceAssmbl=" + priceAssmbl +
                 ", priceHole=" + priceHole +
                 ", priceInsert=" + priceInsert +
@@ -516,9 +516,9 @@ public class DoorPrice {
                 ", pricePaintGrunt=" + pricePaintGrunt +
                 ", pricePaintRAl=" + pricePaintRAl +
                 ", priceDoorTrim60mm=" + priceDoorTrim60mm +
-                ", priceDoorTrim60mmNst=" + priceDoorTrim60mmNst +
+                ", priceDoorTrim60mmNonStandart=" + priceDoorTrim60mmNonStandart +
                 ", priceDoorTrim90mm=" + priceDoorTrim90mm +
-                ", priceDoorTrim90mmNst=" + priceDoorTrim90mmNst +
+                ", priceDoorTrim90mmNonStandart=" + priceDoorTrim90mmNonStandart +
                 ", surchGenNum10=" + surchGenNum10 +
                 ", surchGenNumFr11to20=" + surchGenNumFr11to20 +
                 ", surchGenNumFr21to50=" + surchGenNumFr21to50 +

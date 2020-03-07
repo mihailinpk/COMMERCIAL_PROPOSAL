@@ -9,19 +9,19 @@ public class DoorPriceCalculatorImplementation implements DoorPriceCalculator {
     private DoorPrice currentDoorPrice;
     private long totalNumberOfDoors;
 
-    private long calculateBySizeLeaf(Short sizeWidth, Short sizeHeigth, Integer priceLeaf, Integer priceLeafNonstandartHeigth,
-        Integer priceLeafNonstandartWidth, Integer priceLeafNonstandartHeightWidth)  {
+    private long calculateBySizeLeaf(Short sizeWidth, Short sizeHeigth, Integer priceLeaf, Integer priceLeafNonStandartHeigth,
+        Integer priceLeafNonStandartWidth, Integer priceLeafNonStandartHeightWidth)  {
 
         long intermediatePrice = 0;
 
         if ((sizeWidth <= 1000) && (sizeHeigth <= 2000))
             intermediatePrice += priceLeaf;
         if ((sizeWidth <= 1000) && (sizeHeigth > 2000))
-            intermediatePrice +=  priceLeafNonstandartHeigth;
+            intermediatePrice +=  priceLeafNonStandartHeigth;
         if ((sizeWidth > 1000) && (sizeHeigth <= 2000))
-            intermediatePrice += priceLeafNonstandartWidth;
+            intermediatePrice += priceLeafNonStandartWidth;
         if ((sizeWidth > 1000) && (sizeHeigth > 2000))
-            intermediatePrice += priceLeafNonstandartHeightWidth;
+            intermediatePrice += priceLeafNonStandartHeightWidth;
 
         return intermediatePrice;
 
@@ -35,7 +35,7 @@ public class DoorPriceCalculatorImplementation implements DoorPriceCalculator {
                         ? 2.5 + (currentDoorPosition.getDoorStep().equals("есть") ? 0.5: 0)
                         : 3 + (currentDoorPosition.getDoorStep().equals("есть") ? 1: 0));
 
-        return ((currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorFrameNst() :
+        return ((currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorFrameNonStandart() :
                 currentDoorPrice.getPriceDoorFrame()) * (int)sumStickBox;
 
     }
@@ -125,9 +125,9 @@ public class DoorPriceCalculatorImplementation implements DoorPriceCalculator {
 
         long finalPrice = calculateBySizeLeaf(currentDoorPosition.getSizeWidth(), currentDoorPosition.getSizeHeigth(),
             currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReech() : currentDoorPrice.getPriceLeafSot(),
-                currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNstHeigth() : currentDoorPrice.getPriceLeafSotNstHeigth(),
-                    currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNstWidth() : currentDoorPrice.getPriceLeafSotNstWidth(),
-                        currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNstHghtWdth() : currentDoorPrice.getPriceLeafSotNstHghtWdth());
+                currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNonStandartHeigth() : currentDoorPrice.getPriceLeafSotNonStandartHeigth(),
+                    currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNonStandartWidth() : currentDoorPrice.getPriceLeafSotNonStandartWidth(),
+                        currentDoorPosition.getFill().equals("реечное") ? currentDoorPrice.getPriceLeafReechNonStandartHghtWdth() : currentDoorPrice.getPriceLeafSotNonStandartHghtWdth());
 
         finalPrice += calculateBySumStickBox();
 
@@ -141,8 +141,8 @@ public class DoorPriceCalculatorImplementation implements DoorPriceCalculator {
 
         finalPrice += calculateByDoorTrim(
                         currentDoorPosition.getDoorTrim(),
-                        (currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorTrim60mmNst() : currentDoorPrice.getPriceDoorTrim60mm(),
-                        (currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorTrim90mmNst() : currentDoorPrice.getPriceDoorTrim90mm(),
+                        (currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorTrim60mmNonStandart() : currentDoorPrice.getPriceDoorTrim60mm(),
+                        (currentDoorPosition.getSizeHeigth() > 2000) ? currentDoorPrice.getPriceDoorTrim90mmNonStandart() : currentDoorPrice.getPriceDoorTrim90mm(),
                         (float)(currentDoorPosition.getTwoDoorLeafs().equals("нет") ? 2.5 : 3));
 
         finalPrice += calculateTotalNumberOfDoors();

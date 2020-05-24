@@ -11,17 +11,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import su.myspringwebapps.calculators.DoorPriceCalculatorImplementation;
 import su.myspringwebapps.controllers.enums.*;
+import su.myspringwebapps.points.DoorPositionEntity;
 import su.myspringwebapps.sevices.MainService;
 import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
 
-
 @Controller
 public class MainController {
 
-    static ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-servlet.xml");
-    static MainService mainService = (MainService) context.getBean("mainservice");
+    static private ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-servlet.xml");
+    static private MainService mainService = (MainService) context.getBean("mainservice");
+    static private DoorPriceCalculatorImplementation doorPriceCalculatorImplementation = (DoorPriceCalculatorImplementation) context.getBean("calculatordoorprice");
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String getIndex(Model model)    {
@@ -54,35 +56,31 @@ public class MainController {
             @RequestParam(value = "sumpos") String valueSumPositionFromView
     )   {
 
-        Short sizeWidth = Short.parseShort(valueWidthFromView);
-        Short sizeHeigth = Short.parseShort(valueHeightFromView);
-
-        String type = Type.valueOf(valueTypeFromView).getType();
-
-        String open = ((valueOpenFromView.equals("opt1")) ? "правое" : "левое");
-
-        String doorStep = ((valueDoorstepFromView.equals("opt1")) ? "есть" : "нет");
-
-        String assmbl = ((valueAssemblFromView.equals("opt1")) ? "есть" : "нет");
-
-        String fill = ((valueFillFromView.equals("opt1")) ? "сотовое" : "реечное");
-
-        String hole = ((valueHoleFromView.equals("opt1")) ? "нет" : "есть");
-
-        String fitt = Mortise.valueOf(valueFittFromView).getMortise();
-
-        String paint = Paint.valueOf(valuePaintFromView).getPaint();
-
-        String doorTrim = DoorTrim.valueOf(valueDoorTrimFromView).getDoorTrim();
-
-        String twoDoorLeafs = TwoDoorLeafs.valueOf(valueTwoDoorLeafsFromView).getTwoDoorLeafs();
-
-        Integer sum = Integer.parseInt(valueSumPositionFromView);
-
-        mainService.saveNewDoorPosition(
-            sizeWidth, sizeHeigth, type, open, doorStep,
-                assmbl, fill, hole, fitt, paint, doorTrim, twoDoorLeafs, sum
+        DoorPositionEntity newDoorPositionEntity = new DoorPositionEntity();
+        newDoorPositionEntity.fromModel(
+            Short.parseShort(valueWidthFromView),
+            Short.parseShort(valueHeightFromView),
+            Type.valueOf(valueTypeFromView).getType(),
+            ((valueOpenFromView.equals("RIGHT")) ? "правое" : "левое"),
+            ((valueDoorstepFromView.equals("YES")) ? "есть" : "нет"),
+            ((valueAssemblFromView.equals("YES")) ? "есть" : "нет"),
+            ((valueFillFromView.equals("CELL")) ? "сотовое" : "реечное"),
+            ((valueHoleFromView.equals("NO")) ? "нет" : "есть"),
+            Mortise.valueOf(valueFittFromView).getMortise(),
+            Paint.valueOf(valuePaintFromView).getPaint(),
+            DoorTrim.valueOf(valueDoorTrimFromView).getDoorTrim(),
+            TwoDoorLeafs.valueOf(valueTwoDoorLeafsFromView).getTwoDoorLeafs(),
+            Integer.parseInt(valueSumPositionFromView)
         );
+
+        newDoorPositionEntity.setTotalPrice(
+                doorPriceCalculatorImplementation.calculatePrice(newDoorPositionEntity,
+                    mainService.getDoorPriceById(0),
+                    mainService.getTotalNumberOfDoors())
+
+        );
+
+        mainService.saveNewDoorPosition(newDoorPositionEntity);
 
         return "redirect:/";
 
@@ -97,7 +95,7 @@ public class MainController {
 
     @RequestMapping("/settings")
     public String getSettings(Model model) {
-        DoorPrice doorPrice = mainService.getDoorPriceById(0);
+        DoorPrice doorPrice = mainService.getDefaultDoorPrice();
         model.addAttribute("priceLeafReech", doorPrice.getPriceLeafReech());
         model.addAttribute("priceLeafReechNonStandartHeigth", doorPrice.getPriceLeafReechNonStandartHeigth());
         model.addAttribute("priceLeafReechNonStandartWidth", doorPrice.getPriceLeafReechNonStandartWidth());
@@ -128,18 +126,18 @@ public class MainController {
         return "settings";
     }
 
-    @RequestMapping(value = "setsettings", method = RequestMethod.GET)
+    @RequestMapping(value = "setsettings", method = RequestMethod.POST)
     public String setSettings(
             @RequestParam(value = "priceleafreech") String valuePriceLeafReechFromView,
-            @RequestParam(value = "priceleafreechNonStandartheigth") String valuePriceLeafReechNonStandartHeigthFromView,
-            @RequestParam(value = "priceleafreechNonStandartwidth") String valuePriceLeafReechNonStandartWidthFromView,
-            @RequestParam(value = "priceleafreechNonStandartHeigthWidth") String valuePriceLeafReechNonStandartHeigthWidthFromView,
+            @RequestParam(value = "priceleafreechnonstandartheigth") String valuePriceLeafReechNonStandartHeigthFromView,
+            @RequestParam(value = "priceleafreechnonstandartwidth") String valuePriceLeafReechNonStandartWidthFromView,
+            @RequestParam(value = "priceleafreechnonstandartheigthwidth") String valuePriceLeafReechNonStandartHeigthWidthFromView,
             @RequestParam(value = "priceleafsot") String valuePriceLeafSotFromView,
-            @RequestParam(value = "priceleafsotNonStandartheigth") String valuePriceLeafSotNonStandartHeigthFromView,
-            @RequestParam(value = "priceleafsotNonStandartwidth") String valuePriceLeafSotNonStandartWidthFromView,
-            @RequestParam(value = "priceleafsotNonStandartHeigthWidth") String valuePriceLeafSotNonStandartHeigthWidthFromView,
+            @RequestParam(value = "priceleafsotnonstandartheigth") String valuePriceLeafSotNonStandartHeigthFromView,
+            @RequestParam(value = "priceleafsotnonstandartwidth") String valuePriceLeafSotNonStandartWidthFromView,
+            @RequestParam(value = "priceleafsotnonstandartheigthwidth") String valuePriceLeafSotNonStandartHeigthWidthFromView,
             @RequestParam(value = "pricedoorframe") String valuePriceDoorFrameFromView,
-            @RequestParam(value = "pricedoorframeNonStandart") String valuePriceDoorFrameNonStandartFromView,
+            @RequestParam(value = "pricedoorframenonstandart") String valuePriceDoorFrameNonStandartFromView,
             @RequestParam(value = "priceassmbl") String valuePriceAssmblFromView,
             @RequestParam(value = "pricehole") String valuePriceHoleFromView,
             @RequestParam(value = "priceinsert") String valuePriceInsertFromView,
@@ -148,9 +146,9 @@ public class MainController {
             @RequestParam(value = "pricepaintgrunt") String valuePricePaintGruntFromView,
             @RequestParam(value = "pricepaintral") String valuePricePaintRAlfromView,
             @RequestParam(value = "pricedoortrim60mm") String valuePriceDoorTrim60mmFromView,
-            @RequestParam(value = "pricedoortrim60mmNonStandart") String valuePriceDoorTrim60mmNonStandartFromView,
+            @RequestParam(value = "pricedoortrim60mmnonstandart") String valuePriceDoorTrim60mmNonStandartFromView,
             @RequestParam(value = "pricedoortrim90mm") String valuePriceDoorTrim90mmFromView,
-            @RequestParam(value = "pricedoortrim90mmNonStandart") String valuePriceDoorTrim90mmNonStandartFromView,
+            @RequestParam(value = "pricedoortrim90mmnonstandart") String valuePriceDoorTrim90mmNonStandartFromView,
             @RequestParam(value = "surchgennum10") String valueSurchGenNum10fromView,
             @RequestParam(value = "surchgennumfr11to20") String valueSurchGenNumFr11to20fromView,
             @RequestParam(value = "surchgennumfr21to50") String valueSurchGenNumFr21to50fromView,

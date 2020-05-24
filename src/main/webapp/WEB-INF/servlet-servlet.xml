@@ -32,18 +32,17 @@
 
     <!-- Настройки (цена и надбавка за количество), в будущем поместить в MySQL -->
     <bean id="pricesrepository"
-          class="su.myspringwebapps.repositories.DoorPricesInteractionWithDatabase">
+          class="su.myspringwebapps.repositories.DoorPricesInteractionWithDatabaseImplementation">
     </bean>
 
     <!-- Текущее коммерческое предложение, в будущем также поместить в MySQL -->
     <bean id="curcommproprepository"
-          class="su.myspringwebapps.repositories.CurrentCommercialProposalInteractionWithDatabase">
+          class="su.myspringwebapps.repositories.CurrentCommercialProposalInteractionWithDatabaseImplementation">
     </bean>
 
     <!-- Главный сервис программы -->
     <bean id="mainservice"
           class="su.myspringwebapps.sevices.MainService">
-        <constructor-arg ref="calculatordoorprice"/>
         <constructor-arg ref="calculatorgeneraldoorprice"/>
         <constructor-arg ref="calculatortotaldoornumber"/>
         <constructor-arg ref="pricesrepository"/>

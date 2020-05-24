@@ -1,96 +1,61 @@
 package su.myspringwebapps.sevices;
 
-import su.myspringwebapps.calculators.DoorPriceCalculatorImplementation;
 import su.myspringwebapps.calculators.GeneralDoorPriceCalculatorImplementation;
 import su.myspringwebapps.calculators.TotalNumberOfDoorsCalculatorImplementation;
 import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
-import su.myspringwebapps.repositories.CurrentCommercialProposalInteractionWithDatabase;
-import su.myspringwebapps.repositories.DoorPricesInteractionWithDatabase;
+import su.myspringwebapps.repositories.CurrentCommercialProposalInteractionWithDatabaseImplementation;
+import su.myspringwebapps.repositories.DoorPricesInteractionWithDatabaseImplementation;
 
 import java.util.List;
 
 public class MainService implements MainServiceInterface {
 
-    private DoorPriceCalculatorImplementation doorPriceCalculatorImplementation;
     private GeneralDoorPriceCalculatorImplementation generalDoorPriceCalculatorImplementation;
     private TotalNumberOfDoorsCalculatorImplementation totalNumberOfDoorsCalculatorImplementation;
-    private DoorPricesInteractionWithDatabase doorPricesInteractionWithDatabase;
-    private CurrentCommercialProposalInteractionWithDatabase currentCommercialProposalInteractionWithDatabase;
+    private DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation;
+    private CurrentCommercialProposalInteractionWithDatabaseImplementation currentCommercialProposalInteractionWithDatabaseImplementation;
 
     public MainService(
-        DoorPriceCalculatorImplementation calculatorDoorPrice,
         GeneralDoorPriceCalculatorImplementation calculatorGeneralDoorPrice,
         TotalNumberOfDoorsCalculatorImplementation calculatorTotalNumberOfDoors,
-        DoorPricesInteractionWithDatabase doorPricesInteractionWithDatabase,
-        CurrentCommercialProposalInteractionWithDatabase currentCommercialProposalInteractionWithDatabase
+        DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation,
+        CurrentCommercialProposalInteractionWithDatabaseImplementation currentCommercialProposalInteractionWithDatabaseImplementation
     ) {
-        this.doorPriceCalculatorImplementation = calculatorDoorPrice;
         this.generalDoorPriceCalculatorImplementation = calculatorGeneralDoorPrice;
         this.totalNumberOfDoorsCalculatorImplementation = calculatorTotalNumberOfDoors;
-        this.doorPricesInteractionWithDatabase = doorPricesInteractionWithDatabase;
-        this.currentCommercialProposalInteractionWithDatabase = currentCommercialProposalInteractionWithDatabase;
+        this.doorPricesInteractionWithDatabaseImplementation = doorPricesInteractionWithDatabaseImplementation;
+        this.currentCommercialProposalInteractionWithDatabaseImplementation = currentCommercialProposalInteractionWithDatabaseImplementation;
     }
 
-    public void saveNewDoorPosition(
-        Short sizeWidth,
-        Short sizeHeigth,
-        String type,
-        String open,
-        String doorStep,
-        String assmbl,
-        String fill,
-        String hole,
-        String fitt,
-        String paint,
-        String doorTrim,
-        String twoDoorLeafs,
-        Integer sum
-    ) {
-        DoorPosition newDoorPosition = new DoorPosition();
-        newDoorPosition.setSizeWidth(sizeWidth);
-        newDoorPosition.setSizeHeigth(sizeHeigth);
-        newDoorPosition.setType(type);
-        newDoorPosition.setOpen(open);
-        newDoorPosition.setDoorStep(doorStep);
-        newDoorPosition.setAssmbl(assmbl);
-        newDoorPosition.setFill(fill);
-        newDoorPosition.setHole(hole);
-        newDoorPosition.setFitt(fitt);
-        newDoorPosition.setPaint(paint);
-        newDoorPosition.setDoorTrim(doorTrim);
-        newDoorPosition.setTwoDoorLeafs(twoDoorLeafs);
-        newDoorPosition.setSum(sum);
-        newDoorPosition.setTotalPrice(
-            doorPriceCalculatorImplementation.calculatePrice(newDoorPosition, doorPricesInteractionWithDatabase.getDoorPriceById(0), this.getTotalNumberOfDoors())
-        );
-        List<DoorPosition> listDoors = currentCommercialProposalInteractionWithDatabase.getAllPositions();
+    public void saveNewDoorPosition(DoorPosition newDoorPosition) {
+        List<DoorPosition> listDoors = currentCommercialProposalInteractionWithDatabaseImplementation.getAllPositions();
         DoorPosition doorPosition;
         if (!listDoors.isEmpty())   {
             doorPosition = listDoors.get(listDoors.size() - 1);
             newDoorPosition.setId(doorPosition.getId() + 1);
-            currentCommercialProposalInteractionWithDatabase.savePosition(newDoorPosition);
+            currentCommercialProposalInteractionWithDatabaseImplementation.savePosition(newDoorPosition);
         }
         else    {
             newDoorPosition.setId(0);
-            currentCommercialProposalInteractionWithDatabase.savePosition(newDoorPosition);
+            currentCommercialProposalInteractionWithDatabaseImplementation.savePosition(newDoorPosition);
         }
     }
 
     public void deleteDoorPosition(DoorPosition doorPosition) {
         if (doorPosition != null)
-            currentCommercialProposalInteractionWithDatabase.deletePosition(doorPosition);
+            currentCommercialProposalInteractionWithDatabaseImplementation.deletePosition(doorPosition);
     }
 
     public DoorPosition getDoorPositionById(Integer id) {
         if (id != null) {
-            return  currentCommercialProposalInteractionWithDatabase.getPositionById(id);
+            return  currentCommercialProposalInteractionWithDatabaseImplementation.getPositionById(id);
         }
         return null;
     }
 
     public List<DoorPosition> getAllDoors() {
-        return currentCommercialProposalInteractionWithDatabase.getAllPositions();
+        return currentCommercialProposalInteractionWithDatabaseImplementation.getAllPositions();
     }
 
     public void setDoorPrice(
@@ -152,21 +117,25 @@ public class MainService implements MainServiceInterface {
         doorPrice.setSurchGenNumFr51to100(surchGenNumFr51to100);
         doorPrice.setSurchGenNumFr101to1000(surchGenNumFr101to1000);
         doorPrice.setSurchGenNum1000(surchGenNum1000);
-        doorPricesInteractionWithDatabase.setDoorPrice(id, doorPrice);
+        doorPricesInteractionWithDatabaseImplementation.setDoorPrice(id, doorPrice);
+    }
+
+    public DoorPrice getDefaultDoorPrice()  {
+        return doorPricesInteractionWithDatabaseImplementation.getDoorPriceById(0);
     }
 
     public DoorPrice getDoorPriceById(Integer id)   {
         if (id != null) {
-            return doorPricesInteractionWithDatabase.getDoorPriceById(id);
+            return doorPricesInteractionWithDatabaseImplementation.getDoorPriceById(id);
         }
         return null;
     }
 
     public long getTotalNumberOfDoors() {
-        return totalNumberOfDoorsCalculatorImplementation.calculateTotalNumberOfDoors(currentCommercialProposalInteractionWithDatabase.getAllPositions());
+        return totalNumberOfDoorsCalculatorImplementation.calculateTotalNumberOfDoors(currentCommercialProposalInteractionWithDatabaseImplementation.getAllPositions());
     }
 
     public long getGeneralDoorPrice() {
-        return generalDoorPriceCalculatorImplementation.calculateTotalPriceOfDoors(currentCommercialProposalInteractionWithDatabase.getAllPositions());
+        return generalDoorPriceCalculatorImplementation.calculateTotalPriceOfDoors(currentCommercialProposalInteractionWithDatabaseImplementation.getAllPositions());
     }
 }

@@ -2,17 +2,17 @@ package su.myspringwebapps.controllers.enums;
 
 public enum Mortise {
 
-    opt1("нет"),
-    opt2("ЗЩ 2-01"),
-    opt3("ЗВ 4");
+    NO(1),
+    Z_SH_2_01(2),
+    Z_V_4_3_03(3);
 
-    private final String mortise;
+    private final int mortise;
 
-    Mortise(String mortise)   {
+    Mortise(int mortise)   {
         this.mortise = mortise;
     }
 
-    public String getMortise() {
+    public int getMortise() {
         return mortise;
     }
 

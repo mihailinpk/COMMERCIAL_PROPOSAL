@@ -2,17 +2,17 @@ package su.myspringwebapps.controllers.enums;
 
 public enum Paint {
 
-    opt1("нет"),
-    opt2("грунтовка"),
-    opt3("НЭ цвет RAL");
+    NO(1),
+    GRUNT(2),
+    RAL(3);
 
-    private final String paint;
+    private final int paint;
 
-    Paint(String paint)   {
+    Paint(int paint)   {
         this.paint = paint;
     }
 
-    public String getPaint() {
+    public int getPaint() {
         return paint;
     }
 

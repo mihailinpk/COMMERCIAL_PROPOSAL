@@ -122,7 +122,7 @@
     }
 </style>
 <body>
-<form action="/COMMERCIAL_PROPOSAL_war_exploded/setsettings" method="GET">
+<form action="/COMMERCIAL_PROPOSAL_war_exploded/setsettings" method="POST">
     <table class="table_price" align="center" width="100%">
         <caption>Цены за 1 шт.</caption>
         <tr>
@@ -136,22 +136,22 @@
             <td>
                 <fieldset align="center">
                     <legend>Реечное н/ст по высоте</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNstHeigth}" name="priceleafreechnstheigth" /> руб.</p>
-                    <p>Текущая: ${priceLeafReechNstHeigth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNonStandartHeigth}" name="priceleafreechnonstandartheigth" /> руб.</p>
+                    <p>Текущая: ${priceLeafReechNonStandartHeigth} руб.</p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Реечное н/ст по ширине</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNstWidth}" name="priceleafreechnstwidth" /> руб.</p>
-                    <p>Текущая: ${priceLeafReechNstWidth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNonStandartWidth}" name="priceleafreechnonstandartwidth" /> руб.</p>
+                    <p>Текущая: ${priceLeafReechNonStandartWidth} руб.</p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Реечное н/ст по ширине и высоте</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNstHghtWdth}" name="priceleafreechnsthghtwdth" /> руб.</p>
-                    <p>Текущая: ${priceLeafReechNstHghtWdth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNonStandartHeigthWidth}" name="priceleafreechnonstandartheigthwidth" /> руб.</p>
+                    <p>Текущая: ${priceLeafReechNonStandartHeigthWidth} руб.</p>
                 </fieldset>
             </td>
             <td>
@@ -164,15 +164,15 @@
             <td>
                 <fieldset align="center">
                     <legend>Сотовое н/ст по высоте</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNstHeigth}" name="priceleafsotnstheigth" /> руб.</p>
-                    <p>Текущая: ${priceLeafSotNstHeigth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNonStandartHeigth}" name="priceleafsotnonstandartheigth" /> руб.</p>
+                    <p>Текущая: ${priceLeafSotNonStandartHeigth} руб.</p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Сотовое н/ст по ширине</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNstWidth}" name="priceleafsotnstwidth" /> руб.</p>
-                    <p>Текущая: ${priceLeafSotNstWidth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNonStandartWidth}" name="priceleafsotnonstandartwidth" /> руб.</p>
+                    <p>Текущая: ${priceLeafSotNonStandartWidth} руб.</p>
                 </fieldset>
             </td>
         </tr>
@@ -180,8 +180,8 @@
             <td>
                 <fieldset align="center">
                     <legend>Сотовое н/ст по ширине и высоте</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNstHghtWdth}" name="priceleafsotnsthghtwdth" /> руб.</p>
-                    <p>Текущая: ${priceLeafSotNstHghtWdth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNonStandartHeigthWidth}" name="priceleafsotnonstandartheigthwidth" /> руб.</p>
+                    <p>Текущая: ${priceLeafSotNonStandartHeigthWidth} руб.</p>
                 </fieldset>
             </td>
             <td>
@@ -194,8 +194,8 @@
             <td>
                 <fieldset align="center">
                     <legend>Палка коробки н/ст</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorFrameNst}" name="pricedoorframenst" /> руб.</p>
-                    <p>Текущая: ${priceDoorFrameNst} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorFrameNonStandart}" name="pricedoorframenonstandart" /> руб.</p>
+                    <p>Текущая: ${priceDoorFrameNonStandart} руб.</p>
                 </fieldset>
             </td>
             <td>
@@ -259,8 +259,8 @@
             <td>
                 <fieldset align="center">
                     <legend>Палка наличника н/ст 60мм</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorTrim60mmNst}" name="pricedoortrim60mmnst" /> руб.</p>
-                    <p>Текущая: ${priceDoorTrim60mmNst} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorTrim60mmNonStandart}" name="pricedoortrim60mmnonstandart" /> руб.</p>
+                    <p>Текущая: ${priceDoorTrim60mmNonStandart} руб.</p>
                 </fieldset>
             </td>
             <td>
@@ -273,8 +273,8 @@
             <td>
                 <fieldset align="center">
                     <legend>Палка наличника н/ст 90мм</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorTrim90mmNst}" name="pricedoortrim90mmnst" /> руб.</p>
-                    <p>Текущая: ${priceDoorTrim90mmNst} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorTrim90mmNonStandart}" name="pricedoortrim90mmnonstandart" /> руб.</p>
+                    <p>Текущая: ${priceDoorTrim90mmNonStandart} руб.</p>
                 </fieldset>
             </td>
         </tr>

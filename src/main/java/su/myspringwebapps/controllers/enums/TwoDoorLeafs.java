@@ -2,17 +2,17 @@ package su.myspringwebapps.controllers.enums;
 
 public enum TwoDoorLeafs {
 
-    opt1("нет"),
-    opt2("полуторный"),
-    opt3("равнопольный");
+    NO(1),
+    ONE_AND_A_HALF(2),
+    EQUALS(3);
 
-    private final String twoDoorLeafs;
+    private final int twoDoorLeafs;
 
-    TwoDoorLeafs(String twoDoorLeafs)   {
+    TwoDoorLeafs(int twoDoorLeafs)   {
         this.twoDoorLeafs = twoDoorLeafs;
     }
 
-    public String getTwoDoorLeafs() {
+    public int getTwoDoorLeafs() {
         return twoDoorLeafs;
     }
 

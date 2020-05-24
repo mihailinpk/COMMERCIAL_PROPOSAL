@@ -2,17 +2,17 @@ package su.myspringwebapps.controllers.enums;
 
 public enum DoorTrim {
 
-    opt1("нет"),
-    opt2("60мм"),
-    opt3("90мм");
+    NO(1),
+    d60_MM(2),
+    d90_MM(3);
 
-    private final String doorTrim;
+    private final int doorTrim;
 
-    DoorTrim(String type)   {
+    DoorTrim(int type)   {
         this.doorTrim = type;
     }
 
-    public String getDoorTrim() {
+    public int getDoorTrim() {
         return doorTrim;
     }
 

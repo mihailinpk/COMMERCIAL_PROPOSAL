@@ -2,17 +2,17 @@ package su.myspringwebapps.controllers.enums;
 
 public enum Type {
 
-    opt1("ДГ"),
-    opt2("ДН"),
-    opt3("ДО");
+    DG(1),
+    DN(2),
+    DO(3);
 
-    private final String type;
+    private final int type;
 
-    Type(String type)   {
+    Type(int type)   {
         this.type = type;
     }
 
-    public String getType() {
+    public int getType() {
         return type;
     }
 

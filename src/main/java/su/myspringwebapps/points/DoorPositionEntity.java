@@ -1,23 +1,18 @@
 package su.myspringwebapps.points;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import su.myspringwebapps.points.enums.*;
+
 public class DoorPositionEntity extends DoorPosition {
 
-    public void fromModel(
-        Short sizeWidth,
-        Short sizeHeigth,
-        int typeInteger,
-        String open,
-        String doorStep,
-        String assmbl,
-        String fill,
-        String hole,
-        int fittInteger,
-        int paintInteger,
-        int doorTrimInteger,
-        int twoDoorLeafsInteger,
-        Integer sum)    {
+    public void fromModel(String jsonDoorPosition) throws JsonProcessingException {
 
-        switch (typeInteger)    {
+        DoorPositionFromModel doorPositionFromModel = new ObjectMapper().readValue(jsonDoorPosition, DoorPositionFromModel.class);
+
+        System.out.println(doorPositionFromModel);
+
+        switch (Type.valueOf(doorPositionFromModel.getType()).getType())    {
             case 1:
                 super.setType("ДГ");
                 break;
@@ -29,7 +24,7 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        switch (fittInteger)    {
+        switch (Mortise.valueOf(doorPositionFromModel.getFitt()).getMortise())    {
             case 1:
                 super.setFitt("нет");
                 break;
@@ -41,7 +36,7 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        switch (paintInteger)   {
+        switch (Paint.valueOf(doorPositionFromModel.getPaint()).getPaint())   {
             case 1:
                 super.setPaint("нет");
                 break;
@@ -53,7 +48,7 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        switch (doorTrimInteger)    {
+        switch (DoorTrim.valueOf(doorPositionFromModel.getDoortrim()).getDoorTrim())    {
             case 1:
                 super.setDoorTrim("нет");
                 break;
@@ -65,7 +60,7 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        switch (twoDoorLeafsInteger)    {
+        switch (TwoDoorLeafs.valueOf(doorPositionFromModel.getTwodoorleafs()).getTwoDoorLeafs())    {
             case 1:
                 super.setTwoDoorLeafs("нет");
                 break;
@@ -77,14 +72,14 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        super.setSizeWidth(sizeWidth);
-        super.setSizeHeigth(sizeHeigth);
-        super.setOpen(open);
-        super.setDoorStep(doorStep);
-        super.setAssmbl(assmbl);
-        super.setFill(fill);
-        super.setHole(hole);
-        super.setSum(sum);
+        super.setSizeWidth(Short.parseShort(doorPositionFromModel.getWidth()));
+        super.setSizeHeigth(Short.parseShort(doorPositionFromModel.getHeight()));
+        super.setOpen(((doorPositionFromModel.getOpen().equals("RIGHT")) ? "правое" : "левое"));
+        super.setDoorStep(((doorPositionFromModel.getDoorstep().equals("YES")) ? "есть" : "нет"));
+        super.setAssmbl(((doorPositionFromModel.getAssembl().equals("YES")) ? "есть" : "нет"));
+        super.setFill(((doorPositionFromModel.getFill().equals("CELL")) ? "сотовое" : "реечное"));
+        super.setHole(((doorPositionFromModel.getHole().equals("NO")) ? "нет" : "есть"));
+        super.setSum(Integer.parseInt(doorPositionFromModel.getSumpos()));
 
     }
 

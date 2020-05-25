@@ -79,9 +79,49 @@
             background: rgb(152,15,0);
         }
     </style>
+    <script type="text/javascript">
+        function createStringJson() {
+
+            var width = document.forms["addingform"]["width"].value;
+            var height = document.forms["addingform"]["height"].value;
+            var type = document.forms["addingform"]["type"].value;
+            var open = document.forms["addingform"]["open"].value;
+            var doorstep = document.forms["addingform"]["doorstep"].value;
+            var assembl = document.forms["addingform"]["assembl"].value;
+            var fill = document.forms["addingform"]["fill"].value;
+            var hole = document.forms["addingform"]["hole"].value;
+            var fitt = document.forms["addingform"]["fitt"].value;
+            var paint = document.forms["addingform"]["paint"].value;
+            var doortrim = document.forms["addingform"]["doortrim"].value;
+            var twodoorleafs = document.forms["addingform"]["twodoorleafs"].value;
+            var sumpos = document.forms["addingform"]["sumpos"].value;
+
+            var jsonObject = {
+                "width": width,
+                "height": height,
+                "type": type,
+                "open": open,
+                "doorstep": doorstep,
+                "assembl": assembl,
+                "fill": fill,
+                "hole": hole,
+                "fitt": fitt,
+                "paint": paint,
+                "doortrim": doortrim,
+                "twodoorleafs": twodoorleafs,
+                "sumpos": sumpos
+            }
+
+            var jsonString = JSON.stringify(jsonObject);
+
+            document.getElementById('jsondoorposition').value = jsonString;
+
+        }
+    </script>
 </head>
 <body>
-    <form action="/COMMERCIAL_PROPOSAL_war_exploded/adding" method="GET">
+    <form name="addingform" action="/COMMERCIAL_PROPOSAL_war_exploded/adding" method="GET">
+        <input type="hidden" id="jsondoorposition" name="jsondoorposition">
         <table class="table_price" align="center" width="100%">
             <caption>Добавить новую позицию в коммерческое предложение</caption>
             <tr>
@@ -181,7 +221,7 @@
                     </fieldset>
                 </td>
                 <td align="center">
-                    <input type="submit" class="button" value="Добавить в КП">
+                    <input type="submit" class="button" value="Добавить в КП" onclick="createStringJson()">
                 </td>
             </tr>
         </table>

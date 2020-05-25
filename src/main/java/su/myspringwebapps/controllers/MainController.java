@@ -2,6 +2,7 @@ package su.myspringwebapps.controllers;
 
 import java.util.List;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
@@ -12,7 +13,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import su.myspringwebapps.calculators.DoorPriceCalculatorImplementation;
-import su.myspringwebapps.controllers.enums.*;
 import su.myspringwebapps.points.DoorPositionEntity;
 import su.myspringwebapps.sevices.MainService;
 import su.myspringwebapps.points.DoorPosition;
@@ -40,38 +40,10 @@ public class MainController {
     }
 
     @RequestMapping(value = "/adding", method = RequestMethod.GET)
-    public String addingPosition(
-            @RequestParam(value = "width") String valueWidthFromView,
-            @RequestParam(value = "height") String valueHeightFromView,
-            @RequestParam(value = "type") String valueTypeFromView,
-            @RequestParam(value = "open") String valueOpenFromView,
-            @RequestParam(value = "doorstep") String valueDoorstepFromView,
-            @RequestParam(value = "assembl") String valueAssemblFromView,
-            @RequestParam(value = "fill") String valueFillFromView,
-            @RequestParam(value = "hole") String valueHoleFromView,
-            @RequestParam(value = "fitt") String valueFittFromView,
-            @RequestParam(value = "paint") String valuePaintFromView,
-            @RequestParam(value = "doortrim") String valueDoorTrimFromView,
-            @RequestParam(value = "twodoorleafs") String valueTwoDoorLeafsFromView,
-            @RequestParam(value = "sumpos") String valueSumPositionFromView
-    )   {
+    public String addingPosition(@RequestParam(value = "jsondoorposition") String jsonDoorPosition) throws JsonProcessingException {
 
         DoorPositionEntity newDoorPositionEntity = new DoorPositionEntity();
-        newDoorPositionEntity.fromModel(
-            Short.parseShort(valueWidthFromView),
-            Short.parseShort(valueHeightFromView),
-            Type.valueOf(valueTypeFromView).getType(),
-            ((valueOpenFromView.equals("RIGHT")) ? "правое" : "левое"),
-            ((valueDoorstepFromView.equals("YES")) ? "есть" : "нет"),
-            ((valueAssemblFromView.equals("YES")) ? "есть" : "нет"),
-            ((valueFillFromView.equals("CELL")) ? "сотовое" : "реечное"),
-            ((valueHoleFromView.equals("NO")) ? "нет" : "есть"),
-            Mortise.valueOf(valueFittFromView).getMortise(),
-            Paint.valueOf(valuePaintFromView).getPaint(),
-            DoorTrim.valueOf(valueDoorTrimFromView).getDoorTrim(),
-            TwoDoorLeafs.valueOf(valueTwoDoorLeafsFromView).getTwoDoorLeafs(),
-            Integer.parseInt(valueSumPositionFromView)
-        );
+        newDoorPositionEntity.fromModel(jsonDoorPosition);
 
         newDoorPositionEntity.setTotalPrice(
                 doorPriceCalculatorImplementation.calculatePrice(newDoorPositionEntity,

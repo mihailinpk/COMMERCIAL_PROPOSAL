@@ -1,4 +1,4 @@
-package su.myspringwebapps.controllers.enums;
+package su.myspringwebapps.points.enums;
 
 public enum Type {
 

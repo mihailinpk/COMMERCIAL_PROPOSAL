@@ -2,14 +2,14 @@ package su.myspringwebapps.repositories;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import su.myspringwebapps.points.DoorPosition;
-import su.myspringwebapps.points.DoorPositionEntity;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class CurrentCommercialProposalInteractionWithDatabaseImplementation implements CurrentCommercialProposalInteractionWithDatabase {
 
@@ -57,46 +57,33 @@ public class CurrentCommercialProposalInteractionWithDatabaseImplementation impl
     }
 
     private void getListCurrentCommencialProposalFromDB()    {
-        listCurrentCommencialProposal.clear();
+
         String query = "SELECT * FROM comm_prop";
-        List<Map<String, Object>> list = jdbcTemplate.queryForList(query);
-        Iterator iterator = list.iterator();
-        while (iterator.hasNext())  {
-            String strBuf = iterator.next().toString();
-            String[] params = strBuf.toString().split(", ");
-            params[0] = params[0].substring(4,5);
-            params[1] = params[1].substring(10,params[1].length());
-            params[2] = params[2].substring(11,params[2].length());
-            params[3] = params[3].substring(5,params[3].length());
-            params[4] = params[4].substring(5,params[4].length());
-            params[5] = params[5].substring(9,params[5].length());
-            params[6] = params[6].substring(7,params[6].length());
-            params[7] = params[7].substring(5,params[7].length());
-            params[8] = params[8].substring(5,params[8].length());
-            params[9] = params[9].substring(5,params[9].length());
-            params[10] = params[10].substring(6,params[10].length());
-            params[11] = params[11].substring(4,params[11].length());
-            params[12] = params[12].substring(5,params[12].length());
-            params[13] = params[13].substring(4,params[13].length());
-            params[14] = params[14].substring(11,params[14].length()-1);
-            DoorPosition nextPos = new DoorPosition();
-            nextPos.setId(Integer.parseInt(params[0]));
-            nextPos.setSizeWidth(Short.parseShort(params[1]));
-            nextPos.setSizeHeigth(Short.parseShort(params[2]));
-            nextPos.setType(params[3]);
-            nextPos.setOpen(params[4]);
-            nextPos.setDoorStep(params[5]);
-            nextPos.setAssmbl(params[6]);
-            nextPos.setFill(params[7]);
-            nextPos.setHole(params[8]);
-            nextPos.setFitt(params[9]);
-            nextPos.setPaint(params[10]);
-            nextPos.setDoorTrim(params[11]);
-            nextPos.setTwoDoorLeafs(params[12]);
-            nextPos.setSum(Integer.parseInt(params[13]));
-            nextPos.setTotalPrice(Long.parseLong(params[14]));
-            listCurrentCommencialProposal.add(nextPos);
-        }
+
+        listCurrentCommencialProposal = jdbcTemplate.query(
+            query,
+            new RowMapper<DoorPosition>() {
+                public DoorPosition mapRow(ResultSet rs, int rowNum) throws SQLException {
+                    DoorPosition newPos = new DoorPosition();
+                    newPos.setId(rs.getInt(1));
+                    newPos.setSizeWidth(rs.getShort(2));
+                    newPos.setSizeHeigth(rs.getShort(3));
+                    newPos.setType(rs.getString(4));
+                    newPos.setOpen(rs.getString(5));
+                    newPos.setDoorStep(rs.getString(6));
+                    newPos.setAssmbl(rs.getString(7));
+                    newPos.setFill(rs.getString(8));
+                    newPos.setHole(rs.getString(9));
+                    newPos.setFitt(rs.getString(10));
+                    newPos.setPaint(rs.getString(11));
+                    newPos.setDoorTrim(rs.getString(12));
+                    newPos.setTwoDoorLeafs(rs.getString(13));
+                    newPos.setSum(rs.getInt(14));
+                    newPos.setTotalPrice(rs.getLong(15));
+                    return newPos;
+                }
+            });
+
     }
 
     private String faqSQL(DoorPosition doorPosition)  {

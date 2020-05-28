@@ -10,8 +10,6 @@ public class DoorPositionEntity extends DoorPosition {
 
         DoorPositionFromModel doorPositionFromModel = new ObjectMapper().readValue(jsonDoorPosition, DoorPositionFromModel.class);
 
-        System.out.println(doorPositionFromModel);
-
         switch (Type.valueOf(doorPositionFromModel.getType()).getType())    {
             case 1:
                 super.setType("ДГ");

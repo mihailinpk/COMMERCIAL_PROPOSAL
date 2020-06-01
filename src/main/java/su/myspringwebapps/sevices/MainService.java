@@ -4,9 +4,9 @@ import su.myspringwebapps.calculators.GeneralDoorPriceCalculatorImplementation;
 import su.myspringwebapps.calculators.TotalNumberOfDoorsCalculatorImplementation;
 import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
-import su.myspringwebapps.repositories.CurrentCommercialProposalInteractionWithDatabaseImplementation;
 import su.myspringwebapps.repositories.DoorPricesInteractionWithDatabaseImplementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainService implements MainServiceInterface {
@@ -14,49 +14,63 @@ public class MainService implements MainServiceInterface {
     private GeneralDoorPriceCalculatorImplementation generalDoorPriceCalculatorImplementation;
     private TotalNumberOfDoorsCalculatorImplementation totalNumberOfDoorsCalculatorImplementation;
     private DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation;
-    private CurrentCommercialProposalInteractionWithDatabaseImplementation currentCommercialProposalInteractionWithDatabaseImplementation;
+
+    private static List<DoorPosition> listCurrentCommencialProposal = new ArrayList<>();
 
     public MainService(
         GeneralDoorPriceCalculatorImplementation calculatorGeneralDoorPrice,
         TotalNumberOfDoorsCalculatorImplementation calculatorTotalNumberOfDoors,
-        DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation,
-        CurrentCommercialProposalInteractionWithDatabaseImplementation currentCommercialProposalInteractionWithDatabaseImplementation
+        DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation
     ) {
         this.generalDoorPriceCalculatorImplementation = calculatorGeneralDoorPrice;
         this.totalNumberOfDoorsCalculatorImplementation = calculatorTotalNumberOfDoors;
         this.doorPricesInteractionWithDatabaseImplementation = doorPricesInteractionWithDatabaseImplementation;
-        this.currentCommercialProposalInteractionWithDatabaseImplementation = currentCommercialProposalInteractionWithDatabaseImplementation;
+    }
+
+    public void setAllDoors(List<DoorPosition> listCurrentCommencialProposal) {
+        this.listCurrentCommencialProposal = listCurrentCommencialProposal;
     }
 
     public void saveNewDoorPosition(DoorPosition newDoorPosition) {
-        List<DoorPosition> listDoors = currentCommercialProposalInteractionWithDatabaseImplementation.getAllPositions();
+        List<DoorPosition> listDoors = listCurrentCommencialProposal;
         DoorPosition doorPosition;
         if (!listDoors.isEmpty())   {
             doorPosition = listDoors.get(listDoors.size() - 1);
             newDoorPosition.setId(doorPosition.getId() + 1);
-            currentCommercialProposalInteractionWithDatabaseImplementation.savePosition(newDoorPosition);
+            listCurrentCommencialProposal.add(newDoorPosition);
         }
         else    {
             newDoorPosition.setId(0);
-            currentCommercialProposalInteractionWithDatabaseImplementation.savePosition(newDoorPosition);
+            listCurrentCommencialProposal.add(newDoorPosition);
         }
     }
 
     public void deleteDoorPosition(DoorPosition doorPosition) {
-        if (doorPosition != null)
-            currentCommercialProposalInteractionWithDatabaseImplementation.deletePosition(doorPosition);
+        if (doorPosition != null) {
+            listCurrentCommencialProposal.remove(doorPosition);
+            DoorPosition bufDoorPos;
+            for (int i = 0; i < listCurrentCommencialProposal.size(); i++) {
+                bufDoorPos = listCurrentCommencialProposal.get(i);
+                bufDoorPos.setId(i);
+                listCurrentCommencialProposal.set(i, bufDoorPos);
+            }
+        }
     }
 
     public DoorPosition getDoorPositionById(Integer id) {
         if (id != null) {
-            return  currentCommercialProposalInteractionWithDatabaseImplementation.getPositionById(id);
+            return listCurrentCommencialProposal.get(id);
         }
         return null;
     }
 
     public List<DoorPosition> getAllDoors() {
-        return currentCommercialProposalInteractionWithDatabaseImplementation.getAllPositions();
+        return listCurrentCommencialProposal;
     }
+
+//    public void setAllDoors(List<DoorPosition> doorPositionList)    {
+//        listCurrentCommencialProposal = doorPositionList;
+//    }
 
     public void setDoorPrice(
         Integer id,
@@ -132,10 +146,10 @@ public class MainService implements MainServiceInterface {
     }
 
     public long getTotalNumberOfDoors() {
-        return totalNumberOfDoorsCalculatorImplementation.calculateTotalNumberOfDoors(currentCommercialProposalInteractionWithDatabaseImplementation.getAllPositions());
+        return totalNumberOfDoorsCalculatorImplementation.calculateTotalNumberOfDoors(this.getAllDoors());
     }
 
     public long getGeneralDoorPrice() {
-        return generalDoorPriceCalculatorImplementation.calculateTotalPriceOfDoors(currentCommercialProposalInteractionWithDatabaseImplementation.getAllPositions());
+        return generalDoorPriceCalculatorImplementation.calculateTotalPriceOfDoors(this.getAllDoors());
     }
 }

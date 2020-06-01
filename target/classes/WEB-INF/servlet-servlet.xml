@@ -30,14 +30,9 @@
           class="su.myspringwebapps.calculators.TotalNumberOfDoorsCalculatorImplementation">
     </bean>
 
-    <!-- Настройки (цена и надбавка за количество), в будущем поместить в MySQL -->
+    <!-- Настройки (цена и надбавка за количество) -->
     <bean id="pricesrepository"
           class="su.myspringwebapps.repositories.DoorPricesInteractionWithDatabaseImplementation">
-    </bean>
-
-    <!-- Текущее коммерческое предложение, в будущем также поместить в MySQL -->
-    <bean id="curcommproprepository"
-          class="su.myspringwebapps.repositories.CurrentCommercialProposalInteractionWithDatabaseImplementation">
     </bean>
 
     <!-- Главный сервис программы -->
@@ -46,7 +41,6 @@
         <constructor-arg ref="calculatorgeneraldoorprice"/>
         <constructor-arg ref="calculatortotaldoornumber"/>
         <constructor-arg ref="pricesrepository"/>
-        <constructor-arg ref="curcommproprepository"/>
     </bean>
 
     <!-- Связь с базой данных -->

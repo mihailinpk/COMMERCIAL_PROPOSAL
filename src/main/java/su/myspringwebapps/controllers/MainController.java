@@ -1,16 +1,14 @@
 package su.myspringwebapps.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import su.myspringwebapps.calculators.DoorPriceCalculatorImplementation;
 import su.myspringwebapps.points.DoorPositionEntity;
@@ -19,15 +17,18 @@ import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
 
 @Controller
+@SessionAttributes(value = "doors")
 public class MainController {
 
     static private ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-servlet.xml");
     static private MainService mainService = (MainService) context.getBean("mainservice");
     static private DoorPriceCalculatorImplementation doorPriceCalculatorImplementation = (DoorPriceCalculatorImplementation) context.getBean("calculatordoorprice");
+    static private List<DoorPosition> doors = new ArrayList<>();
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String getIndex(Model model)    {
-        List<DoorPosition> doors = mainService.getAllDoors();
+        mainService.setAllDoors(doors);
+        doors = mainService.getAllDoors();
         model.addAttribute("listCurrentCommercialProposal", doors);
         model.addAttribute("totalNumberOfDoors", mainService.getTotalNumberOfDoors());
         model.addAttribute("generalDoorPrice", mainService.getGeneralDoorPrice());

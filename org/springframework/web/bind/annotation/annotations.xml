@@ -1,0 +1,8 @@
+<root>
+    <item name='org.springframework.web.bind.annotation.SessionAttribute'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+    <item name='org.springframework.web.bind.annotation.SessionAttributes'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

@@ -16,8 +16,6 @@ import su.myspringwebapps.sevices.MainService;
 import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
 
-//Проба файла .gitignore
-
 @Controller
 @SessionAttributes(types = ArrayList.class)
 public class MainController {

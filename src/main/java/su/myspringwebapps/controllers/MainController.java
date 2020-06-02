@@ -17,22 +17,32 @@ import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
 
 @Controller
-@SessionAttributes(value = "doors")
+@SessionAttributes(types = ArrayList.class)
 public class MainController {
 
     static private ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-servlet.xml");
     static private MainService mainService = (MainService) context.getBean("mainservice");
     static private DoorPriceCalculatorImplementation doorPriceCalculatorImplementation = (DoorPriceCalculatorImplementation) context.getBean("calculatordoorprice");
-    static private List<DoorPosition> doors = new ArrayList<>();
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String start(Model model)    {
+        model.addAttribute(new ArrayList<DoorPosition>());
+        return "redirect:/";
+    }
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-    public String getIndex(Model model)    {
+    public String getIndex(Model model, @ModelAttribute ArrayList<DoorPosition> doors)    {
         mainService.setAllDoors(doors);
-        doors = mainService.getAllDoors();
+        doors = (ArrayList<DoorPosition>) mainService.getAllDoors();
         model.addAttribute("listCurrentCommercialProposal", doors);
         model.addAttribute("totalNumberOfDoors", mainService.getTotalNumberOfDoors());
         model.addAttribute("generalDoorPrice", mainService.getGeneralDoorPrice());
         return "index";
+    }
+
+    @ModelAttribute
+    public List<DoorPosition> createDoorPositionList()  {
+        return new ArrayList<>();
     }
 
     @RequestMapping("/addposition")

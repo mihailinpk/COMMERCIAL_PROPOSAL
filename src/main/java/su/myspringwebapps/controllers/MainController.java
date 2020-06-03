@@ -69,9 +69,9 @@ public class MainController {
 
     }
 
-    @RequestMapping(value = "delete/{id}", method = RequestMethod.GET)
-    public String deleteDoor(@PathVariable Integer id)  {
-        DoorPosition doorPosition = mainService.getDoorPositionById(id);
+    @RequestMapping(value = "delete/", method = RequestMethod.POST)
+    public String deleteDoor(@RequestParam(value = "id") String stringID)  {
+        DoorPosition doorPosition = mainService.getDoorPositionById(Integer.parseInt(stringID));
         mainService.deleteDoorPosition(doorPosition);
         return "redirect:/index";
     }

@@ -69,6 +69,26 @@
             background: rgb(152,15,0);
         }
     </style>
+    <script type="text/javascript">
+        function postToUrl(path, params, method) {
+
+            method = method || "post";
+            var form = document.createElement("form");
+            form.setAttribute("method", method);
+            form.setAttribute("action", path);
+            for(var key in params) {
+                var hiddenField = document.createElement("input");
+                hiddenField.setAttribute("type", "hidden");
+                hiddenField.setAttribute("name", key);
+                hiddenField.setAttribute("value", params[key]);
+
+                form.appendChild(hiddenField);
+            }
+            document.body.appendChild(form);
+            form.submit();
+
+        }
+    </script>
 </head>
 <body>
 <table class="table_price" align="center" width="100%">
@@ -106,7 +126,7 @@
             <td>${doorposition.twoDoorLeafs}</td>
             <td>${doorposition.sum}</td>
             <td>${doorposition.totalPrice}</td>
-            <td><a href="delete/${doorposition.id}">Удалить</a></td>
+            <td><a href="#" onclick="postToUrl('delete/', {'id':'${doorposition.id}'}, 'POST');">Удалить</a></td>
         </tr>
     </c:forEach>
     <tr>

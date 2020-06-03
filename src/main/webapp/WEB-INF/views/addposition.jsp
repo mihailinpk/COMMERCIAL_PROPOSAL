@@ -120,7 +120,7 @@
     </script>
 </head>
 <body>
-    <form name="addingform" action="/COMMERCIAL_PROPOSAL_war_exploded/adding" method="GET">
+    <form name="addingform" action="/COMMERCIAL_PROPOSAL_war_exploded/adding" method="POST">
         <input type="hidden" id="jsondoorposition" name="jsondoorposition">
         <table class="table_price" align="center" width="100%">
             <caption>Добавить новую позицию в коммерческое предложение</caption>

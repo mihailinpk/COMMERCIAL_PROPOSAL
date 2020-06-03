@@ -68,10 +68,6 @@ public class MainService implements MainServiceInterface {
         return listCurrentCommencialProposal;
     }
 
-//    public void setAllDoors(List<DoorPosition> doorPositionList)    {
-//        listCurrentCommencialProposal = doorPositionList;
-//    }
-
     public void setDoorPrice(
         Integer id,
         Integer priceLeafReech,

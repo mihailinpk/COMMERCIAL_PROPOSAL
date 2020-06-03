@@ -50,7 +50,7 @@ public class MainController {
         return "addposition";
     }
 
-    @RequestMapping(value = "/adding", method = RequestMethod.GET)
+    @RequestMapping(value = "/adding", method = RequestMethod.POST)
     public String addingPosition(@RequestParam(value = "jsondoorposition") String jsonDoorPosition) throws JsonProcessingException {
 
         DoorPositionEntity newDoorPositionEntity = new DoorPositionEntity();

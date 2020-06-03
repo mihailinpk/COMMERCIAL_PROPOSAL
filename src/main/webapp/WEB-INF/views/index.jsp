@@ -127,7 +127,6 @@
         <th></th>
     </tr>
 </table>
-<%--<form modelAttribute="doors" action="/index" method="get"></form>--%>
 <a href="settings" class="button">На экран настроек</a>
 <a href="addposition" class="button">Добавить позицию</a>
 </body>

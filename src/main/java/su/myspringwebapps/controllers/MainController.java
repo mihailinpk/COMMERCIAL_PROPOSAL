@@ -20,9 +20,9 @@ import su.myspringwebapps.points.DoorPrice;
 @SessionAttributes(types = ArrayList.class)
 public class MainController {
 
-    static private ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-servlet.xml");
-    static private MainService mainService = (MainService) context.getBean("mainservice");
-    static private DoorPriceCalculatorImplementation doorPriceCalculatorImplementation = (DoorPriceCalculatorImplementation) context.getBean("calculatordoorprice");
+    private static ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-servlet.xml");
+    private static MainService mainService = (MainService) context.getBean("mainservice");
+    private static DoorPriceCalculatorImplementation doorPriceCalculatorImplementation = (DoorPriceCalculatorImplementation) context.getBean("calculatordoorprice");
 
     @RequestMapping(method = RequestMethod.GET)
     public String start(Model model)    {
@@ -32,11 +32,8 @@ public class MainController {
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String getIndex(Model model, @ModelAttribute ArrayList<DoorPosition> doors)    {
-        mainService.setAllDoors(doors);
-        doors = (ArrayList<DoorPosition>) mainService.getAllDoors();
-        model.addAttribute("listCurrentCommercialProposal", doors);
-        model.addAttribute("totalNumberOfDoors", mainService.getTotalNumberOfDoors());
-        model.addAttribute("generalDoorPrice", mainService.getGeneralDoorPrice());
+        model.addAttribute("totalNumberOfDoors", mainService.getTotalNumberOfDoors(doors));
+        model.addAttribute("generalDoorPrice", mainService.getGeneralDoorPrice(doors));
         return "index";
     }
 
@@ -51,29 +48,40 @@ public class MainController {
     }
 
     @RequestMapping(value = "/adding", method = RequestMethod.POST)
-    public String addingPosition(@RequestParam(value = "jsondoorposition") String jsonDoorPosition) throws JsonProcessingException {
+    public String addingPosition(
+        @RequestParam(value = "jsondoorposition") String jsonDoorPosition,
+        Model model,
+        @ModelAttribute ArrayList<DoorPosition> doors
+    ) throws JsonProcessingException {
 
         DoorPositionEntity newDoorPositionEntity = new DoorPositionEntity();
         newDoorPositionEntity.fromModel(jsonDoorPosition);
 
         newDoorPositionEntity.setTotalPrice(
-                doorPriceCalculatorImplementation.calculatePrice(newDoorPositionEntity,
-                    mainService.getDoorPriceById(0),
-                    mainService.getTotalNumberOfDoors())
+            doorPriceCalculatorImplementation.calculatePrice(newDoorPositionEntity,
+            mainService.getDoorPriceById(0),
+            mainService.getTotalNumberOfDoors(doors))
 
         );
 
-        mainService.saveNewDoorPosition(newDoorPositionEntity);
+        model.addAttribute("listCurrentCommercialProposal", mainService.saveNewDoorPosition(newDoorPositionEntity, doors));
 
         return "redirect:/";
 
     }
 
     @RequestMapping(value = "delete/", method = RequestMethod.POST)
-    public String deleteDoor(@RequestParam(value = "id") String stringID)  {
-        DoorPosition doorPosition = mainService.getDoorPositionById(Integer.parseInt(stringID));
-        mainService.deleteDoorPosition(doorPosition);
+    public String deleteDoor(
+        @RequestParam(value = "id") String stringID,
+        Model model,
+        @ModelAttribute ArrayList<DoorPosition> doors
+    )  {
+
+        DoorPosition doorPosition = mainService.getDoorPositionById(Integer.parseInt(stringID), doors);
+        model.addAttribute("listCurrentCommercialProposal", mainService.deleteDoorPosition(doorPosition, doors));
+
         return "redirect:/index";
+
     }
 
     @RequestMapping("/settings")

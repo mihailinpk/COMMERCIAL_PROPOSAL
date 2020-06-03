@@ -6,7 +6,6 @@ import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
 import su.myspringwebapps.repositories.DoorPricesInteractionWithDatabaseImplementation;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainService implements MainServiceInterface {
@@ -14,8 +13,6 @@ public class MainService implements MainServiceInterface {
     private GeneralDoorPriceCalculatorImplementation generalDoorPriceCalculatorImplementation;
     private TotalNumberOfDoorsCalculatorImplementation totalNumberOfDoorsCalculatorImplementation;
     private DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation;
-
-    private static List<DoorPosition> listCurrentCommencialProposal = new ArrayList<>();
 
     public MainService(
         GeneralDoorPriceCalculatorImplementation calculatorGeneralDoorPrice,
@@ -27,45 +24,39 @@ public class MainService implements MainServiceInterface {
         this.doorPricesInteractionWithDatabaseImplementation = doorPricesInteractionWithDatabaseImplementation;
     }
 
-    public void setAllDoors(List<DoorPosition> listCurrentCommencialProposal) {
-        this.listCurrentCommencialProposal = listCurrentCommencialProposal;
-    }
-
-    public void saveNewDoorPosition(DoorPosition newDoorPosition) {
-        List<DoorPosition> listDoors = listCurrentCommencialProposal;
+    public List<DoorPosition> saveNewDoorPosition(DoorPosition newDoorPosition, List<DoorPosition> currentListDoors) {
+        List<DoorPosition> tempListDoors = currentListDoors;
         DoorPosition doorPosition;
-        if (!listDoors.isEmpty())   {
-            doorPosition = listDoors.get(listDoors.size() - 1);
+        if (!tempListDoors.isEmpty())   {
+            doorPosition = tempListDoors.get(tempListDoors.size() - 1);
             newDoorPosition.setId(doorPosition.getId() + 1);
-            listCurrentCommencialProposal.add(newDoorPosition);
+            currentListDoors.add(newDoorPosition);
         }
         else    {
             newDoorPosition.setId(0);
-            listCurrentCommencialProposal.add(newDoorPosition);
+            currentListDoors.add(newDoorPosition);
         }
+        return currentListDoors;
     }
 
-    public void deleteDoorPosition(DoorPosition doorPosition) {
+    public List<DoorPosition> deleteDoorPosition(DoorPosition doorPosition, List<DoorPosition> currentListDoors) {
         if (doorPosition != null) {
-            listCurrentCommencialProposal.remove(doorPosition);
+            currentListDoors.remove(doorPosition);
             DoorPosition bufDoorPos;
-            for (int i = 0; i < listCurrentCommencialProposal.size(); i++) {
-                bufDoorPos = listCurrentCommencialProposal.get(i);
+            for (int i = 0; i < currentListDoors.size(); i++) {
+                bufDoorPos = currentListDoors.get(i);
                 bufDoorPos.setId(i);
-                listCurrentCommencialProposal.set(i, bufDoorPos);
+                currentListDoors.set(i, bufDoorPos);
             }
         }
+        return currentListDoors;
     }
 
-    public DoorPosition getDoorPositionById(Integer id) {
+    public DoorPosition getDoorPositionById(Integer id, List<DoorPosition> currentListDoors) {
         if (id != null) {
-            return listCurrentCommencialProposal.get(id);
+            return currentListDoors.get(id);
         }
         return null;
-    }
-
-    public List<DoorPosition> getAllDoors() {
-        return listCurrentCommencialProposal;
     }
 
     public void setDoorPrice(
@@ -141,11 +132,11 @@ public class MainService implements MainServiceInterface {
         return null;
     }
 
-    public long getTotalNumberOfDoors() {
-        return totalNumberOfDoorsCalculatorImplementation.calculateTotalNumberOfDoors(this.getAllDoors());
+    public long getTotalNumberOfDoors(List<DoorPosition> currentListDoors) {
+        return totalNumberOfDoorsCalculatorImplementation.calculateTotalNumberOfDoors(currentListDoors);
     }
 
-    public long getGeneralDoorPrice() {
-        return generalDoorPriceCalculatorImplementation.calculateTotalPriceOfDoors(this.getAllDoors());
+    public long getGeneralDoorPrice(List<DoorPosition> currentListDoors) {
+        return generalDoorPriceCalculatorImplementation.calculateTotalPriceOfDoors(currentListDoors);
     }
 }

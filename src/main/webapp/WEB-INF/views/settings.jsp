@@ -5,122 +5,121 @@
 <head>
     <meta charset="UTF-8">
     <title>Настройки</title>
+    <style type="text/css">
+        a.button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            user-select: none;
+            background: #F79361;
+            padding: .3em 0.5em;
+            outline: none;
+            margin: 10px 2px 0px;
+            float: right;
+        }
+        a.button:hover { background: rgb(232,95,76); }
+        a.button:active { background: rgb(152,15,0); }
+        input.button {
+            color: #fff;
+            text-decoration: none;
+            font-size: 20px;
+            user-select: none;
+            background: #F79361;
+            padding: .3em 0.5em;
+            outline: none;
+            margin: 10px 2px 0px;
+            float: bottom;
+        }
+        input.button:hover { background: rgb(232,95,76); }
+        input.button:active { background: rgb(152,15,0); }
+
+        .table_price {
+            border-collapse: collapse;
+            border-left: 3px solid #F79361;
+            border-right: 3px solid #F79361;
+            border-bottom: 3px solid #F79361;
+            font-family: "Lucida Grande", sans-serif;
+            margin: 0px 0px 0px;
+        }
+        .table_price caption {
+            background: #F79361;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 10px;
+            box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+            color: white;
+            font-family: "Roboto Slab",serif;
+            font-style: normal;
+            font-size: 26px;
+            text-align: center;
+            margin: 0px 0px 0px;
+        }
+        .table_price td, .table_price th {
+            padding: 9px;
+        }
+        .table_price th {
+            text-align: left;
+            font-size: 14px;
+        }
+        .table_price td:last-of-type {
+            text-align: center;
+        }
+        .table_price a {
+            color: #fff;
+            text-decoration: none;
+            user-select: none;
+            background: #F79361;
+            padding: .3em 0.5em;
+            outline: none;
+        }
+        .table_price a:hover { background: rgb(232,95,76);
+        }
+        .table_price_two {
+            border-collapse: collapse;
+            border-left: 3px solid #F79361;
+            border-right: 3px solid #F79361;
+            border-bottom: 3px solid #F79361;
+            font-family: "Lucida Grande", sans-serif;
+            margin: 0px 0px 0px;
+        }
+        .table_price_two caption {
+            background: #F79361;
+            border-top-left-radius: 0px;
+            border-top-right-radius: 0px;
+            padding: 10px;
+            box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+            color: white;
+            font-family: "Roboto Slab",serif;
+            font-style: normal;
+            font-size: 26px;
+            text-align: center;
+            margin: 0px 0px 0px;
+        }
+        .table_price_two td, .table_price th {
+            padding: 9px;
+        }
+        .table_price_two th {
+            text-align: left;
+            font-size: 14px;
+        }
+        .table_price_two td:last-of-type {
+            text-align: center;
+        }
+        .table_price_two a {
+            color: #fff;
+            text-decoration: none;
+            user-select: none;
+            background: #F79361;
+            padding: .3em 0.5em;
+            outline: none;
+        }
+        .table_price_two a:hover { background: rgb(232,95,76);
+        }
+        a:active {
+            background: rgb(152,15,0);
+        }
+    </style>
 </head>
-<style type="text/css">
-    a.button {
-        color: #fff;
-        text-decoration: none;
-        font-size: 20px;
-        user-select: none;
-        background: #F79361;
-        padding: .3em 0.5em;
-        outline: none;
-        margin: 10px 2px 0px;
-        float: right;
-    }
-    a.button:hover { background: rgb(232,95,76); }
-    a.button:active { background: rgb(152,15,0); }
-    input.button {
-        color: #fff;
-        text-decoration: none;
-        font-size: 20px;
-        user-select: none;
-        background: #F79361;
-        padding: .3em 0.5em;
-        outline: none;
-        margin: 10px 2px 0px;
-        float: bottom;
-    }
-    input.button:hover { background: rgb(232,95,76); }
-    input.button:active { background: rgb(152,15,0); }
-</style>
-<style type="text/css">
-    .table_price {
-        border-collapse: collapse;
-        border-left: 3px solid #F79361;
-        border-right: 3px solid #F79361;
-        border-bottom: 3px solid #F79361;
-        font-family: "Lucida Grande", sans-serif;
-        margin: 0px 0px 0px;
-    }
-    .table_price caption {
-        background: #F79361;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
-        padding: 10px;
-        box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
-        color: white;
-        font-family: "Roboto Slab",serif;
-        font-style: normal;
-        font-size: 26px;
-        text-align: center;
-        margin: 0px 0px 0px;
-    }
-    .table_price td, .table_price th {
-        padding: 9px;
-    }
-    .table_price th {
-        text-align: left;
-        font-size: 14px;
-    }
-    .table_price td:last-of-type {
-        text-align: center;
-    }
-    .table_price a {
-        color: #fff;
-        text-decoration: none;
-        user-select: none;
-        background: #F79361;
-        padding: .3em 0.5em;
-        outline: none;
-    }
-    .table_price a:hover { background: rgb(232,95,76);
-    }
-    .table_price_two {
-        border-collapse: collapse;
-        border-left: 3px solid #F79361;
-        border-right: 3px solid #F79361;
-        border-bottom: 3px solid #F79361;
-        font-family: "Lucida Grande", sans-serif;
-        margin: 0px 0px 0px;
-    }
-    .table_price_two caption {
-        background: #F79361;
-        border-top-left-radius: 0px;
-        border-top-right-radius: 0px;
-        padding: 10px;
-        box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
-        color: white;
-        font-family: "Roboto Slab",serif;
-        font-style: normal;
-        font-size: 26px;
-        text-align: center;
-        margin: 0px 0px 0px;
-    }
-    .table_price_two td, .table_price th {
-        padding: 9px;
-    }
-    .table_price_two th {
-        text-align: left;
-        font-size: 14px;
-    }
-    .table_price_two td:last-of-type {
-        text-align: center;
-    }
-    .table_price_two a {
-        color: #fff;
-        text-decoration: none;
-        user-select: none;
-        background: #F79361;
-        padding: .3em 0.5em;
-        outline: none;
-    }
-    .table_price_two a:hover { background: rgb(232,95,76);
-    }
-    a:active {
-        background: rgb(152,15,0);
-    }
-</style>
 <body>
 <form action="/COMMERCIAL_PROPOSAL_war_exploded/setsettings" method="POST">
     <table class="table_price" align="center" width="100%">

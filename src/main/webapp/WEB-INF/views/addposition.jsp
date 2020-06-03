@@ -4,120 +4,79 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Добавить позицию</title>
     <style type="text/css">
-        a.button {
-            color: #fff;
-            text-decoration: none;
-            font-size: 20px;
-            user-select: none;
-            background: #F79361;
-            padding: .3em 0.5em;
-            outline: none;
-            margin: 10px 2px 0px;
-            float: right;
-        }
-        a.button:hover { background: rgb(232,95,76); }
-        a.button:active { background: rgb(152,15,0); }
-        input.button {
-            color: #fff;
-            text-decoration: none;
-            font-size: 20px;
-            user-select: none;
-            background: #F79361;
-            padding: .3em 0.5em;
-            outline: none;
-            margin: 10px 2px 0px;
-            float: bottom;
-        }
-        input.button:hover { background: rgb(232,95,76); }
-        input.button:active { background: rgb(152,15,0); }
-    </style>
-    <style type="text/css">
-        .table_price {
-            border-collapse: collapse;
-            border-left: 3px solid #F79361;
-            border-right: 3px solid #F79361;
-            border-bottom: 3px solid #F79361;
-            font-family: "Lucida Grande", sans-serif;
-            margin: 0px 0px 0px;
-        }
-        .table_price caption {
-            background: #F79361;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            padding: 10px;
-            box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
-            color: white;
-            font-family: "Roboto Slab",serif;
-            font-style: normal;
-            font-size: 26px;
-            text-align: center;
-            margin: 0px 0px 0px;
-        }
-        .table_price td, .table_price th {
-            padding: 9px;
-        }
-        .table_price th {
-            text-align: left;
-            font-size: 14px;
-        }
-        .table_price td:last-of-type {
-            text-align: center;
-        }
-        .table_price a {
-            color: #fff;
-            text-decoration: none;
-            user-select: none;
-            background: #F79361;
-            padding: .3em 0.5em;
-            outline: none;
-        }
-        .table_price a:hover { background: rgb(232,95,76);
-        }
-        a:active {
-            background: rgb(152,15,0);
-        }
-    </style>
-    <script type="text/javascript">
-        function createStringJson() {
-
-            var width = document.forms["addingform"]["width"].value;
-            var height = document.forms["addingform"]["height"].value;
-            var type = document.forms["addingform"]["type"].value;
-            var open = document.forms["addingform"]["open"].value;
-            var doorstep = document.forms["addingform"]["doorstep"].value;
-            var assembl = document.forms["addingform"]["assembl"].value;
-            var fill = document.forms["addingform"]["fill"].value;
-            var hole = document.forms["addingform"]["hole"].value;
-            var fitt = document.forms["addingform"]["fitt"].value;
-            var paint = document.forms["addingform"]["paint"].value;
-            var doortrim = document.forms["addingform"]["doortrim"].value;
-            var twodoorleafs = document.forms["addingform"]["twodoorleafs"].value;
-            var sumpos = document.forms["addingform"]["sumpos"].value;
-
-            var jsonObject = {
-                "width": width,
-                "height": height,
-                "type": type,
-                "open": open,
-                "doorstep": doorstep,
-                "assembl": assembl,
-                "fill": fill,
-                "hole": hole,
-                "fitt": fitt,
-                "paint": paint,
-                "doortrim": doortrim,
-                "twodoorleafs": twodoorleafs,
-                "sumpos": sumpos
+            a.button {
+                color: #fff;
+                text-decoration: none;
+                font-size: 20px;
+                user-select: none;
+                background: #F79361;
+                padding: .3em 0.5em;
+                outline: none;
+                margin: 10px 2px 0px;
+                float: right;
             }
+            a.button:hover { background: rgb(232,95,76); }
+            a.button:active { background: rgb(152,15,0); }
+            input.button {
+                color: #fff;
+                text-decoration: none;
+                font-size: 20px;
+                user-select: none;
+                background: #F79361;
+                padding: .3em 0.5em;
+                outline: none;
+                margin: 10px 2px 0px;
+                float: bottom;
+            }
+            input.button:hover { background: rgb(232,95,76); }
+            input.button:active { background: rgb(152,15,0); }
 
-            var jsonString = JSON.stringify(jsonObject);
-
-            document.getElementById('jsondoorposition').value = jsonString;
-
-        }
-    </script>
+            .table_price {
+                border-collapse: collapse;
+                border-left: 3px solid #F79361;
+                border-right: 3px solid #F79361;
+                border-bottom: 3px solid #F79361;
+                font-family: "Lucida Grande", sans-serif;
+                margin: 0px 0px 0px;
+            }
+            .table_price caption {
+                background: #F79361;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
+                padding: 10px;
+                box-shadow: 0 2px  4px 0 rgba(0,0,0,.3);
+                color: white;
+                font-family: "Roboto Slab",serif;
+                font-style: normal;
+                font-size: 26px;
+                text-align: center;
+                margin: 0px 0px 0px;
+            }
+            .table_price td, .table_price th {
+                padding: 9px;
+            }
+            .table_price th {
+                text-align: left;
+                font-size: 14px;
+            }
+            .table_price td:last-of-type {
+                text-align: center;
+            }
+            .table_price a {
+                color: #fff;
+                text-decoration: none;
+                user-select: none;
+                background: #F79361;
+                padding: .3em 0.5em;
+                outline: none;
+            }
+            .table_price a:hover { background: rgb(232,95,76);
+            }
+            a:active {
+                background: rgb(152,15,0);
+            }
+    </style>
 </head>
 <body>
     <form name="addingform" action="/COMMERCIAL_PROPOSAL_war_exploded/adding" method="POST">
@@ -229,3 +188,42 @@
     </form>
 </body>
 </html>
+<script type="text/javascript">
+    function createStringJson() {
+
+        var width = document.forms["addingform"]["width"].value;
+        var height = document.forms["addingform"]["height"].value;
+        var type = document.forms["addingform"]["type"].value;
+        var open = document.forms["addingform"]["open"].value;
+        var doorstep = document.forms["addingform"]["doorstep"].value;
+        var assembl = document.forms["addingform"]["assembl"].value;
+        var fill = document.forms["addingform"]["fill"].value;
+        var hole = document.forms["addingform"]["hole"].value;
+        var fitt = document.forms["addingform"]["fitt"].value;
+        var paint = document.forms["addingform"]["paint"].value;
+        var doortrim = document.forms["addingform"]["doortrim"].value;
+        var twodoorleafs = document.forms["addingform"]["twodoorleafs"].value;
+        var sumpos = document.forms["addingform"]["sumpos"].value;
+
+        var jsonObject = {
+            "width": width,
+            "height": height,
+            "type": type,
+            "open": open,
+            "doorstep": doorstep,
+            "assembl": assembl,
+            "fill": fill,
+            "hole": hole,
+            "fitt": fitt,
+            "paint": paint,
+            "doortrim": doortrim,
+            "twodoorleafs": twodoorleafs,
+            "sumpos": sumpos
+        }
+
+        var jsonString = JSON.stringify(jsonObject);
+
+        document.getElementById('jsondoorposition').value = jsonString;
+
+    }
+</script>

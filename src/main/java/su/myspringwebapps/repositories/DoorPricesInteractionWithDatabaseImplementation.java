@@ -1,9 +1,9 @@
 package su.myspringwebapps.repositories;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
+import org.springframework.stereotype.Service;
 import su.myspringwebapps.points.DoorPrice;
 
 import java.sql.ResultSet;
@@ -11,10 +11,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class DoorPricesInteractionWithDatabaseImplementation implements DoorPricesInteractionWithDatabase {
 
-    private static ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-servlet.xml");
-    private static SimpleJdbcTemplate jdbcTemplate = (SimpleJdbcTemplate) context.getBean("jdbcTemplate");
+    @Autowired
+    private SimpleJdbcTemplate jdbcTemplate;
+
     private static List<DoorPrice> listDoorPrices = new ArrayList<DoorPrice>();
 
     private void updateDB() {

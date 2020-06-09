@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
@@ -20,9 +19,10 @@ import su.myspringwebapps.points.DoorPrice;
 @SessionAttributes(types = ArrayList.class)
 public class MainController {
 
-    private static ApplicationContext context = new ClassPathXmlApplicationContext("WEB-INF/servlet-servlet.xml");
-    private static MainService mainService = (MainService) context.getBean("mainservice");
-    private static DoorPriceCalculatorImplementation doorPriceCalculatorImplementation = (DoorPriceCalculatorImplementation) context.getBean("calculatordoorprice");
+    @Autowired
+    private MainService mainService;
+    @Autowired
+    private DoorPriceCalculatorImplementation doorPriceCalculatorImplementation;
 
     @RequestMapping(method = RequestMethod.GET)
     public String start(Model model)    {

@@ -1,5 +1,7 @@
 package su.myspringwebapps.sevices;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import su.myspringwebapps.calculators.GeneralDoorPriceCalculatorImplementation;
 import su.myspringwebapps.calculators.TotalNumberOfDoorsCalculatorImplementation;
 import su.myspringwebapps.points.DoorPosition;
@@ -8,21 +10,15 @@ import su.myspringwebapps.repositories.DoorPricesInteractionWithDatabaseImplemen
 
 import java.util.List;
 
+@Service
 public class MainService implements MainServiceInterface {
 
+    @Autowired
     private GeneralDoorPriceCalculatorImplementation generalDoorPriceCalculatorImplementation;
+    @Autowired
     private TotalNumberOfDoorsCalculatorImplementation totalNumberOfDoorsCalculatorImplementation;
+    @Autowired
     private DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation;
-
-    public MainService(
-        GeneralDoorPriceCalculatorImplementation calculatorGeneralDoorPrice,
-        TotalNumberOfDoorsCalculatorImplementation calculatorTotalNumberOfDoors,
-        DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation
-    ) {
-        this.generalDoorPriceCalculatorImplementation = calculatorGeneralDoorPrice;
-        this.totalNumberOfDoorsCalculatorImplementation = calculatorTotalNumberOfDoors;
-        this.doorPricesInteractionWithDatabaseImplementation = doorPricesInteractionWithDatabaseImplementation;
-    }
 
     public List<DoorPosition> saveNewDoorPosition(DoorPosition newDoorPosition, List<DoorPosition> currentListDoors) {
         List<DoorPosition> tempListDoors = currentListDoors;

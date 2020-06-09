@@ -1,8 +1,10 @@
 package su.myspringwebapps.calculators;
 
+import org.springframework.stereotype.Service;
 import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
 
+@Service
 public class DoorPriceCalculatorImplementation implements DoorPriceCalculator {
 
     static int number_of_10_pieces = 10;

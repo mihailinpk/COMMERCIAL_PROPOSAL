@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
-import su.myspringwebapps.sevices.MainService;
+import su.myspringwebapps.sevices.DoorsService;
 import su.myspringwebapps.points.DoorPosition;
 
 @Controller
@@ -17,7 +17,7 @@ import su.myspringwebapps.points.DoorPosition;
 public class DoorsController {
 
     @Autowired
-    private MainService mainService;
+    private DoorsService mainService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String start(Model model)    {

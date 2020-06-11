@@ -12,7 +12,7 @@ import su.myspringwebapps.repositories.DoorPricesRepository;
 import java.util.List;
 
 @Service
-public class MainService implements IMainService {
+public class DoorsService implements IDoorsService {
 
     @Autowired
     private DoorPricesRepository doorPricesInteractionWithDatabase;

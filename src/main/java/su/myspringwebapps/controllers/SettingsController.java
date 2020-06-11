@@ -5,14 +5,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
-import su.myspringwebapps.sevices.MainService;
+import su.myspringwebapps.sevices.DoorsService;
 import su.myspringwebapps.points.DoorPrice;
 
 @Controller
 public class SettingsController {
 
     @Autowired
-    private MainService mainService;
+    private DoorsService mainService;
 
     @RequestMapping("/settings")
     public String getSettings(Model model) {

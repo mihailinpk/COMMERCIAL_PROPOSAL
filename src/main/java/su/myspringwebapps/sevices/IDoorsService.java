@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import su.myspringwebapps.points.DoorPosition;
 import java.util.List;
 
-public interface IMainService {
+public interface IDoorsService {
 
     List<DoorPosition> saveNewDoorPosition(String jsonDoorPosition, List<DoorPosition> currentListDoors) throws JsonProcessingException;
 

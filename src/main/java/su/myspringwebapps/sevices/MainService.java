@@ -1,41 +1,51 @@
 package su.myspringwebapps.sevices;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import su.myspringwebapps.calculators.GeneralDoorPriceCalculatorImplementation;
-import su.myspringwebapps.calculators.TotalNumberOfDoorsCalculatorImplementation;
+import su.myspringwebapps.calculators.DoorPriceCalculator;
 import su.myspringwebapps.points.DoorPosition;
+import su.myspringwebapps.points.DoorPositionEntity;
 import su.myspringwebapps.points.DoorPrice;
-import su.myspringwebapps.repositories.DoorPricesInteractionWithDatabaseImplementation;
+import su.myspringwebapps.repositories.DoorPricesRepository;
 
 import java.util.List;
 
 @Service
-public class MainService implements MainServiceInterface {
+public class MainService implements IMainService {
 
     @Autowired
-    private GeneralDoorPriceCalculatorImplementation generalDoorPriceCalculatorImplementation;
+    private DoorPricesRepository doorPricesInteractionWithDatabase;
     @Autowired
-    private TotalNumberOfDoorsCalculatorImplementation totalNumberOfDoorsCalculatorImplementation;
-    @Autowired
-    private DoorPricesInteractionWithDatabaseImplementation doorPricesInteractionWithDatabaseImplementation;
+    private DoorPriceCalculator doorPriceCalculator;
 
-    public List<DoorPosition> saveNewDoorPosition(DoorPosition newDoorPosition, List<DoorPosition> currentListDoors) {
+    public List<DoorPosition> saveNewDoorPosition(String jsonDoorPosition, List<DoorPosition> currentListDoors) throws JsonProcessingException {
+
+        DoorPositionEntity newDoorPositionEntity = new DoorPositionEntity().fromModel(jsonDoorPosition);
+
+        newDoorPositionEntity.setTotalPrice(
+            doorPriceCalculator.calculatePrice(newDoorPositionEntity,
+                getDoorPriceById(0),
+                getTotalNumberOfDoors(currentListDoors))
+        );
+
         List<DoorPosition> tempListDoors = currentListDoors;
         DoorPosition doorPosition;
         if (!tempListDoors.isEmpty())   {
             doorPosition = tempListDoors.get(tempListDoors.size() - 1);
-            newDoorPosition.setId(doorPosition.getId() + 1);
-            currentListDoors.add(newDoorPosition);
+            newDoorPositionEntity.setId(doorPosition.getId() + 1);
+            currentListDoors.add(newDoorPositionEntity);
         }
         else    {
-            newDoorPosition.setId(0);
-            currentListDoors.add(newDoorPosition);
+            newDoorPositionEntity.setId(0);
+            currentListDoors.add(newDoorPositionEntity);
         }
         return currentListDoors;
     }
 
-    public List<DoorPosition> deleteDoorPosition(DoorPosition doorPosition, List<DoorPosition> currentListDoors) {
+    public List<DoorPosition> deleteDoorPosition(Integer id, List<DoorPosition> currentListDoors) {
+
+        DoorPosition doorPosition = getDoorPositionById(id, currentListDoors);
         if (doorPosition != null) {
             currentListDoors.remove(doorPosition);
             DoorPosition bufDoorPos;
@@ -114,25 +124,25 @@ public class MainService implements MainServiceInterface {
         doorPrice.setSurchGenNumFr51to100(surchGenNumFr51to100);
         doorPrice.setSurchGenNumFr101to1000(surchGenNumFr101to1000);
         doorPrice.setSurchGenNum1000(surchGenNum1000);
-        doorPricesInteractionWithDatabaseImplementation.setDoorPrice(id, doorPrice);
+        doorPricesInteractionWithDatabase.setDoorPrice(id, doorPrice);
     }
 
     public DoorPrice getDefaultDoorPrice()  {
-        return doorPricesInteractionWithDatabaseImplementation.getDoorPriceById(0);
+        return doorPricesInteractionWithDatabase.getDoorPriceById(0);
     }
 
     public DoorPrice getDoorPriceById(Integer id)   {
         if (id != null) {
-            return doorPricesInteractionWithDatabaseImplementation.getDoorPriceById(id);
+            return doorPricesInteractionWithDatabase.getDoorPriceById(id);
         }
         return null;
     }
 
     public long getTotalNumberOfDoors(List<DoorPosition> currentListDoors) {
-        return totalNumberOfDoorsCalculatorImplementation.calculateTotalNumberOfDoors(currentListDoors);
+        return doorPriceCalculator.calculateTotalNumberOfDoors(currentListDoors);
     }
 
     public long getGeneralDoorPrice(List<DoorPosition> currentListDoors) {
-        return generalDoorPriceCalculatorImplementation.calculateTotalPriceOfDoors(currentListDoors);
+        return doorPriceCalculator.calculateTotalPriceOfDoors(currentListDoors);
     }
 }

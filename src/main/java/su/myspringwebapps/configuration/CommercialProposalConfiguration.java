@@ -9,16 +9,16 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
-@PropertySource("classpath:connect_parameters.properties")
+@PropertySource("classpath:config.properties")
 public class CommercialProposalConfiguration {
 
-    @Value("com.mysql.jdbc.Driver")
+    @Value("${database.driver_class_name}")
     private String driverClassName;
-    @Value("jdbc:mysql://localhost:3306/db_doors?serverTimezone=Europe/Moscow")
+    @Value("${database.url}")
     private String url;
-    @Value("${db_username}")
+    @Value("${database.username}")
     private String username;
-    @Value("${db_password}")
+    @Value("${database.password}")
     private String password;
 
     // Арбитр представлений

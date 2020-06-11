@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class DoorPricesInteractionWithDatabaseImplementation implements DoorPricesInteractionWithDatabase {
+public class DoorPricesRepository implements IDoorPricesRepository {
 
     @Autowired
     private SimpleJdbcTemplate jdbcTemplate;

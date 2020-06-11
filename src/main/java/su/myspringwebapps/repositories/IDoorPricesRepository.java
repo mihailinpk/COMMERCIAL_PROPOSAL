@@ -3,7 +3,7 @@ package su.myspringwebapps.repositories;
 import su.myspringwebapps.points.DoorPrice;
 import java.util.List;
 
-public interface DoorPricesInteractionWithDatabase {
+public interface IDoorPricesRepository {
 
     void saveDoorPrice(DoorPrice newDoorPrice);
 

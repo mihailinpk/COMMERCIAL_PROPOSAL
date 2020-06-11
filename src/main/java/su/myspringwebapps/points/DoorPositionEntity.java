@@ -6,7 +6,7 @@ import su.myspringwebapps.points.enums.*;
 
 public class DoorPositionEntity extends DoorPosition {
 
-    public void fromModel(String jsonDoorPosition) throws JsonProcessingException {
+    public DoorPositionEntity fromModel(String jsonDoorPosition) throws JsonProcessingException {
 
         DoorPositionFromModel doorPositionFromModel = new ObjectMapper().readValue(jsonDoorPosition, DoorPositionFromModel.class);
 
@@ -78,6 +78,8 @@ public class DoorPositionEntity extends DoorPosition {
         super.setFill(((doorPositionFromModel.getFill().equals("CELL")) ? "сотовое" : "реечное"));
         super.setHole(((doorPositionFromModel.getHole().equals("NO")) ? "нет" : "есть"));
         super.setSum(Integer.parseInt(doorPositionFromModel.getSumpos()));
+
+        return this;
 
     }
 

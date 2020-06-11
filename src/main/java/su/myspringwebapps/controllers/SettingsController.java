@@ -1,88 +1,18 @@
 package su.myspringwebapps.controllers;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
-import su.myspringwebapps.calculators.DoorPriceCalculatorImplementation;
-import su.myspringwebapps.points.DoorPositionEntity;
 import su.myspringwebapps.sevices.MainService;
-import su.myspringwebapps.points.DoorPosition;
 import su.myspringwebapps.points.DoorPrice;
 
 @Controller
-@SessionAttributes(types = ArrayList.class)
-public class MainController {
+public class SettingsController {
 
     @Autowired
     private MainService mainService;
-    @Autowired
-    private DoorPriceCalculatorImplementation doorPriceCalculatorImplementation;
-
-    @RequestMapping(method = RequestMethod.GET)
-    public String start(Model model)    {
-        model.addAttribute(new ArrayList<DoorPosition>());
-        return "redirect:/";
-    }
-
-    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-    public String getIndex(Model model, @ModelAttribute ArrayList<DoorPosition> doors)    {
-        model.addAttribute("totalNumberOfDoors", mainService.getTotalNumberOfDoors(doors));
-        model.addAttribute("generalDoorPrice", mainService.getGeneralDoorPrice(doors));
-        return "index";
-    }
-
-    @ModelAttribute
-    public List<DoorPosition> createDoorPositionList()  {
-        return new ArrayList<>();
-    }
-
-    @RequestMapping("/addposition")
-    public String getAddPosition()  {
-        return "addposition";
-    }
-
-    @RequestMapping(value = "/adding", method = RequestMethod.POST)
-    public String addingPosition(
-        @RequestParam(value = "jsondoorposition") String jsonDoorPosition,
-        Model model,
-        @ModelAttribute ArrayList<DoorPosition> doors
-    ) throws JsonProcessingException {
-
-        DoorPositionEntity newDoorPositionEntity = new DoorPositionEntity();
-        newDoorPositionEntity.fromModel(jsonDoorPosition);
-
-        newDoorPositionEntity.setTotalPrice(
-            doorPriceCalculatorImplementation.calculatePrice(newDoorPositionEntity,
-            mainService.getDoorPriceById(0),
-            mainService.getTotalNumberOfDoors(doors))
-
-        );
-
-        model.addAttribute("listCurrentCommercialProposal", mainService.saveNewDoorPosition(newDoorPositionEntity, doors));
-
-        return "redirect:/";
-
-    }
-
-    @RequestMapping(value = "delete/", method = RequestMethod.POST)
-    public String deleteDoor(
-        @RequestParam(value = "id") String stringID,
-        Model model,
-        @ModelAttribute ArrayList<DoorPosition> doors
-    )  {
-
-        DoorPosition doorPosition = mainService.getDoorPositionById(Integer.parseInt(stringID), doors);
-        model.addAttribute("listCurrentCommercialProposal", mainService.deleteDoorPosition(doorPosition, doors));
-
-        return "redirect:/index";
-
-    }
 
     @RequestMapping("/settings")
     public String getSettings(Model model) {

@@ -1,16 +1,28 @@
 package su.myspringwebapps.points;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import su.myspringwebapps.points.enums.*;
 
 public class DoorPositionEntity extends DoorPosition {
 
-    public DoorPositionEntity fromModel(String jsonDoorPosition) throws JsonProcessingException {
-
-        DoorPositionFromModel doorPositionFromModel = new ObjectMapper().readValue(jsonDoorPosition, DoorPositionFromModel.class);
-
-        switch (Type.valueOf(doorPositionFromModel.getType()).getType())    {
+    @JsonCreator
+    public DoorPositionEntity(
+        @JsonProperty("width") String widthFromModel,
+        @JsonProperty("height") String heightFromModel,
+        @JsonProperty("type") String typeFromModel,
+        @JsonProperty("open") String openFromModel,
+        @JsonProperty("doorstep") String doorstepFromModel,
+        @JsonProperty("assembl") String assemblFromModel,
+        @JsonProperty("fill") String fillFromModel,
+        @JsonProperty("hole") String holeFromModel,
+        @JsonProperty("fitt") String fittFromModel,
+        @JsonProperty("paint") String paintFromModel,
+        @JsonProperty("doortrim") String doortrimFromModel,
+        @JsonProperty("twodoorleafs") String twodoorleafsFromModel,
+        @JsonProperty("sumpos") String sumposFromModel
+    )   {
+        switch (Type.valueOf(typeFromModel).getType())    {
             case 1:
                 super.setType("ДГ");
                 break;
@@ -22,7 +34,7 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        switch (Mortise.valueOf(doorPositionFromModel.getFitt()).getMortise())    {
+        switch (Mortise.valueOf(fittFromModel).getMortise())    {
             case 1:
                 super.setFitt("нет");
                 break;
@@ -34,7 +46,7 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        switch (Paint.valueOf(doorPositionFromModel.getPaint()).getPaint())   {
+        switch (Paint.valueOf(paintFromModel).getPaint())   {
             case 1:
                 super.setPaint("нет");
                 break;
@@ -46,7 +58,7 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        switch (DoorTrim.valueOf(doorPositionFromModel.getDoortrim()).getDoorTrim())    {
+        switch (DoorTrim.valueOf(doortrimFromModel).getDoorTrim())    {
             case 1:
                 super.setDoorTrim("нет");
                 break;
@@ -58,7 +70,7 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        switch (TwoDoorLeafs.valueOf(doorPositionFromModel.getTwodoorleafs()).getTwoDoorLeafs())    {
+        switch (TwoDoorLeafs.valueOf(twodoorleafsFromModel).getTwoDoorLeafs())    {
             case 1:
                 super.setTwoDoorLeafs("нет");
                 break;
@@ -70,17 +82,14 @@ public class DoorPositionEntity extends DoorPosition {
                 break;
         }
 
-        super.setSizeWidth(Short.parseShort(doorPositionFromModel.getWidth()));
-        super.setSizeHeigth(Short.parseShort(doorPositionFromModel.getHeight()));
-        super.setOpen(((doorPositionFromModel.getOpen().equals("RIGHT")) ? "правое" : "левое"));
-        super.setDoorStep(((doorPositionFromModel.getDoorstep().equals("YES")) ? "есть" : "нет"));
-        super.setAssmbl(((doorPositionFromModel.getAssembl().equals("YES")) ? "есть" : "нет"));
-        super.setFill(((doorPositionFromModel.getFill().equals("CELL")) ? "сотовое" : "реечное"));
-        super.setHole(((doorPositionFromModel.getHole().equals("NO")) ? "нет" : "есть"));
-        super.setSum(Integer.parseInt(doorPositionFromModel.getSumpos()));
-
-        return this;
-
+        super.setSizeWidth(Short.parseShort(widthFromModel));
+        super.setSizeHeigth(Short.parseShort(heightFromModel));
+        super.setOpen(((openFromModel.equals("RIGHT")) ? "правое" : "левое"));
+        super.setDoorStep(((doorstepFromModel.equals("YES")) ? "есть" : "нет"));
+        super.setAssmbl(((assemblFromModel.equals("YES")) ? "есть" : "нет"));
+        super.setFill(((fillFromModel.equals("CELL")) ? "сотовое" : "реечное"));
+        super.setHole(((holeFromModel.equals("NO")) ? "нет" : "есть"));
+        super.setSum(Integer.parseInt(sumposFromModel));
     }
 
 }

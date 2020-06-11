@@ -11,6 +11,8 @@ import su.myspringwebapps.repositories.DoorPricesRepository;
 
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 @Service
 public class DoorsService implements IDoorsService {
 
@@ -21,7 +23,8 @@ public class DoorsService implements IDoorsService {
 
     public List<DoorPosition> saveNewDoorPosition(String jsonDoorPosition, List<DoorPosition> currentListDoors) throws JsonProcessingException {
 
-        DoorPositionEntity newDoorPositionEntity = new DoorPositionEntity().fromModel(jsonDoorPosition);
+        ObjectMapper mapper = new ObjectMapper();
+        DoorPositionEntity newDoorPositionEntity = mapper.readerFor(DoorPositionEntity.class).readValue(jsonDoorPosition);
 
         newDoorPositionEntity.setTotalPrice(
             doorPriceCalculator.calculatePrice(newDoorPositionEntity,

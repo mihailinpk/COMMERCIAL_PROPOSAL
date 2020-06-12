@@ -121,7 +121,8 @@
     </style>
 </head>
 <body>
-<form action="/COMMERCIAL_PROPOSAL_war_exploded/setsettings" method="POST">
+<form name="setSettingsForm" action="/COMMERCIAL_PROPOSAL_war_exploded/setsettings" method="POST">
+    <input type="hidden" id="jsondoorprice" name="jsondoorprice">
     <table class="table_price" align="center" width="100%">
         <caption>Цены за 1 шт.</caption>
         <tr>
@@ -326,7 +327,7 @@
         </tr>
         <tr>
             <td colspan="6" align="center">
-                <input type="submit" class="button" value="Применить новые настройки">
+                <input type="submit" class="button" value="Применить новые настройки" onclick="createStringJson()">
             </td>
         </tr>
     </table>
@@ -334,3 +335,65 @@
 </form>
 </body>
 </html>
+<script type="text/javascript">
+    function createStringJson() {
+        var priceleafreech = document.forms["setSettingsForm"]["priceleafreech"].value;
+        var priceleafreechnonstandartheigth = document.forms["setSettingsForm"]["priceleafreechnonstandartheigth"].value;
+        var priceleafreechnonstandartwidth = document.forms["setSettingsForm"]["priceleafreechnonstandartwidth"].value;
+        var priceleafreechnonstandartheigthwidth = document.forms["setSettingsForm"]["priceleafreechnonstandartheigthwidth"].value;
+        var priceleafsot = document.forms["setSettingsForm"]["priceleafsot"].value;
+        var priceleafsotnonstandartheigth = document.forms["setSettingsForm"]["priceleafsotnonstandartheigth"].value;
+        var priceleafsotnonstandartwidth = document.forms["setSettingsForm"]["priceleafsotnonstandartwidth"].value;
+        var priceleafsotnonstandartheigthwidth = document.forms["setSettingsForm"]["priceleafsotnonstandartheigthwidth"].value;
+        var pricedoorframe = document.forms["setSettingsForm"]["pricedoorframe"].value;
+        var pricedoorframenonstandart = document.forms["setSettingsForm"]["pricedoorframenonstandart"].value;
+        var priceassmbl = document.forms["setSettingsForm"]["priceassmbl"].value;
+        var pricehole = document.forms["setSettingsForm"]["pricehole"].value;
+        var priceinsert = document.forms["setSettingsForm"]["priceinsert"].value;
+        var pricezch201 = document.forms["setSettingsForm"]["pricezch201"].value;
+        var pricezv4 = document.forms["setSettingsForm"]["pricezv4"].value;
+        var pricepaintgrunt = document.forms["setSettingsForm"]["pricepaintgrunt"].value;
+        var pricepaintral = document.forms["setSettingsForm"]["pricepaintral"].value;
+        var pricedoortrim60mm = document.forms["setSettingsForm"]["pricedoortrim60mm"].value;
+        var pricedoortrim60mmnonstandart = document.forms["setSettingsForm"]["pricedoortrim60mmnonstandart"].value;
+        var pricedoortrim90mm = document.forms["setSettingsForm"]["pricedoortrim90mm"].value;
+        var pricedoortrim90mmnonstandart = document.forms["setSettingsForm"]["pricedoortrim90mmnonstandart"].value;
+        var surchgennum10 = document.forms["setSettingsForm"]["surchgennum10"].value;
+        var surchgennumfr11to20 = document.forms["setSettingsForm"]["surchgennumfr11to20"].value;
+        var surchgennumfr21to50 = document.forms["setSettingsForm"]["surchgennumfr21to50"].value;
+        var surchgennumfr51to100 = document.forms["setSettingsForm"]["surchgennumfr51to100"].value;
+        var surchgennumgr101to1000 = document.forms["setSettingsForm"]["surchgennumgr101to1000"].value;
+        var surchgennum1000 = document.forms["setSettingsForm"]["surchgennum1000"].value;
+        var jsonObject = {
+            "priceleafreech": priceleafreech,
+            "priceleafreechnonstandartheigth": priceleafreechnonstandartheigth,
+            "priceleafreechnonstandartwidth": priceleafreechnonstandartwidth,
+            "priceleafreechnonstandartheigthwidth": priceleafreechnonstandartheigthwidth,
+            "priceleafsot": priceleafsot,
+            "priceleafsotnonstandartheigth": priceleafsotnonstandartheigth,
+            "priceleafsotnonstandartwidth": priceleafsotnonstandartwidth,
+            "priceleafsotnonstandartheigthwidth": priceleafsotnonstandartheigthwidth,
+            "pricedoorframe": pricedoorframe,
+            "pricedoorframenonstandart": pricedoorframenonstandart,
+            "priceassmbl": priceassmbl,
+            "pricehole": pricehole,
+            "priceinsert": priceinsert,
+            "pricezch201": pricezch201,
+            "pricezv4": pricezv4,
+            "pricepaintgrunt": pricepaintgrunt,
+            "pricepaintral": pricepaintral,
+            "pricedoortrim60mm": pricedoortrim60mm,
+            "pricedoortrim60mmnonstandart": pricedoortrim60mmnonstandart,
+            "pricedoortrim90mm": pricedoortrim90mm,
+            "pricedoortrim90mmnonstandart": pricedoortrim90mmnonstandart,
+            "surchgennum10": surchgennum10,
+            "surchgennumfr11to20": surchgennumfr11to20,
+            "surchgennumfr21to50": surchgennumfr21to50,
+            "surchgennumfr51to100": surchgennumfr51to100,
+            "surchgennumgr101to1000": surchgennumgr101to1000,
+            "surchgennum1000": surchgennum1000
+        }
+        var jsonString = JSON.stringify(jsonObject);
+        document.getElementById('jsondoorprice').value = jsonString;
+    }
+</script>

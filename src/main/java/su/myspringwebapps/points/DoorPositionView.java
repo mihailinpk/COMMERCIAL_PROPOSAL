@@ -4,10 +4,10 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import su.myspringwebapps.points.enums.*;
 
-public class DoorPositionEntity extends DoorPosition {
+public class DoorPositionView extends DoorPosition {
 
     @JsonCreator
-    public DoorPositionEntity(
+    public DoorPositionView(
         @JsonProperty("width") String widthFromModel,
         @JsonProperty("height") String heightFromModel,
         @JsonProperty("type") String typeFromModel,

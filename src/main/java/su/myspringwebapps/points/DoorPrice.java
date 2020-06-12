@@ -2,34 +2,34 @@ package su.myspringwebapps.points;
 
 public class DoorPrice {
 
-    private Integer id;                                 //  id списка цен
-    private Integer priceLeafReech;				        //	цена за полотно реечного заполнения стандарт
-    private Integer priceLeafReechNonStandartHeigth;	//	цена за полотно реечного заполнения н/стандарт по высоте
-    private Integer priceLeafReechNonStandartWidth;		//	цена за полотно реечного заполнения н/стандарт по ширине
+    private Integer id;                                     //  id списка цен
+    private Integer priceLeafReech;				            //	цена за полотно реечного заполнения стандарт
+    private Integer priceLeafReechNonStandartHeigth;	    //	цена за полотно реечного заполнения н/стандарт по высоте
+    private Integer priceLeafReechNonStandartWidth;		    //	цена за полотно реечного заполнения н/стандарт по ширине
     private Integer priceLeafReechNonStandartHeigthWidth;	//	цена за полотно реечного заполнения н/стандарт по ширине и высоте
-    private Integer priceLeafSot;				        //	цена за полотно сотового заполнения стандарт
-    private Integer priceLeafSotNonStandartHeigth;	    //	цена за полотно сотового заполнения н/стандарт по высоте
-    private Integer priceLeafSotNonStandartWidth;	    //	цена за полотно сотового заполнения н/стандарт по ширине
-    private Integer priceLeafSotNonStandartHeigthWidth;    //	цена за полотно сотового заполнения н/стандарт по ширине и высоте
-    private Integer priceDoorFrame;				        //	цена за палку коробки стандарт
-    private Integer priceDoorFrameNonStandart;		    //	цена за палку коробки н/стандарт
-    private Integer priceAssmbl;				        //	цена за сборку
-    private Integer priceHole;					        //	цена за отверстие
-    private Integer priceInsert;				        //	цена за врезку фурнитуры
-    private Integer priceZch201;				        //	цена за ЗЩ 2-01
-    private Integer priceZV4;					        //	цена за ЗВ 4
-    private Integer pricePaintGrunt;		            //	цена за окраску грунтовкой
-    private Integer pricePaintRAl;			            //	цена за окраску цветом RAL
-    private Integer priceDoorTrim60mm;			        //	цена за стандартную палку наличника 60мм
-    private Integer priceDoorTrim60mmNonStandart;	    //	цена за н/стандартную палку наличника 60мм
-    private Integer priceDoorTrim90mm;			        //	цена за стандартную палку наличника 90мм
-    private Integer priceDoorTrim90mmNonStandart;	    //	цена за н/стандартную палку наличника 90мм
-    private Integer surchGenNum10;				        //	надбавка за общее количество до 10 шт.
-    private Integer surchGenNumFr11to20;		        //	надбавка за общее количетсов от 11 до 20 шт.
-    private Integer surchGenNumFr21to50;		        //	надбавка за общее количетсов от 21 до 50 шт.
-    private Integer surchGenNumFr51to100;		        //	надбавка за общее количетсов от 51 до 100 шт.
-    private Integer surchGenNumFr101to1000;		        //	надбавка за общее количетсов от 101 до 1000 шт.
-    private Integer surchGenNum1000;			    //	надбавка за общее количетсов от 1000 шт.
+    private Integer priceLeafSot;				            //	цена за полотно сотового заполнения стандарт
+    private Integer priceLeafSotNonStandartHeigth;	        //	цена за полотно сотового заполнения н/стандарт по высоте
+    private Integer priceLeafSotNonStandartWidth;	        //	цена за полотно сотового заполнения н/стандарт по ширине
+    private Integer priceLeafSotNonStandartHeigthWidth;     //	цена за полотно сотового заполнения н/стандарт по ширине и высоте
+    private Integer priceDoorFrame;				            //	цена за палку коробки стандарт
+    private Integer priceDoorFrameNonStandart;		        //	цена за палку коробки н/стандарт
+    private Integer priceAssmbl;				            //	цена за сборку
+    private Integer priceHole;					            //	цена за отверстие
+    private Integer priceInsert;				            //	цена за врезку фурнитуры
+    private Integer priceZch201;				            //	цена за ЗЩ 2-01
+    private Integer priceZV4;					            //	цена за ЗВ 4
+    private Integer pricePaintGrunt;		                //	цена за окраску грунтовкой
+    private Integer pricePaintRAl;			                //	цена за окраску цветом RAL
+    private Integer priceDoorTrim60mm;			            //	цена за стандартную палку наличника 60мм
+    private Integer priceDoorTrim60mmNonStandart;	        //	цена за н/стандартную палку наличника 60мм
+    private Integer priceDoorTrim90mm;			            //	цена за стандартную палку наличника 90мм
+    private Integer priceDoorTrim90mmNonStandart;	        //	цена за н/стандартную палку наличника 90мм
+    private Integer surchGenNum10;				            //	надбавка за общее количество до 10 шт.
+    private Integer surchGenNumFr11to20;		            //	надбавка за общее количетсов от 11 до 20 шт.
+    private Integer surchGenNumFr21to50;		            //	надбавка за общее количетсов от 21 до 50 шт.
+    private Integer surchGenNumFr51to100;		            //	надбавка за общее количетсов от 51 до 100 шт.
+    private Integer surchGenNumFr101to1000;		            //	надбавка за общее количетсов от 101 до 1000 шт.
+    private Integer surchGenNum1000;			            //	надбавка за общее количетсов от 1000 шт.
 
     public Integer getId() {
         return id;

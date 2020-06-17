@@ -14,10 +14,18 @@ public interface IDoorsService {
 
     DoorPosition getDoorPositionById(Integer id, List<DoorPosition> currentListDoors);
 
+    void setDoorPrice(Integer id, String jsonDoorPrice) throws JsonProcessingException;
+
+    String getDefaultDoorPriceJson() throws JsonProcessingException;
+
+    String getDoorPriceByIdJson(Integer id) throws JsonProcessingException;
+
+    DoorPrice getDefaultDoorPrice();
+
+    DoorPrice getDoorPriceById(Integer id);
+
     long getTotalNumberOfDoors(List<DoorPosition> currentListDoors);
 
     long getGeneralDoorPrice(List<DoorPosition> currentListDoors);
-
-    void setDoorPrice(Integer id, String jsonDoorPrice) throws JsonProcessingException;
 
 }

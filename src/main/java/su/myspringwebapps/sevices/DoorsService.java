@@ -74,6 +74,17 @@ public class DoorsService implements IDoorsService {
         doorPricesRepository.setDoorPrice(id, newDoorPriceView);
     }
 
+    public String getDefaultDoorPriceJson() throws JsonProcessingException {
+        return convertDoorPriceToJson(getDefaultDoorPrice());
+    }
+
+    public String getDoorPriceByIdJson(Integer id)  throws JsonProcessingException {
+        if (id != null) {
+            return convertDoorPriceToJson(getDoorPriceById(id));
+        }
+        return null;
+    }
+
     public DoorPrice getDefaultDoorPrice()  {
         return doorPricesRepository.getDoorPriceById(0);
     }
@@ -92,4 +103,9 @@ public class DoorsService implements IDoorsService {
     public long getGeneralDoorPrice(List<DoorPosition> currentListDoors) {
         return doorPriceCalculator.calculateTotalPriceOfDoors(currentListDoors);
     }
+
+    private String convertDoorPriceToJson(DoorPrice doorPrice)throws JsonProcessingException {
+        return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(doorPrice);
+    }
+
 }

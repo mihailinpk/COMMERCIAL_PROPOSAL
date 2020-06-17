@@ -120,59 +120,59 @@
         }
     </style>
 </head>
-<body>
+<body onload="parseStringJson()">
 <form name="setSettingsForm" action="/COMMERCIAL_PROPOSAL_war_exploded/setsettings" method="POST">
-    <input type="hidden" id="jsondoorprice" name="jsondoorprice">
+    <input type="hidden" id="jsondoorpricetoserver" name="jsondoorpricetoserver"/>
     <table class="table_price" align="center" width="100%">
         <caption>Цены за 1 шт.</caption>
         <tr>
             <td>
                 <fieldset align="center">
                     <legend>Реечное стандарт</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReech}" name="priceleafreech" /> руб.</p>
-                    <p>Текущая: ${priceLeafReech} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceleafreech" /> руб.</p>
+                    <p><div id="priceleafreechtext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Реечное н/ст по высоте</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNonStandartHeigth}" name="priceleafreechnonstandartheigth" /> руб.</p>
-                    <p>Текущая: ${priceLeafReechNonStandartHeigth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceleafreechnonstandartheigth" /> руб.</p>
+                    <p><div id="priceleafreechnonstandartheigthtext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Реечное н/ст по ширине</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNonStandartWidth}" name="priceleafreechnonstandartwidth" /> руб.</p>
-                    <p>Текущая: ${priceLeafReechNonStandartWidth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceleafreechnonstandartwidth" /> руб.</p>
+                    <p><div id="priceleafreechnonstandartwidthtext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Реечное н/ст по ширине и высоте</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafReechNonStandartHeigthWidth}" name="priceleafreechnonstandartheigthwidth" /> руб.</p>
-                    <p>Текущая: ${priceLeafReechNonStandartHeigthWidth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceleafreechnonstandartheigthwidth" /> руб.</p>
+                    <p><div id="priceleafreechnonstandartheigthwidthtext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Сотовое стандарт</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSot}" name="priceleafsot" /> руб.</p>
-                    <p>Текущая: ${priceLeafSot} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceleafsot" /> руб.</p>
+                    <p><div id="priceleafsottext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Сотовое н/ст по высоте</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNonStandartHeigth}" name="priceleafsotnonstandartheigth" /> руб.</p>
-                    <p>Текущая: ${priceLeafSotNonStandartHeigth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceleafsotnonstandartheigth" /> руб.</p>
+                    <p><div id="priceleafsotnonstandartheigthtext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Сотовое н/ст по ширине</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNonStandartWidth}" name="priceleafsotnonstandartwidth" /> руб.</p>
-                    <p>Текущая: ${priceLeafSotNonStandartWidth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceleafsotnonstandartwidth" /> руб.</p>
+                    <p><div id="priceleafsotnonstandartwidthtext"/></p>
                 </fieldset>
             </td>
         </tr>
@@ -180,50 +180,50 @@
             <td>
                 <fieldset align="center">
                     <legend>Сотовое н/ст по ширине и высоте</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceLeafSotNonStandartHeigthWidth}" name="priceleafsotnonstandartheigthwidth" /> руб.</p>
-                    <p>Текущая: ${priceLeafSotNonStandartHeigthWidth} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceleafsotnonstandartheigthwidth" /> руб.</p>
+                    <p><div id="priceleafsotnonstandartheigthwidthtext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Палка коробки стандарт</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorFrame}" name="pricedoorframe" /> руб.</p>
-                    <p>Текущая: ${priceDoorFrame} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricedoorframe" /> руб.</p>
+                    <p><div id="pricedoorframetext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Палка коробки н/ст</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorFrameNonStandart}" name="pricedoorframenonstandart" /> руб.</p>
-                    <p>Текущая: ${priceDoorFrameNonStandart} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricedoorframenonstandart" /> руб.</p>
+                    <p><div id="pricedoorframenonstandarttext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Сборка</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceAssmbl}" name="priceassmbl" /> руб.</p>
-                    <p>Текущая: ${priceAssmbl} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceassmbl" /> руб.</p>
+                    <p><div id="priceassmbltext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Отверстие под стекло</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceHole}" name="pricehole" /> руб.</p>
-                    <p>Текущая: ${priceHole} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricehole" /> руб.</p>
+                    <p><div id="priceholetext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Врезка фурнитуры</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceInsert}" name="priceinsert" /> руб.</p>
-                    <p>Текущая: ${priceInsert} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="priceinsert" /> руб.</p>
+                    <p><div id="priceinserttext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Ручка-защелка ЗЩ 2-01</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceZch201}" name="pricezch201" /> руб.</p>
-                    <p>Текущая: ${priceZch201} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricezch201" /> руб.</p>
+                    <p><div id="pricezch201text"/></p>
                 </fieldset>
             </td>
         </tr>
@@ -231,50 +231,50 @@
             <td>
                 <fieldset align="center">
                     <legend>Замок ЗВ 4</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceZV4}" name="pricezv4" /> руб.</p>
-                    <p>Текущая: ${priceZV4} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricezv4" /> руб.</p>
+                    <p><div id="pricezv4text"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Покрытие грунтовкой</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${pricePaintGrunt}" name="pricepaintgrunt" /> руб.</p>
-                    <p>Текущая: ${pricePaintGrunt} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricepaintgrunt" /> руб.</p>
+                    <p><div id="pricepaintgrunttext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Окраска н/э цвет RAL</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${pricePaintRAl}" name="pricepaintral" /> руб.</p>
-                    <p>Текущая: ${pricePaintRAl} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricepaintral" /> руб.</p>
+                    <p><div id="pricepaintraltext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Палка наличника стандарт 60мм</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorTrim60mm}" name="pricedoortrim60mm" /> руб.</p>
-                    <p>Текущая: ${priceDoorTrim60mm} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricedoortrim60mm" /> руб.</p>
+                    <p><div id="pricedoortrim60mmtext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Палка наличника н/ст 60мм</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorTrim60mmNonStandart}" name="pricedoortrim60mmnonstandart" /> руб.</p>
-                    <p>Текущая: ${priceDoorTrim60mmNonStandart} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricedoortrim60mmnonstandart" /> руб.</p>
+                    <p><div id="pricedoortrim60mmnonstandarttext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Палка наличника стандарт 90мм</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorTrim90mm}" name="pricedoortrim90mm" /> руб.</p>
-                    <p>Текущая: ${priceDoorTrim90mm} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricedoortrim90mm" /> руб.</p>
+                    <p><div id="pricedoortrim90mmtext"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Палка наличника н/ст 90мм</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${priceDoorTrim90mmNonStandart}" name="pricedoortrim90mmnonstandart" /> руб.</p>
-                    <p>Текущая: ${priceDoorTrim90mmNonStandart} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="pricedoortrim90mmnonstandart" /> руб.</p>
+                    <p><div id="pricedoortrim90mmnonstandarttext"/></p>
                 </fieldset>
             </td>
         </tr>
@@ -285,43 +285,43 @@
             <td>
                 <fieldset align="center">
                     <legend>Общее количество до 10 шт.</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${surchGenNum10}" name="surchgennum10" /> руб.</p>
-                    <p>Текущая: ${surchGenNum10} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="surchgennum10" /> руб.</p>
+                    <p><div id="surchgennum10text"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Общее количество от 11 до 20 шт.</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${surchGenNumFr11to20}" name="surchgennumfr11to20" /> руб.</p>
-                    <p>Текущая: ${surchGenNumFr11to20} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="surchgennumfr11to20" /> руб.</p>
+                    <p><div id="surchgennumfr11to20text"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Общее количество от 21 до 50 шт.</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${surchGenNumFr21to50}" name="surchgennumfr21to50" /> руб.</p>
-                    <p>Текущая: ${surchGenNumFr21to50} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="surchgennumfr21to50" /> руб.</p>
+                    <p><div id="surchgennumfr21to50text"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Общее количество от 51 до 100 шт.</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${surchGenNumFr51to100}" name="surchgennumfr51to100" /> руб.</p>
-                    <p>Текущая: ${surchGenNumFr51to100} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="surchgennumfr51to100" /> руб.</p>
+                    <p><div id="surchgennumfr51to100text"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Общее количество от 101 до 1000 шт.</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${surchGenNumFr101to1000}" name="surchgennumgr101to1000" /> руб.</p>
-                    <p>Текущая: ${surchGenNumFr101to1000} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="surchgennumgr101to1000" /> руб.</p>
+                    <p><div id="surchgennumgr101to1000text"/></p>
                 </fieldset>
             </td>
             <td>
                 <fieldset align="center">
                     <legend>Общее количество от 1000 шт.</legend>
-                    <p>Новая: <input type="number" min="0" max="150000" value="${surchGenNum1000}" name="surchgennum1000" /> руб.</p>
-                    <p>Текущая: ${surchGenNum1000} руб.</p>
+                    <p>Новая: <input type="number" min="0" max="150000" name="surchgennum1000" /> руб.</p>
+                    <p><div id="surchgennum1000text"/></p>
                 </fieldset>
             </td>
         </tr>
@@ -394,6 +394,63 @@
             "surchgennum1000": surchgennum1000
         }
         var jsonString = JSON.stringify(jsonObject);
-        document.getElementById('jsondoorprice').value = jsonString;
+        document.getElementById('jsondoorpricetoserver').value = jsonString;
+    }
+    function parseStringJson() {
+        jsonobj = JSON.parse(JSON.stringify(${jsonDoorPriceFromServer}));
+        document.forms["setSettingsForm"]["priceleafreech"].value = jsonobj.priceLeafReech;
+        document.getElementById("priceleafreechtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReech + ' руб.';
+        document.forms["setSettingsForm"]["priceleafreechnonstandartheigth"].value = jsonobj.priceLeafReechNonStandartHeigth;
+        document.getElementById("priceleafreechnonstandartheigthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartHeigth + ' руб.';
+        document.forms["setSettingsForm"]["priceleafreechnonstandartwidth"].value = jsonobj.priceLeafReechNonStandartWidth;
+        document.getElementById("priceleafreechnonstandartwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartWidth + ' руб.';
+        document.forms["setSettingsForm"]["priceleafreechnonstandartheigthwidth"].value = jsonobj.priceLeafReechNonStandartHeigthWidth;
+        document.getElementById("priceleafreechnonstandartheigthwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartHeigthWidth + ' руб.';
+        document.forms["setSettingsForm"]["priceleafsot"].value = jsonobj.priceLeafSot;
+        document.getElementById("priceleafsottext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSot + ' руб.';
+        document.forms["setSettingsForm"]["priceleafsotnonstandartheigth"].value = jsonobj.priceLeafSotNonStandartHeigth;
+        document.getElementById("priceleafsotnonstandartheigthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartHeigth + ' руб.';
+        document.forms["setSettingsForm"]["priceleafsotnonstandartwidth"].value = jsonobj.priceLeafSotNonStandartWidth;
+        document.getElementById("priceleafsotnonstandartwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartWidth + ' руб.';
+        document.forms["setSettingsForm"]["priceleafsotnonstandartheigthwidth"].value = jsonobj.priceLeafSotNonStandartHeigthWidth;
+        document.getElementById("priceleafsotnonstandartheigthwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartHeigthWidth + ' руб.';
+        document.forms["setSettingsForm"]["pricedoorframe"].value = jsonobj.priceDoorFrame;
+        document.getElementById("pricedoorframetext").innerHTML = 'Текущая: ' + jsonobj.priceDoorFrame + ' руб.';
+        document.forms["setSettingsForm"]["pricedoorframenonstandart"].value = jsonobj.priceDoorFrameNonStandart;
+        document.getElementById("pricedoorframenonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorFrameNonStandart + ' руб.';
+        document.forms["setSettingsForm"]["priceassmbl"].value = jsonobj.priceAssmbl;
+        document.getElementById("priceassmbltext").innerHTML = 'Текущая: ' + jsonobj.priceAssmbl + ' руб.';
+        document.forms["setSettingsForm"]["pricehole"].value = jsonobj.priceHole;
+        document.getElementById("priceholetext").innerHTML = 'Текущая: ' + jsonobj.priceHole + ' руб.';
+        document.forms["setSettingsForm"]["priceinsert"].value = jsonobj.priceInsert;
+        document.getElementById("priceinserttext").innerHTML = 'Текущая: ' + jsonobj.priceInsert + ' руб.';
+        document.forms["setSettingsForm"]["pricezch201"].value = jsonobj.priceZch201;
+        document.getElementById("pricezch201text").innerHTML = 'Текущая: ' + jsonobj.priceZch201 + ' руб.';
+        document.forms["setSettingsForm"]["pricezv4"].value = jsonobj.priceZV4;
+        document.getElementById("pricezv4text").innerHTML = 'Текущая: ' + jsonobj.priceZV4 + ' руб.';
+        document.forms["setSettingsForm"]["pricepaintgrunt"].value = jsonobj.pricePaintGrunt;
+        document.getElementById("pricepaintgrunttext").innerHTML = 'Текущая: ' + jsonobj.pricePaintGrunt + ' руб.';
+        document.forms["setSettingsForm"]["pricepaintral"].value = jsonobj.pricePaintRAl;
+        document.getElementById("pricepaintraltext").innerHTML = 'Текущая: ' + jsonobj.pricePaintRAl + ' руб.';
+        document.forms["setSettingsForm"]["pricedoortrim60mm"].value = jsonobj.priceDoorTrim60mm;
+        document.getElementById("pricedoortrim60mmtext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim60mm + ' руб.';
+        document.forms["setSettingsForm"]["pricedoortrim60mmnonstandart"].value = jsonobj.priceDoorTrim60mmNonStandart;
+        document.getElementById("pricedoortrim60mmnonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim60mmNonStandart + ' руб.';
+        document.forms["setSettingsForm"]["pricedoortrim90mm"].value = jsonobj.priceDoorTrim90mm;
+        document.getElementById("pricedoortrim90mmtext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim90mm + ' руб.';
+        document.forms["setSettingsForm"]["pricedoortrim90mmnonstandart"].value = jsonobj.priceDoorTrim90mmNonStandart;
+        document.getElementById("pricedoortrim90mmnonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim90mmNonStandart + ' руб.';
+        document.forms["setSettingsForm"]["surchgennum10"].value = jsonobj.surchGenNum10;
+        document.getElementById("surchgennum10text").innerHTML = 'Текущая: ' + jsonobj.surchGenNum10 + ' руб.';
+        document.forms["setSettingsForm"]["surchgennumfr11to20"].value = jsonobj.surchGenNumFr11to20;
+        document.getElementById("surchgennumfr11to20text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr11to20 + ' руб.';
+        document.forms["setSettingsForm"]["surchgennumfr21to50"].value = jsonobj.surchGenNumFr21to50;
+        document.getElementById("surchgennumfr21to50text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr21to50 + ' руб.';
+        document.forms["setSettingsForm"]["surchgennumfr51to100"].value = jsonobj.surchGenNumFr51to100;
+        document.getElementById("surchgennumfr51to100text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr51to100 + ' руб.';
+        document.forms["setSettingsForm"]["surchgennumgr101to1000"].value = jsonobj.surchGenNumFr101to1000;
+        document.getElementById("surchgennumgr101to1000text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr101to1000 + ' руб.';
+        document.forms["setSettingsForm"]["surchgennum1000"].value = jsonobj.surchGenNum1000;
+        document.getElementById("surchgennum1000text").innerHTML = 'Текущая: ' + jsonobj.surchGenNum1000 + ' руб.';
     }
 </script>

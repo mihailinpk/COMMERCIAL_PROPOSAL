@@ -35,7 +35,6 @@ public class DoorPriceView extends DoorPrice {
         @JsonProperty("surchgennumgr101to1000") String surchGenNumFr101to1000FromModel,
         @JsonProperty("surchgennum1000") String surchGenNum1000FromModel
     )    {
-
         super.setPriceLeafReech(Integer.parseInt(priceLeafReechFromModel));
         super.setPriceLeafReechNonStandartHeigth(Integer.parseInt(priceLeafReechNonStandartHeigthFromModel));
         super.setPriceLeafReechNonStandartWidth(Integer.parseInt(priceLeafReechNonStandartWidthFromModel));
@@ -63,7 +62,7 @@ public class DoorPriceView extends DoorPrice {
         super.setSurchGenNumFr51to100(Integer.parseInt(surchGenNumFr51to100FromModel));
         super.setSurchGenNumFr101to1000(Integer.parseInt(surchGenNumFr101to1000FromModel));
         super.setSurchGenNum1000(Integer.parseInt(surchGenNum1000FromModel));
-
     }
+
 
 }

@@ -7,34 +7,37 @@ public class DoorPriceView extends DoorPrice {
 
     @JsonCreator
     public DoorPriceView(
-        @JsonProperty("priceleafreech") String priceLeafReechFromModel,
-        @JsonProperty("priceleafreechnonstandartheigth") String priceLeafReechNonStandartHeigthFromModel,
-        @JsonProperty("priceleafreechnonstandartwidth") String priceLeafReechNonStandartWidthFromModel,
-        @JsonProperty("priceleafreechnonstandartheigthwidth") String priceLeafReechNonStandartHeigthWidthFromModel,
-        @JsonProperty("priceleafsot") String priceLeafSotFromModel,
-        @JsonProperty("priceleafsotnonstandartheigth") String priceLeafSotNonStandartHeigthFromModel,
-        @JsonProperty("priceleafsotnonstandartwidth") String priceLeafSotNonStandartWidthFromModel,
-        @JsonProperty("priceleafsotnonstandartheigthwidth") String priceLeafSotNonStandartHeigthWidthFromModel,
-        @JsonProperty("pricedoorframe") String priceDoorFrameFromModel,
-        @JsonProperty("pricedoorframenonstandart") String priceDoorFrameNonStandartFromModel,
-        @JsonProperty("priceassmbl") String priceAssmblFromModel,
-        @JsonProperty("pricehole") String priceHoleFromModel,
-        @JsonProperty("priceinsert") String priceInsertFromModel,
-        @JsonProperty("pricezch201") String priceZch201FromModel,
-        @JsonProperty("pricezv4") String priceZV4FromModel,
-        @JsonProperty("pricepaintgrunt") String pricePaintGruntFromModel,
-        @JsonProperty("pricepaintral") String pricePaintRAlFromModel,
-        @JsonProperty("pricedoortrim60mm") String priceDoorTrim60mmFromModel,
-        @JsonProperty("pricedoortrim60mmnonstandart") String priceDoorTrim60mmNonStandartFromModel,
-        @JsonProperty("pricedoortrim90mm") String priceDoorTrim90mmFromModel,
-        @JsonProperty("pricedoortrim90mmnonstandart") String priceDoorTrim90mmNonStandartFromModel,
-        @JsonProperty("surchgennum10") String surchGenNum10FromModel,
-        @JsonProperty("surchgennumfr11to20") String surchGenNumFr11to20FromModel,
-        @JsonProperty("surchgennumfr21to50") String surchGenNumFr21to50FromModel,
-        @JsonProperty("surchgennumfr51to100") String surchGenNumFr51to100FromModel,
-        @JsonProperty("surchgennumgr101to1000") String surchGenNumFr101to1000FromModel,
-        @JsonProperty("surchgennum1000") String surchGenNum1000FromModel
+        @JsonProperty("id") String idFromModel,
+        @JsonProperty("priceLeafReech") String priceLeafReechFromModel,
+        @JsonProperty("priceLeafReechNonStandartHeigth") String priceLeafReechNonStandartHeigthFromModel,
+        @JsonProperty("priceLeafReechNonStandartWidth") String priceLeafReechNonStandartWidthFromModel,
+        @JsonProperty("priceLeafReechNonStandartHeigthWidth") String priceLeafReechNonStandartHeigthWidthFromModel,
+        @JsonProperty("priceLeafSot") String priceLeafSotFromModel,
+        @JsonProperty("priceLeafSotNonStandartHeigth") String priceLeafSotNonStandartHeigthFromModel,
+        @JsonProperty("priceLeafSotNonStandartWidth") String priceLeafSotNonStandartWidthFromModel,
+        @JsonProperty("priceLeafSotNonStandartHeigthWidth") String priceLeafSotNonStandartHeigthWidthFromModel,
+        @JsonProperty("priceDoorFrame") String priceDoorFrameFromModel,
+        @JsonProperty("priceDoorFrameNonStandart") String priceDoorFrameNonStandartFromModel,
+        @JsonProperty("priceAssmbl") String priceAssmblFromModel,
+        @JsonProperty("priceHole") String priceHoleFromModel,
+        @JsonProperty("priceInsert") String priceInsertFromModel,
+        @JsonProperty("priceZch201") String priceZch201FromModel,
+        @JsonProperty("priceZV4") String priceZV4FromModel,
+        @JsonProperty("pricePaintGrunt") String pricePaintGruntFromModel,
+        @JsonProperty("pricePaintRAl") String pricePaintRAlFromModel,
+        @JsonProperty("priceDoorTrim60mm") String priceDoorTrim60mmFromModel,
+        @JsonProperty("priceDoorTrim60mmNonStandart") String priceDoorTrim60mmNonStandartFromModel,
+        @JsonProperty("priceDoorTrim90mm") String priceDoorTrim90mmFromModel,
+        @JsonProperty("priceDoorTrim90mmNonStandart") String priceDoorTrim90mmNonStandartFromModel,
+        @JsonProperty("surchGenNum10") String surchGenNum10FromModel,
+        @JsonProperty("surchGenNumFr11to20") String surchGenNumFr11to20FromModel,
+        @JsonProperty("surchGenNumFr21to50") String surchGenNumFr21to50FromModel,
+        @JsonProperty("surchGenNumFr51to100") String surchGenNumFr51to100FromModel,
+        @JsonProperty("surchGenNumFr101to1000") String surchGenNumFr101to1000FromModel,
+        @JsonProperty("surchGenNum1000") String surchGenNum1000FromModel
+
     )    {
+        super.setId(Integer.parseInt(idFromModel));
         super.setPriceLeafReech(Integer.parseInt(priceLeafReechFromModel));
         super.setPriceLeafReechNonStandartHeigth(Integer.parseInt(priceLeafReechNonStandartHeigthFromModel));
         super.setPriceLeafReechNonStandartWidth(Integer.parseInt(priceLeafReechNonStandartWidthFromModel));
@@ -63,6 +66,5 @@ public class DoorPriceView extends DoorPrice {
         super.setSurchGenNumFr101to1000(Integer.parseInt(surchGenNumFr101to1000FromModel));
         super.setSurchGenNum1000(Integer.parseInt(surchGenNum1000FromModel));
     }
-
 
 }

@@ -2,7 +2,7 @@ package su.myspringwebapps.points;
 
 public class DoorPrice {
 
-    private Integer id;                                     //  id списка цен
+    private Integer id = 0;                                     //  id списка цен
     private Integer priceLeafReech;				            //	цена за полотно реечного заполнения стандарт
     private Integer priceLeafReechNonStandartHeigth;	    //	цена за полотно реечного заполнения н/стандарт по высоте
     private Integer priceLeafReechNonStandartWidth;		    //	цена за полотно реечного заполнения н/стандарт по ширине

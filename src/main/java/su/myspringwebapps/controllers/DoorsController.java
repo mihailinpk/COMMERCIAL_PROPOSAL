@@ -17,7 +17,7 @@ import su.myspringwebapps.points.DoorPosition;
 public class DoorsController {
 
     @Autowired
-    private DoorsService mainService;
+    private DoorsService doorsService;
 
     @RequestMapping(method = RequestMethod.GET)
     public String start(Model model)    {
@@ -27,8 +27,8 @@ public class DoorsController {
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public String getIndex(Model model, @ModelAttribute ArrayList<DoorPosition> doors)    {
-        model.addAttribute("totalNumberOfDoors", mainService.getTotalNumberOfDoors(doors));
-        model.addAttribute("generalDoorPrice", mainService.getGeneralDoorPrice(doors));
+        model.addAttribute("totalNumberOfDoors", doorsService.getTotalNumberOfDoors(doors));
+        model.addAttribute("generalDoorPrice", doorsService.getGeneralDoorPrice(doors));
         return "index";
     }
 
@@ -49,7 +49,7 @@ public class DoorsController {
             @ModelAttribute ArrayList<DoorPosition> doors
     ) throws JsonProcessingException {
 
-        model.addAttribute("listCurrentCommercialProposal", mainService.saveNewDoorPosition(jsonDoorPosition, doors));
+        model.addAttribute("listCurrentCommercialProposal", doorsService.saveNewDoorPosition(jsonDoorPosition, doors));
 
         return "redirect:/";
 
@@ -62,7 +62,7 @@ public class DoorsController {
             @ModelAttribute ArrayList<DoorPosition> doors
     )  {
 
-        model.addAttribute("listCurrentCommercialProposal", mainService.deleteDoorPosition(Integer.parseInt(stringID), doors));
+        model.addAttribute("listCurrentCommercialProposal", doorsService.deleteDoorPosition(Integer.parseInt(stringID), doors));
 
         return "redirect:/index";
 

@@ -68,10 +68,8 @@ public class DoorsService implements IDoorsService {
         return null;
     }
 
-    public void setDoorPrice(Integer id, String jsonDoorPrice) throws JsonProcessingException  {
-        ObjectMapper mapper = new ObjectMapper();
-        DoorPriceView newDoorPriceView = mapper.readerFor(DoorPriceView.class).readValue(jsonDoorPrice);
-        doorPricesRepository.setDoorPrice(id, newDoorPriceView);
+    public void setDoorPrice(Integer id, DoorPriceView newDoorPrice) throws JsonProcessingException  {
+        doorPricesRepository.setDoorPrice(id, newDoorPrice);
     }
 
     public String getDefaultDoorPriceJson() throws JsonProcessingException {

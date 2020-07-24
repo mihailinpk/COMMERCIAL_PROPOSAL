@@ -120,15 +120,142 @@
         }
     </style>
 </head>
+<script type="text/javascript">
+    function sendStringJson() {
+        var priceleafreech = document.getElementById("priceleafreech").value;
+        var priceleafreechnonstandartheigth = document.getElementById("priceleafreechnonstandartheigth").value;
+        var priceleafreechnonstandartwidth = document.getElementById("priceleafreechnonstandartwidth").value;
+        var priceleafreechnonstandartheigthwidth = document.getElementById("priceleafreechnonstandartheigthwidth").value;
+        var priceleafsot = document.getElementById("priceleafsot").value;
+        var priceleafsotnonstandartheigth = document.getElementById("priceleafsotnonstandartheigth").value;
+        var priceleafsotnonstandartwidth = document.getElementById("priceleafsotnonstandartwidth").value;
+        var priceleafsotnonstandartheigthwidth = document.getElementById("priceleafsotnonstandartheigthwidth").value;
+        var pricedoorframe = document.getElementById("pricedoorframe").value;
+        var pricedoorframenonstandart = document.getElementById("pricedoorframenonstandart").value;
+        var priceassmbl = document.getElementById("priceassmbl").value;
+        var pricehole = document.getElementById("pricehole").value;
+        var priceinsert = document.getElementById("priceinsert").value;
+        var pricezch201 = document.getElementById("pricezch201").value;
+        var pricezv4 = document.getElementById("pricezv4").value;
+        var pricepaintgrunt = document.getElementById("pricepaintgrunt").value;
+        var pricepaintral = document.getElementById("pricepaintral").value;
+        var pricedoortrim60mm = document.getElementById("pricedoortrim60mm").value;
+        var pricedoortrim60mmnonstandart = document.getElementById("pricedoortrim60mmnonstandart").value;
+        var pricedoortrim90mm = document.getElementById("pricedoortrim90mm").value;
+        var pricedoortrim90mmnonstandart = document.getElementById("pricedoortrim90mmnonstandart").value;
+        var surchgennum10 = document.getElementById("surchgennum10").value;
+        var surchgennumfr11to20 = document.getElementById("surchgennumfr11to20").value;
+        var surchgennumfr21to50 = document.getElementById("surchgennumfr21to50").value;
+        var surchgennumfr51to100 = document.getElementById("surchgennumfr51to100").value;
+        var surchgennumgr101to1000 = document.getElementById("surchgennumgr101to1000").value;
+        var surchgennum1000 = document.getElementById("surchgennum1000").value;
+        var jsonObject = {
+            "id":"0",
+            "priceLeafReech": priceleafreech,
+            "priceLeafReechNonStandartHeigth": priceleafreechnonstandartheigth,
+            "priceLeafReechNonStandartWidth": priceleafreechnonstandartwidth,
+            "priceLeafReechNonStandartHeigthWidth": priceleafreechnonstandartheigthwidth,
+            "priceLeafSot": priceleafsot,
+            "priceLeafSotNonStandartHeigth": priceleafsotnonstandartheigth,
+            "priceLeafSotNonStandartWidth": priceleafsotnonstandartwidth,
+            "priceLeafSotNonStandartHeigthWidth": priceleafsotnonstandartheigthwidth,
+            "priceDoorFrame": pricedoorframe,
+            "priceDoorFrameNonStandart": pricedoorframenonstandart,
+            "priceAssmbl": priceassmbl,
+            "priceHole": pricehole,
+            "priceInsert": priceinsert,
+            "priceZch201": pricezch201,
+            "priceZV4": pricezv4,
+            "pricePaintGrunt": pricepaintgrunt,
+            "pricePaintRAl": pricepaintral,
+            "priceDoorTrim60mm": pricedoortrim60mm,
+            "priceDoorTrim60mmNonStandart": pricedoortrim60mmnonstandart,
+            "priceDoorTrim90mm": pricedoortrim90mm,
+            "priceDoorTrim90mmNonStandart": pricedoortrim90mmnonstandart,
+            "surchGenNum10": surchgennum10,
+            "surchGenNumFr11to20": surchgennumfr11to20,
+            "surchGenNumFr21to50": surchgennumfr21to50,
+            "surchGenNumFr51to100": surchgennumfr51to100,
+            "surchGenNumFr101to1000": surchgennumgr101to1000,
+            "surchGenNum1000": surchgennum1000
+        }
+        var jsonString = JSON.stringify(jsonObject);
+        fetch('/COMMERCIAL_PROPOSAL_war_exploded/setsettings', {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: jsonString
+        });
+        setTimeout(() => {  window.location.reload(); }, 500);
+    }
+
+    function parseStringJson() {
+        jsonobj = JSON.parse(JSON.stringify(${jsonDoorPriceFromServer}));
+        document.getElementById("priceleafreech").value = Number(jsonobj.priceLeafReech);
+        document.getElementById("priceleafreechtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReech + ' руб.';
+        document.getElementById("priceleafreechnonstandartheigth").value = Number(jsonobj.priceLeafReechNonStandartHeigth);
+        document.getElementById("priceleafreechnonstandartheigthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartHeigth + ' руб.';
+        document.getElementById("priceleafreechnonstandartwidth").value = Number(jsonobj.priceLeafReechNonStandartWidth);
+        document.getElementById("priceleafreechnonstandartwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartWidth + ' руб.';
+        document.getElementById("priceleafreechnonstandartheigthwidth").value = Number(jsonobj.priceLeafReechNonStandartHeigthWidth);
+        document.getElementById("priceleafreechnonstandartheigthwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartHeigthWidth + ' руб.';
+        document.getElementById("priceleafsot").value = Number(jsonobj.priceLeafSot);
+        document.getElementById("priceleafsottext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSot + ' руб.';
+        document.getElementById("priceleafsotnonstandartheigth").value = Number(jsonobj.priceLeafSotNonStandartHeigth);
+        document.getElementById("priceleafsotnonstandartheigthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartHeigth + ' руб.';
+        document.getElementById("priceleafsotnonstandartwidth").value = Number(jsonobj.priceLeafSotNonStandartWidth);
+        document.getElementById("priceleafsotnonstandartwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartWidth + ' руб.';
+        document.getElementById("priceleafsotnonstandartheigthwidth").value = Number(jsonobj.priceLeafSotNonStandartHeigthWidth);
+        document.getElementById("priceleafsotnonstandartheigthwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartHeigthWidth + ' руб.';
+        document.getElementById("pricedoorframe").value = Number(jsonobj.priceDoorFrame);
+        document.getElementById("pricedoorframetext").innerHTML = 'Текущая: ' + jsonobj.priceDoorFrame + ' руб.';
+        document.getElementById("pricedoorframenonstandart").value = Number(jsonobj.priceDoorFrameNonStandart);
+        document.getElementById("pricedoorframenonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorFrameNonStandart + ' руб.';
+        document.getElementById("priceassmbl").value = Number(jsonobj.priceAssmbl);
+        document.getElementById("priceassmbltext").innerHTML = 'Текущая: ' + jsonobj.priceAssmbl + ' руб.';
+        document.getElementById("pricehole").value = Number(jsonobj.priceHole);
+        document.getElementById("priceholetext").innerHTML = 'Текущая: ' + jsonobj.priceHole + ' руб.';
+        document.getElementById("priceinsert").value = Number(jsonobj.priceInsert);
+        document.getElementById("priceinserttext").innerHTML = 'Текущая: ' + jsonobj.priceInsert + ' руб.';
+        document.getElementById("pricezch201").value = Number(jsonobj.priceZch201);
+        document.getElementById("pricezch201text").innerHTML = 'Текущая: ' + jsonobj.priceZch201 + ' руб.';
+        document.getElementById("pricezv4").value = Number(jsonobj.priceZV4);
+        document.getElementById("pricezv4text").innerHTML = 'Текущая: ' + jsonobj.priceZV4 + ' руб.';
+        document.getElementById("pricepaintgrunt").value = Number(jsonobj.pricePaintGrunt);
+        document.getElementById("pricepaintgrunttext").innerHTML = 'Текущая: ' + jsonobj.pricePaintGrunt + ' руб.';
+        document.getElementById("pricepaintral").value = Number(jsonobj.pricePaintRAl);
+        document.getElementById("pricepaintraltext").innerHTML = 'Текущая: ' + jsonobj.pricePaintRAl + ' руб.';
+        document.getElementById("pricedoortrim60mm").value = Number(jsonobj.priceDoorTrim60mm);
+        document.getElementById("pricedoortrim60mmtext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim60mm + ' руб.';
+        document.getElementById("pricedoortrim60mmnonstandart").value = Number(jsonobj.priceDoorTrim60mmNonStandart);
+        document.getElementById("pricedoortrim60mmnonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim60mmNonStandart + ' руб.';
+        document.getElementById("pricedoortrim90mm").value = Number(jsonobj.priceDoorTrim90mm);
+        document.getElementById("pricedoortrim90mmtext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim90mm + ' руб.';
+        document.getElementById("pricedoortrim90mmnonstandart").value = Number(jsonobj.priceDoorTrim90mmNonStandart);
+        document.getElementById("pricedoortrim90mmnonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim90mmNonStandart + ' руб.';
+        document.getElementById("surchgennum10").value = Number(jsonobj.surchGenNum10);
+        document.getElementById("surchgennum10text").innerHTML = 'Текущая: ' + jsonobj.surchGenNum10 + ' руб.';
+        document.getElementById("surchgennumfr11to20").value = Number(jsonobj.surchGenNumFr11to20);
+        document.getElementById("surchgennumfr11to20text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr11to20 + ' руб.';
+        document.getElementById("surchgennumfr21to50").value = Number(jsonobj.surchGenNumFr21to50);
+        document.getElementById("surchgennumfr21to50text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr21to50 + ' руб.';
+        document.getElementById("surchgennumfr51to100").value = Number(jsonobj.surchGenNumFr51to100);
+        document.getElementById("surchgennumfr51to100text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr51to100 + ' руб.';
+        document.getElementById("surchgennumgr101to1000").value = Number(jsonobj.surchGenNumFr101to1000);
+        document.getElementById("surchgennumgr101to1000text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr101to1000 + ' руб.';
+        document.getElementById("surchgennum1000").value = Number(jsonobj.surchGenNum1000);
+        document.getElementById("surchgennum1000text").innerHTML = 'Текущая: ' + jsonobj.surchGenNum1000 + ' руб.';
+    }
+</script>
 <body onload="parseStringJson()">
-    <input type="hidden" id="DoorPriceView" name="DoorPriceView"/>
     <table class="table_price" align="center" width="100%">
         <caption>Цены за 1 шт.</caption>
         <tr>
             <td>
                 <fieldset align="center">
                     <legend>Реечное стандарт</legend>
-                    <%--<p>Новая: <input type="number" min="0" max="150000" name="priceleafreech" /> руб.</p>--%>
                     <p>Новая: <input type="number" min="0" max="150000" id="priceleafreech"/> руб.</p>
                     <p><div id="priceleafreechtext"/></p>
                 </fieldset>
@@ -334,131 +461,3 @@
     <a href="index" class="button">На главную страницу</a>
 </body>
 </html>
-<script type="text/javascript">
-    function sendStringJson() {
-        var priceleafreech = document.getElementById("priceleafreech").value;
-        var priceleafreechnonstandartheigth = document.getElementById("priceleafreechnonstandartheigth").value;
-        var priceleafreechnonstandartwidth = document.getElementById("priceleafreechnonstandartwidth").value;
-        var priceleafreechnonstandartheigthwidth = document.getElementById("priceleafreechnonstandartheigthwidth").value;
-        var priceleafsot = document.getElementById("priceleafsot").value;
-        var priceleafsotnonstandartheigth = document.getElementById("priceleafsotnonstandartheigth").value;
-        var priceleafsotnonstandartwidth = document.getElementById("priceleafsotnonstandartwidth").value;
-        var priceleafsotnonstandartheigthwidth = document.getElementById("priceleafsotnonstandartheigthwidth").value;
-        var pricedoorframe = document.getElementById("pricedoorframe").value;
-        var pricedoorframenonstandart = document.getElementById("pricedoorframenonstandart").value;
-        var priceassmbl = document.getElementById("priceassmbl").value;
-        var pricehole = document.getElementById("pricehole").value;
-        var priceinsert = document.getElementById("priceinsert").value;
-        var pricezch201 = document.getElementById("pricezch201").value;
-        var pricezv4 = document.getElementById("pricezv4").value;
-        var pricepaintgrunt = document.getElementById("pricepaintgrunt").value;
-        var pricepaintral = document.getElementById("pricepaintral").value;
-        var pricedoortrim60mm = document.getElementById("pricedoortrim60mm").value;
-        var pricedoortrim60mmnonstandart = document.getElementById("pricedoortrim60mmnonstandart").value;
-        var pricedoortrim90mm = document.getElementById("pricedoortrim90mm").value;
-        var pricedoortrim90mmnonstandart = document.getElementById("pricedoortrim90mmnonstandart").value;
-        var surchgennum10 = document.getElementById("surchgennum10").value;
-        var surchgennumfr11to20 = document.getElementById("surchgennumfr11to20").value;
-        var surchgennumfr21to50 = document.getElementById("surchgennumfr21to50").value;
-        var surchgennumfr51to100 = document.getElementById("surchgennumfr51to100").value;
-        var surchgennumgr101to1000 = document.getElementById("surchgennumgr101to1000").value;
-        var surchgennum1000 = document.getElementById("surchgennum1000").value;
-        var jsonObject = {
-            "id":"0",
-            "priceLeafReech": priceleafreech,
-            "priceLeafReechNonStandartHeigth": priceleafreechnonstandartheigth,
-            "priceLeafReechNonStandartWidth": priceleafreechnonstandartwidth,
-            "priceLeafReechNonStandartHeigthWidth": priceleafreechnonstandartheigthwidth,
-            "priceLeafSot": priceleafsot,
-            "priceLeafSotNonStandartHeigth": priceleafsotnonstandartheigth,
-            "priceLeafSotNonStandartWidth": priceleafsotnonstandartwidth,
-            "priceLeafSotNonStandartHeigthWidth": priceleafsotnonstandartheigthwidth,
-            "priceDoorFrame": pricedoorframe,
-            "priceDoorFrameNonStandart": pricedoorframenonstandart,
-            "priceAssmbl": priceassmbl,
-            "priceHole": pricehole,
-            "priceInsert": priceinsert,
-            "priceZch201": pricezch201,
-            "priceZV4": pricezv4,
-            "pricePaintGrunt": pricepaintgrunt,
-            "pricePaintRAl": pricepaintral,
-            "priceDoorTrim60mm": pricedoortrim60mm,
-            "priceDoorTrim60mmNonStandart": pricedoortrim60mmnonstandart,
-            "priceDoorTrim90mm": pricedoortrim90mm,
-            "priceDoorTrim90mmNonStandart": pricedoortrim90mmnonstandart,
-            "surchGenNum10": surchgennum10,
-            "surchGenNumFr11to20": surchgennumfr11to20,
-            "surchGenNumFr21to50": surchgennumfr21to50,
-            "surchGenNumFr51to100": surchgennumfr51to100,
-            "surchGenNumFr101to1000": surchgennumgr101to1000,
-            "surchGenNum1000": surchgennum1000
-        }
-        var jsonString = JSON.stringify(jsonObject);
-        fetch('/COMMERCIAL_PROPOSAL_war_exploded/setsettings', {
-            method: 'post',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: jsonString
-        });
-    }
-
-    function parseStringJson() {
-        jsonobj = JSON.parse(JSON.stringify(${jsonDoorPriceFromServer}));
-        document.getElementById("priceleafreech").value = Number(jsonobj.priceLeafReech);
-        document.getElementById("priceleafreechtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReech + ' руб.';
-        document.getElementById("priceleafreechnonstandartheigth").value = Number(jsonobj.priceLeafReechNonStandartHeigth);
-        document.getElementById("priceleafreechnonstandartheigthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartHeigth + ' руб.';
-        document.getElementById("priceleafreechnonstandartwidth").value = Number(jsonobj.priceLeafReechNonStandartWidth);
-        document.getElementById("priceleafreechnonstandartwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartWidth + ' руб.';
-        document.getElementById("priceleafreechnonstandartheigthwidth").value = Number(jsonobj.priceLeafReechNonStandartHeigthWidth);
-        document.getElementById("priceleafreechnonstandartheigthwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafReechNonStandartHeigthWidth + ' руб.';
-        document.getElementById("priceleafsot").value = Number(jsonobj.priceLeafSot);
-        document.getElementById("priceleafsottext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSot + ' руб.';
-        document.getElementById("priceleafsotnonstandartheigth").value = Number(jsonobj.priceLeafSotNonStandartHeigth);
-        document.getElementById("priceleafsotnonstandartheigthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartHeigth + ' руб.';
-        document.getElementById("priceleafsotnonstandartwidth").value = Number(jsonobj.priceLeafSotNonStandartWidth);
-        document.getElementById("priceleafsotnonstandartwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartWidth + ' руб.';
-        document.getElementById("priceleafsotnonstandartheigthwidth").value = Number(jsonobj.priceLeafSotNonStandartHeigthWidth);
-        document.getElementById("priceleafsotnonstandartheigthwidthtext").innerHTML = 'Текущая: ' + jsonobj.priceLeafSotNonStandartHeigthWidth + ' руб.';
-        document.getElementById("pricedoorframe").value = Number(jsonobj.priceDoorFrame);
-        document.getElementById("pricedoorframetext").innerHTML = 'Текущая: ' + jsonobj.priceDoorFrame + ' руб.';
-        document.getElementById("pricedoorframenonstandart").value = Number(jsonobj.priceDoorFrameNonStandart);
-        document.getElementById("pricedoorframenonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorFrameNonStandart + ' руб.';
-        document.getElementById("priceassmbl").value = Number(jsonobj.priceAssmbl);
-        document.getElementById("priceassmbltext").innerHTML = 'Текущая: ' + jsonobj.priceAssmbl + ' руб.';
-        document.getElementById("pricehole").value = Number(jsonobj.priceHole);
-        document.getElementById("priceholetext").innerHTML = 'Текущая: ' + jsonobj.priceHole + ' руб.';
-        document.getElementById("priceinsert").value = Number(jsonobj.priceInsert);
-        document.getElementById("priceinserttext").innerHTML = 'Текущая: ' + jsonobj.priceInsert + ' руб.';
-        document.getElementById("pricezch201").value = Number(jsonobj.priceZch201);
-        document.getElementById("pricezch201text").innerHTML = 'Текущая: ' + jsonobj.priceZch201 + ' руб.';
-        document.getElementById("pricezv4").value = Number(jsonobj.priceZV4);
-        document.getElementById("pricezv4text").innerHTML = 'Текущая: ' + jsonobj.priceZV4 + ' руб.';
-        document.getElementById("pricepaintgrunt").value = Number(jsonobj.pricePaintGrunt);
-        document.getElementById("pricepaintgrunttext").innerHTML = 'Текущая: ' + jsonobj.pricePaintGrunt + ' руб.';
-        document.getElementById("pricepaintral").value = Number(jsonobj.pricePaintRAl);
-        document.getElementById("pricepaintraltext").innerHTML = 'Текущая: ' + jsonobj.pricePaintRAl + ' руб.';
-        document.getElementById("pricedoortrim60mm").value = Number(jsonobj.priceDoorTrim60mm);
-        document.getElementById("pricedoortrim60mmtext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim60mm + ' руб.';
-        document.getElementById("pricedoortrim60mmnonstandart").value = Number(jsonobj.priceDoorTrim60mmNonStandart);
-        document.getElementById("pricedoortrim60mmnonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim60mmNonStandart + ' руб.';
-        document.getElementById("pricedoortrim90mm").value = Number(jsonobj.priceDoorTrim90mm);
-        document.getElementById("pricedoortrim90mmtext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim90mm + ' руб.';
-        document.getElementById("pricedoortrim90mmnonstandart").value = Number(jsonobj.priceDoorTrim90mmNonStandart);
-        document.getElementById("pricedoortrim90mmnonstandarttext").innerHTML = 'Текущая: ' + jsonobj.priceDoorTrim90mmNonStandart + ' руб.';
-        document.getElementById("surchgennum10").value = Number(jsonobj.surchGenNum10);
-        document.getElementById("surchgennum10text").innerHTML = 'Текущая: ' + jsonobj.surchGenNum10 + ' руб.';
-        document.getElementById("surchgennumfr11to20").value = Number(jsonobj.surchGenNumFr11to20);
-        document.getElementById("surchgennumfr11to20text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr11to20 + ' руб.';
-        document.getElementById("surchgennumfr21to50").value = Number(jsonobj.surchGenNumFr21to50);
-        document.getElementById("surchgennumfr21to50text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr21to50 + ' руб.';
-        document.getElementById("surchgennumfr51to100").value = Number(jsonobj.surchGenNumFr51to100);
-        document.getElementById("surchgennumfr51to100text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr51to100 + ' руб.';
-        document.getElementById("surchgennumgr101to1000").value = Number(jsonobj.surchGenNumFr101to1000);
-        document.getElementById("surchgennumgr101to1000text").innerHTML = 'Текущая: ' + jsonobj.surchGenNumFr101to1000 + ' руб.';
-        document.getElementById("surchgennum1000").value = Number(jsonobj.surchGenNum1000);
-        document.getElementById("surchgennum1000text").innerHTML = 'Текущая: ' + jsonobj.surchGenNum1000 + ' руб.';
-    }
-</script>

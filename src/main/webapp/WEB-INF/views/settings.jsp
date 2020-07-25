@@ -188,7 +188,7 @@
             },
             body: jsonString
         });
-        setTimeout(() => {  window.location.reload(); }, 500);
+        // setTimeout(() => {  window.location.reload(); }, 500);
     }
 
     function parseStringJson() {

@@ -21,10 +21,7 @@ public class DoorsService implements IDoorsService {
     @Autowired
     private DoorPriceCalculator doorPriceCalculator;
 
-    public List<DoorPosition> saveNewDoorPosition(String jsonDoorPosition, List<DoorPosition> currentListDoors) throws JsonProcessingException {
-
-        ObjectMapper mapper = new ObjectMapper();
-        DoorPositionView newDoorPositionView = mapper.readerFor(DoorPositionView.class).readValue(jsonDoorPosition);
+    public List<DoorPosition> saveNewDoorPosition(DoorPositionView newDoorPositionView, List<DoorPosition> currentListDoors) {
 
         newDoorPositionView.setTotalPrice(
                 doorPriceCalculator.calculatePrice(newDoorPositionView,

@@ -8,19 +8,19 @@ public class DoorPositionView extends DoorPosition {
 
     @JsonCreator
     public DoorPositionView(
-        @JsonProperty("width") String widthFromModel,
-        @JsonProperty("height") String heightFromModel,
+        @JsonProperty("sizeWidth") String widthFromModel,
+        @JsonProperty("sizeHeigth") String heightFromModel,
         @JsonProperty("type") String typeFromModel,
         @JsonProperty("open") String openFromModel,
-        @JsonProperty("doorstep") String doorstepFromModel,
+        @JsonProperty("doorStep") String doorstepFromModel,
         @JsonProperty("assembl") String assemblFromModel,
         @JsonProperty("fill") String fillFromModel,
         @JsonProperty("hole") String holeFromModel,
         @JsonProperty("fitt") String fittFromModel,
         @JsonProperty("paint") String paintFromModel,
-        @JsonProperty("doortrim") String doortrimFromModel,
-        @JsonProperty("twodoorleafs") String twodoorleafsFromModel,
-        @JsonProperty("sumpos") String sumposFromModel
+        @JsonProperty("doorTrim") String doortrimFromModel,
+        @JsonProperty("twoDoorLeafs") String twodoorleafsFromModel,
+        @JsonProperty("sum") String sumposFromModel
     )   {
         switch (Type.valueOf(typeFromModel).getType())    {
             case 1:

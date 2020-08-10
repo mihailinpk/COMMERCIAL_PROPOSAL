@@ -2,6 +2,7 @@ package su.myspringwebapps.sevices;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import su.myspringwebapps.points.DoorPosition;
+import su.myspringwebapps.points.DoorPositionView;
 import su.myspringwebapps.points.DoorPrice;
 import su.myspringwebapps.points.DoorPriceView;
 
@@ -9,7 +10,7 @@ import java.util.List;
 
 public interface IDoorsService {
 
-    List<DoorPosition> saveNewDoorPosition(String jsonDoorPosition, List<DoorPosition> currentListDoors) throws JsonProcessingException;
+    List<DoorPosition> saveNewDoorPosition(DoorPositionView newDoorPositionView, List<DoorPosition> currentListDoors) throws JsonProcessingException;
 
     List<DoorPosition> deleteDoorPosition(Integer id, List<DoorPosition> currentListDoors);
 

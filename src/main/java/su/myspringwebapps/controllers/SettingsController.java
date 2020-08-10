@@ -23,7 +23,7 @@ public class SettingsController {
     }
 
     @RequestMapping(value = "/setsettings", method = RequestMethod.POST)
-    public ResponseEntity<Void> setSettings(@RequestBody DoorPriceView jsonDoorPrice) throws JsonProcessingException {
+    public ResponseEntity<Void> setSettings(@RequestBody DoorPriceView jsonDoorPrice) {
         doorsService.setDoorPrice(0, jsonDoorPrice);
         return ResponseEntity.ok().build();
     }

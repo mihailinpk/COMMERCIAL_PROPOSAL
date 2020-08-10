@@ -5,10 +5,12 @@ import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.ui.Model;
 
+import su.myspringwebapps.points.DoorPositionView;
 import su.myspringwebapps.sevices.DoorsService;
 import su.myspringwebapps.points.DoorPosition;
 
@@ -43,15 +45,15 @@ public class DoorsController {
     }
 
     @RequestMapping(value = "/adding", method = RequestMethod.POST)
-    public String addingPosition(
-            @RequestParam(value = "jsondoorposition") String jsonDoorPosition,
+    public ResponseEntity<Void> addingPosition(
+            @RequestBody DoorPositionView jsonDoorPosition,
             Model model,
             @ModelAttribute ArrayList<DoorPosition> doors
     ) throws JsonProcessingException {
 
         model.addAttribute("listCurrentCommercialProposal", doorsService.saveNewDoorPosition(jsonDoorPosition, doors));
 
-        return "redirect:/";
+        return ResponseEntity.ok().build();
 
     }
 

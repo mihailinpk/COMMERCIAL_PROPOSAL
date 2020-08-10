@@ -68,7 +68,7 @@ public class DoorsService implements IDoorsService {
         return null;
     }
 
-    public void setDoorPrice(Integer id, DoorPriceView newDoorPrice) throws JsonProcessingException  {
+    public void setDoorPrice(Integer id, DoorPriceView newDoorPrice) {
         doorPricesRepository.setDoorPrice(id, newDoorPrice);
     }
 

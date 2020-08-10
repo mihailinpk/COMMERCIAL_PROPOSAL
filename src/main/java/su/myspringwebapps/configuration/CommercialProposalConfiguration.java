@@ -8,9 +8,7 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.jdbc.core.simple.SimpleJdbcTemplate;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import org.springframework.web.servlet.config.annotation.*;
 
 import java.util.List;
 
@@ -24,6 +22,11 @@ public class CommercialProposalConfiguration implements WebMvcConfigurer {
         converters.add(new MappingJackson2HttpMessageConverter());
     }
 
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        registry.jsp("/WEB-INF/views/", ".jsp");
+    }
+
     @Value("${database.driver_class_name}")
     private String driverClassName;
     @Value("${database.url}")
@@ -32,12 +35,6 @@ public class CommercialProposalConfiguration implements WebMvcConfigurer {
     private String username;
     @Value("${database.password}")
     private String password;
-
-    // Арбитр представлений
-    @Bean
-    public InternalResourceViewResolver viewResolver()  {
-        return new InternalResourceViewResolver("/WEB-INF/views/", ".jsp");
-    }
 
     // Связь с базой данных
     @Bean

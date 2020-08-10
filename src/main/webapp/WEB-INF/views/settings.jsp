@@ -187,8 +187,13 @@
                 'Content-Type': 'application/json'
             },
             body: jsonString
+        }).then(function(response) {
+            if (response.ok) {
+                window.location.reload();
+            }
+        }).catch(function(error) {
+            alert(error);
         });
-        // setTimeout(() => {  window.location.reload(); }, 500);
     }
 
     function parseStringJson() {
